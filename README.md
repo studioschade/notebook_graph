@@ -1,5 +1,6 @@
 # Notebook Graph Workflow Compositor
-Computing at the speed of Human: A tool by alshady
+Computing at the speed of Human: A tool by alshady.
+
 Intuitive, high-level visual design and execution of complex workflows and analysis pipelines.
 Not a visual programming language, a visual compositor to archtect complex systems.
 
