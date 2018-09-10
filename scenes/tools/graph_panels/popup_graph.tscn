@@ -1,0 +1,130 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/tools/graph_panels/terminal_theme.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/tools/graph_panels/popup_drag_resize.gd" type="Script" id=2]
+[ext_resource path="res://scenes/tools/graph_panels/notebook_panel.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = 0.0
+bg_color = Color( 0, 0.411765, 0.0117647, 0.886275 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Content Margin" ]
+
+[sub_resource type="ButtonGroup" id=2]
+
+resource_local_to_scene = true
+
+[node name="WindowDialog" type="WindowDialog"]
+self_modulate = Color( 0.823529, 0.823529, 0.823529, 0.505882 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 503.0
+margin_top = 32.0
+margin_right = 1010.0
+margin_bottom = 364.0
+rect_min_size = Vector2( 507, 332 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 1 )
+custom_colors/title_color = Color( 0, 0, 0, 1 )
+popup_exclusive = true
+window_title = "GraphBook Node"
+resizable = true
+script = ExtResource( 2 )
+_sections_unfolded = [ "Focus", "Hint", "Mouse", "Popup", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/title_font", "custom_icons", "custom_styles", "custom_styles/panel" ]
+
+[node name="notebook_panel" parent="." index="1" instance=ExtResource( 3 )]
+self_modulate = Color( 1, 1, 1, 1 )
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 504.0
+margin_bottom = 317.0
+grow_horizontal = 2
+grow_vertical = 2
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles", "custom_styles/panel", "theme" ]
+
+[node name="vbox" parent="notebook_panel" index="0"]
+margin_bottom = 316.0
+
+[node name="Panel" parent="notebook_panel/vbox" index="0"]
+visible = false
+
+[node name="menu" parent="notebook_panel/vbox" index="1"]
+margin_top = 0.0
+margin_bottom = 28.0
+
+[node name="type" parent="notebook_panel/vbox/menu" index="10"]
+group = SubResource( 2 )
+
+[node name="notebook" parent="notebook_panel/vbox" index="2"]
+margin_top = 32.0
+margin_bottom = 315.0
+
+[node name="Notebook" parent="notebook_panel/vbox/notebook" index="0"]
+margin_top = 1.0
+
+[node name="vbox" parent="notebook_panel/vbox/notebook/Notebook" index="0"]
+margin_bottom = 281.0
+
+[node name="cells" parent="notebook_panel/vbox/notebook/Notebook/vbox" index="0"]
+margin_bottom = 281.0
+
+[node name="HSeparator" parent="notebook_panel/vbox/notebook/Notebook/vbox/cells" index="0"]
+margin_top = 138.0
+margin_bottom = 142.0
+
+[node name="Files" parent="notebook_panel/vbox/notebook" index="1"]
+margin_top = 22.0
+
+[node name="vbox" parent="notebook_panel/vbox/notebook/Files" index="0"]
+margin_bottom = 260.0
+
+[node name="type" parent="notebook_panel/vbox/notebook/Files/vbox/menu" index="0"]
+group = SubResource( 2 )
+
+[node name="Graph" parent="notebook_panel/vbox/notebook" index="2"]
+margin_top = 22.0
+
+[node name="Settings" parent="notebook_panel/vbox/notebook" index="3"]
+visible = false
+margin_top = 22.0
+
+[node name="cell" parent="notebook_panel/vbox/notebook/Settings" index="0"]
+margin_bottom = 260.0
+
+[node name="web_api" parent="notebook_panel/vbox/notebook/Settings" index="1"]
+margin_bottom = 260.0
+
+[connection signal="resized" from="." to="." method="_on_WindowDialog_resized"]
+
+[editable path="notebook_panel"]

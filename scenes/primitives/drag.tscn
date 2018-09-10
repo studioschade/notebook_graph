@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/primitives/simple_drag.gd" type="Script" id=1]
+[ext_resource path="res://scenes/shadys_elements/panel.png" type="Texture" id=2]
+
+[node name="drag" type="MarginContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 57.0
+margin_top = 45.0
+margin_right = 1705.0
+margin_bottom = 724.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( -1.12526, -2.85386 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 11
+size_flags_vertical = 11
+script = ExtResource( 1 )
+_sections_unfolded = [ "Animation", "Axis Stretch", "Grow Direction", "Mouse", "Offset", "Patch Margin", "Rect", "Region", "Size Flags", "Transform", "Visibility" ]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1648.0
+margin_bottom = 679.0
+rect_pivot_offset = Vector2( -1.12526, -2.85386 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 75
+patch_margin_bottom = 75
+_sections_unfolded = [ "Grow Direction", "Rect", "Size Flags" ]
+
+[node name="resize" type="ColorRect" parent="NinePatchRect" index="0"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -79.0
+margin_top = -76.0
+margin_right = -10.0
+margin_bottom = -12.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color( 1, 1, 1, 1 )
+_sections_unfolded = [ "Rect", "Size Flags", "Visibility", "texture" ]
+
+[connection signal="gui_input" from="." to="." method="_on_drag_gui_input"]
+[connection signal="gui_input" from="NinePatchRect/resize" to="." method="_on_resize_gui_input"]

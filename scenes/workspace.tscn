@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/tools/graph_panels/jupyter_graph.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/tools/graph_panels/genericgraph.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/window_core.tscn" type="PackedScene" id=3]
+
+[node name="workspace" type="Control" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Focus", "Mouse" ]
+
+[node name="GraphEdit" parent="." index="0" instance=ExtResource( 1 )]
+focus_mode = 1
+snap_distance = 15
+
+[node name="graphtool2" parent="GraphEdit" index="2" instance=ExtResource( 2 )]
+margin_left = 318.0
+margin_right = 672.0
+
+[node name="window" parent="." index="1" instance=ExtResource( 3 )]
+margin_left = 15.0
+margin_top = 184.0
+margin_right = 150.0
+margin_bottom = 290.0
+
