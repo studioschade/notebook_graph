@@ -7,7 +7,6 @@ var view_modes = {
 }
 var view
 
-
 var drag_start
 #var lobby_scene = load("res://lobby.tscn")
 onready var button_overlay = get_node("button_overlay")

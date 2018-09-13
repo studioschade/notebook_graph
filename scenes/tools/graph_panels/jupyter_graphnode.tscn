@@ -3,7 +3,8 @@
 [ext_resource path="res://scenes/tools/graph_panels/terminal_theme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/tools/GraphNode.gd" type="Script" id=2]
 [ext_resource path="res://scenes/tools/graph_panels/bash_panel.gd" type="Script" id=3]
-[ext_resource path="res://scenes/tools/graph_panels/ss.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/tools/graph_panels/table.tscn" type="PackedScene" id=4]
+
 
 [sub_resource type="StyleBoxFlat" id=1]
 

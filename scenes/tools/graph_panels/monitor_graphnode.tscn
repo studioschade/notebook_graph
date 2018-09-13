@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/tools/GraphNode.gd" type="Script" id=1]
-[ext_resource path="res://scenes/tools/graph_panels/notebook_panel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/tools/graph_panels/table.tscn" type="PackedScene" id=2]
 
 [node name="notebook_node" type="GraphNode"]
 anchor_left = 0.0
@@ -39,13 +39,12 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "0", "1", "Material", "Mouse", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_icons", "custom_styles", "custom_styles/defaultframe", "custom_styles/frame" ]
 
 [node name="panel" parent="." index="0" instance=ExtResource( 2 )]
-editor/display_folded = true
+self_modulate = Color( 0.101961, 0.603922, 0, 1 )
+show_behind_parent = false
 margin_left = 16.0
 margin_top = 24.0
 margin_right = 531.0
-margin_bottom = 365.0
-focus_mode = 1
-_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles", "custom_styles/panel", "theme" ]
+margin_bottom = 338.0
 
 [connection signal="close_request" from="." to="." method="_on_GraphNode_close_request"]
 [connection signal="raise_request" from="." to="." method="_on_GraphNode_raise_request"]

@@ -2,7 +2,6 @@
 
 [ext_resource path="res://scenes/tools/logger.gd" type="Script" id=1]
 
-
 [node name="Node" type="ReferenceRect"]
 anchor_left = 0.0
 anchor_top = 0.0

@@ -1,23 +1,18 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/tools/linux_terminal.gd" type="Script" id=1]
 [ext_resource path="res://scenes/primitives/panel.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/shadys_elements/keyboard.png" type="Texture" id=3]
-[ext_resource path="res://scenes/primitives/drag.tscn" type="PackedScene" id=4]
-
-[sub_resource type="DynamicFontData" id=1]
-
-hinting = 2
-font_path = "res://fonts/UbuntuMono-Bold.ttf"
+[ext_resource path="res://scenes/shadys_elements/box.png" type="Texture" id=3]
+[ext_resource path="res://fonts/NotoSansUI_Bold.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=2]
 
-size = 15
+size = 12
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = SubResource( 1 )
+font_data = ExtResource( 4 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings", "font_data" ]
 
 [sub_resource type="Theme" id=3]
@@ -32,36 +27,37 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[node name="terminal" type="Panel" index="0"]
+[node name="terminal" type="Panel"]
 self_modulate = Color( 0, 0, 0, 1 )
 light_mask = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -245.0
-margin_top = -420.0
-margin_right = 251.0
-margin_bottom = -67.0
+margin_left = -247.0
+margin_top = -406.0
+margin_right = 225.0
+margin_bottom = -53.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Theme", "Visibility" ]
+_sections_unfolded = [ "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "theme" ]
 
 [node name="output_frame" parent="." index="0" instance=ExtResource( 2 )]
 light_mask = 0
-margin_left = -235.0
-margin_top = -12.0
-margin_right = 931.0
-margin_bottom = 846.0
+margin_right = 1166.0
+margin_bottom = 858.0
 rect_scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 3 )
-patch_margin_right = 120
-_sections_unfolded = [ "Visibility" ]
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+_sections_unfolded = [ "Mouse", "Patch Margin", "Rect", "Theme", "Visibility" ]
 
 [node name="output" type="RichTextLabel" parent="." index="1"]
 modulate = Color( 0.313726, 1, 0, 1 )
@@ -70,76 +66,43 @@ anchor_left = 0.5
 anchor_top = 0.0
 anchor_right = 0.5
 anchor_bottom = 0.0
-margin_left = -226.5
-margin_right = 226.5
-margin_bottom = 294.0
+margin_left = -235.0
+margin_top = 2.0
+margin_right = 227.0
+margin_bottom = 312.0
 grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
-focus_mode = 2
-mouse_filter = 0
+mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 theme = SubResource( 3 )
 bbcode_enabled = true
-bbcode_text = "
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"
+bbcode_text = ""
 visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
-text = "
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"
+text = ""
 scroll_active = true
 scroll_following = true
-selection_enabled = true
+selection_enabled = false
 override_selected_font_color = false
-_sections_unfolded = [ "Focus", "Hint", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "theme" ]
+_sections_unfolded = [ "BBCode", "Focus", "Hint", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "theme" ]
 
 [node name="bottom_frame" parent="." index="2" instance=ExtResource( 2 )]
-margin_left = -230.0
-margin_top = 297.0
-margin_right = 4386.0
-margin_bottom = 608.0
+margin_left = 3.0
+margin_top = 311.0
+margin_right = 4619.0
+margin_bottom = 622.0
 rect_scale = Vector2( 0.1, 0.1 )
-_sections_unfolded = [ "Mouse", "Rect", "Visibility" ]
+texture = ExtResource( 3 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+_sections_unfolded = [ "Mouse", "Patch Margin", "Rect", "Visibility" ]
 
 [node name="input" type="LineEdit" parent="." index="3"]
 light_mask = 0
@@ -147,10 +110,10 @@ anchor_left = 0.5
 anchor_top = 0.0
 anchor_right = 0.5
 anchor_bottom = 0.0
-margin_left = -223.0
-margin_top = 307.0
-margin_right = 227.0
-margin_bottom = 332.0
+margin_left = -232.0
+margin_top = 319.0
+margin_right = 218.0
+margin_bottom = 333.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 hint_tooltip = "Click here to type in a message. Press Enter to send the message."
@@ -161,7 +124,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_styles/normal = SubResource( 4 )
 custom_colors/font_color = Color( 0, 1, 0.0625, 1 )
-text = "asd"
+text = "$"
 max_length = 200
 secret_character = "*"
 focus_mode = 1
@@ -170,17 +133,7 @@ placeholder_alpha = 0.6
 caret_blink = true
 caret_blink_speed = 0.65
 caret_position = 0
-_sections_unfolded = [ "Caret", "Mouse", "Visibility", "custom_colors" ]
-
-[node name="drag" parent="." index="4" instance=ExtResource( 4 )]
-visible = false
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -121.0
-margin_top = -4.0
-margin_right = 338.0
-margin_bottom = 62.0
-rect_scale = Vector2( 0.5, -0.5 )
+_sections_unfolded = [ "Caret", "Mouse", "Placeholder", "Rect", "Theme", "Visibility", "custom_colors" ]
 
 [connection signal="focus_entered" from="input" to="." method="_on_input_focus_entered"]
 [connection signal="text_entered" from="input" to="." method="_on_input_text_entered"]

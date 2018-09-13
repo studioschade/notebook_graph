@@ -342,6 +342,7 @@ alignment = 0
 _sections_unfolded = [ "Hint", "Mouse", "Rect", "Size Flags", "Theme" ]
 
 [node name="Panel" type="Panel" parent="vbox" index="0"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -407,6 +408,7 @@ max_lines_visible = -1
 _sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
 
 [node name="menu" type="HBoxContainer" parent="vbox" index="1"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1002,7 +1004,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 30.0
 margin_right = 511.0
-margin_bottom = 229.0
+margin_bottom = 249.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -1017,9 +1019,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 97.0
+margin_top = 107.0
 margin_right = 511.0
-margin_bottom = 101.0
+margin_bottom = 111.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -1034,9 +1036,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 233.0
+margin_top = 253.0
 margin_right = 511.0
-margin_bottom = 261.0
+margin_bottom = 281.0
 rect_min_size = Vector2( 0, 28 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -1356,6 +1358,7 @@ caret_position = 0
 _sections_unfolded = [ "Anchor", "Grow Direction", "Rect", "Size Flags", "custom_fonts", "custom_styles", "custom_styles/normal" ]
 
 [node name="Settings" type="MarginContainer" parent="vbox/notebook" index="3"]
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0

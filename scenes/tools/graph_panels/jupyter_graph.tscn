@@ -16,8 +16,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1920.0
-margin_bottom = 1077.0
+margin_right = 2933.0
+margin_bottom = 1608.0
 rect_min_size = Vector2( 200, 200 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -32,7 +32,7 @@ custom_colors/activity = Color( 0, 1, 0.462745, 1 )
 custom_colors/grid_major = Color( 0.0392157, 0.231373, 0, 0.607843 )
 custom_colors/grid_minor = Color( 0, 0.439216, 0.054902, 0.101961 )
 right_disconnects = true
-scroll_offset = Vector2( -318, 0 )
+scroll_offset = Vector2( -466, -165 )
 snap_distance = 20
 use_snap = true
 zoom = 1.0
@@ -40,10 +40,10 @@ script = ExtResource( 2 )
 _sections_unfolded = [ "Anchor", "Custom Colors", "Custom Constants", "Custom Icons", "Custom Styles", "Focus", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_icons", "custom_styles", "theme" ]
 
 [node name="notebook_cell" parent="." index="0" instance=ExtResource( 3 )]
-margin_left = 318.0
-margin_top = 0.0
-margin_right = 865.0
-margin_bottom = 370.0
+margin_left = 466.0
+margin_top = 165.0
+margin_right = 1013.0
+margin_bottom = 535.0
 
 [connection signal="connection_request" from="." to="." method="_on_GraphEdit_connection_request"]
 [connection signal="disconnection_request" from="." to="." method="_on_GraphEdit_disconnection_request"]

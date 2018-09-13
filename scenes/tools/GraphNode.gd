@@ -71,12 +71,10 @@ func transmit_output(destination_node = output_node):
 
 func _on_GraphNode_resize_request(new_minsize):
 	rect_min_size = new_minsize
-	$panel.rect_min_size = new_minsize + Vector2(20,20)
+	$panel.rect_min_size = new_minsize - Vector2(20,20)
 	$panel.rect_size = $panel.rect_min_size
 	rect_size = new_minsize
 	#rect_position = get_parent().rect_position - Vector2(0,-20)
-
-
 
 func _on_GraphNode_close_request():
 	queue_free()

@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/tools/graph_panels/jupyter_graph.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/tools/graph_panels/genericgraph.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/window_core.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/tools/graph_panels/dynamic_plane.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/tools/window_core.tscn" type="PackedScene" id=2]
 
-[node name="workspace" type="Control" index="0"]
+[node name="workspace" type="Control"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -17,17 +16,18 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Focus", "Mouse" ]
 
-[node name="GraphEdit" parent="." index="0" instance=ExtResource( 1 )]
-focus_mode = 1
-snap_distance = 15
+[node name="dynamic_plane" parent="." index="0" instance=ExtResource( 1 )]
 
-[node name="graphtool2" parent="GraphEdit" index="2" instance=ExtResource( 2 )]
-margin_left = 318.0
-margin_right = 672.0
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="1"]
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="window" parent="." index="1" instance=ExtResource( 3 )]
-margin_left = 15.0
-margin_top = 184.0
-margin_right = 150.0
-margin_bottom = 290.0
+[node name="window" parent="CanvasLayer" index="0" instance=ExtResource( 2 )]
+margin_left = 175.0
+margin_top = 326.0
+margin_right = 310.0
+margin_bottom = 432.0
 
