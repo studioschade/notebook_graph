@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/task_manager/test.gd" type="Script" id=1]
+[ext_resource path="res://addons/task_graph/task_manager.gd" type="Script" id=2]
+[ext_resource path="res://addons/task_graph/task_manager_icon.png" type="Texture" id=3]
+[ext_resource path="res://scenes/task_manager/task_test.tres" type="Resource" id=4]
+
+[node name="Test" type="Node" index="0"]
+script = ExtResource( 1 )
+
+[node name="TaskManager" type="Node" parent="." index="0"]
+script = ExtResource( 2 )
+_sections_unfolded = [ "script" ]
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+max_threads = 0
+resource = ExtResource( 4 )
+

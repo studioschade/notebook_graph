@@ -26,13 +26,16 @@
 # SOFTWARE.                                                                      #
 ##################################################################################
 
-tool
+#tool
 extends Node
 
 signal request_completed(url, headers, body)
 signal request_failed(url, result, response_code)
 signal request_progress(url, value, max_size)
 
+
+func ready():
+	prints(request("www.google.com"))
 # url : HTTPRequest
 var request_nodes = {}
 
@@ -46,6 +49,7 @@ var request_nodes = {}
 # - - - - - - - - - -
 # *Returns* Error
 # * Return OK or other error code
+
 func request(url, method = HTTPClient.METHOD_GET, headers=[], body = ""):
     var rq = HTTPRequest.new()
     # rq.name = url.replace("/", '\\')

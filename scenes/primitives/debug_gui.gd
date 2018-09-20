@@ -39,8 +39,8 @@ func toggle_view():
 		view = SYMBOLIC
 
 	if not $tween.is_active():
-		$tween.interpolate_property(window, "rect_size",  window.rect_size, view_modes[view], fade_time, Tween.TRANS_LINEAR , Tween.EASE_IN_OUT)
-		$tween.interpolate_property(window, "rect_min_size",  window.rect_min_size, view_modes[view], fade_time, Tween.TRANS_LINEAR , Tween.EASE_IN_OUT)
+		$tween.interpolate_property(window, "rect_size",  window.rect_size, view_modes[view], fade_time, Tween.TRANS_BOUNCE , Tween.EASE_IN_OUT)
+		$tween.interpolate_property(window, "rect_min_size",  window.rect_min_size, view_modes[view], fade_time, Tween.TRANS_BOUNCE , Tween.EASE_IN_OUT)
 		$tween.start()
 		$tween.set_active(true)
 	#window.rect_min_size = view_modes[view]
@@ -98,7 +98,7 @@ func show_window(window_on):
 	else:
 		end_value = Color(1, 1, 1, 0)
 	if not $tween.is_active():
-		$tween.interpolate_property(window, "modulate",  start_value, end_value, fade_time, Tween.TRANS_LINEAR , Tween.EASE_IN_OUT)
+		$tween.interpolate_property(window, "modulate",  start_value, end_value, fade_time, Tween.TRANS_BOUNCE , Tween.EASE_IN_OUT)
 		$tween.start()
 		$tween.set_active(true)
 

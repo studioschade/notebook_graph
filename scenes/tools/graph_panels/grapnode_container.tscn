@@ -11,8 +11,8 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 319.0
 margin_top = 31.0
-margin_right = 831.0
-margin_bottom = 390.0
+margin_right = 890.0
+margin_bottom = 450.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 1
@@ -41,7 +41,10 @@ script = ExtResource( 2 )
 _sections_unfolded = [ "0", "1", "Material", "Mouse", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles", "custom_styles/defaultframe", "custom_styles/frame" ]
 
 [node name="window" parent="." index="0" instance=ExtResource( 3 )]
-margin_right = 511.0
+visible = false
+margin_top = 8.0
+margin_right = 570.0
+margin_bottom = 82.0
 
 [connection signal="close_request" from="." to="." method="_on_GraphNode_close_request"]
 [connection signal="raise_request" from="." to="." method="_on_GraphNode_raise_request"]

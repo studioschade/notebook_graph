@@ -1,0 +1,154 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://addons/task_graph/task_graph_data_icon.png" type="Texture" id=1]
+[ext_resource path="res://addons/task_graph/task_graph_data.gd" type="Script" id=2]
+
+[resource]
+
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 1 )
+}
+nodes = [ {
+"data": "res://example/task1.gd",
+"position": [ 120.0, -240.0 ],
+"type": 0,
+"width": 273.0
+}, {
+"data": "res://example/task1.gd",
+"position": [ 420.0, -200.0 ],
+"type": 0,
+"width": 273.0
+}, {
+"data": "input3",
+"position": [ 180.0, -80.0 ],
+"type": 1,
+"width": 200.0
+}, {
+"data": "res://example/task2.gd",
+"position": [ 740.0, -200.0 ],
+"type": 0,
+"width": 273.0
+}, {
+"data": "output1",
+"position": [ 1340.0, -200.0 ],
+"type": 2,
+"width": 200.0
+}, {
+"data": "res://example/task3.gd",
+"position": [ 1340.0, -120.0 ],
+"type": 0,
+"width": 273.0
+}, {
+"data": "res://example/task3.gd",
+"position": [ 740.0, -60.0 ],
+"type": 0,
+"width": 273.0
+}, {
+"data": "res://example/task3.gd",
+"position": [ 100.0, 120.0 ],
+"type": 0,
+"width": 273.0
+}, {
+"data": "input2",
+"position": [ -100.0, -120.0 ],
+"type": 1,
+"width": 200.0
+}, {
+"data": "input1",
+"position": [ -100.0, -200.0 ],
+"type": 1,
+"width": 200.0
+}, {
+"data": "input4",
+"position": [ -140.0, 60.0 ],
+"type": 1,
+"width": 200.0
+}, {
+"data": "input5",
+"position": [ -140.0, 180.0 ],
+"type": 1,
+"width": 200.0
+}, {
+"data": "res://example/task1.gd",
+"position": [ 1040.0, -200.0 ],
+"type": 0,
+"width": 273.0
+}, {
+"data": "res://example/task3.gd",
+"position": [ 420.0, -40.0 ],
+"type": 0,
+"width": 273.0
+}, {
+"data": "res://example/task3.gd",
+"position": [ 100.0, 0.0 ],
+"type": 0,
+"width": 273.0
+} ]
+connections = [ {
+"from": 12,
+"from_port": "output1",
+"to": 4,
+"to_port": "output1"
+}, {
+"from": 12,
+"from_port": "output1",
+"to": 5,
+"to_port": "input1"
+}, {
+"from": 3,
+"from_port": "output1",
+"to": 12,
+"to_port": "input1"
+}, {
+"from": 3,
+"from_port": "output1",
+"to": 12,
+"to_port": "input2"
+}, {
+"from": 2,
+"from_port": "input3",
+"to": 13,
+"to_port": "input1"
+}, {
+"from": 0,
+"from_port": "output1",
+"to": 1,
+"to_port": "input1"
+}, {
+"from": 2,
+"from_port": "input3",
+"to": 1,
+"to_port": "input2"
+}, {
+"from": 1,
+"from_port": "output1",
+"to": 3,
+"to_port": "input1"
+}, {
+"from": 1,
+"from_port": "output1",
+"to": 6,
+"to_port": "input1"
+}, {
+"from": 10,
+"from_port": "input4",
+"to": 14,
+"to_port": "input1"
+}, {
+"from": 11,
+"from_port": "input5",
+"to": 7,
+"to_port": "input1"
+}, {
+"from": 9,
+"from_port": "input1",
+"to": 0,
+"to_port": "input1"
+}, {
+"from": 8,
+"from_port": "input2",
+"to": 0,
+"to_port": "input2"
+} ]
+

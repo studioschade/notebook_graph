@@ -1,0 +1,14 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[ext_resource path="res://fonts/NotoSansUI_Bold.ttf" type="DynamicFontData" id=1]
+
+[resource]
+
+size = 14
+outline_size = 0
+outline_color = Color( 0.494873, 0.925781, 0.253143, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+

@@ -19,8 +19,16 @@ func _ready():
 	#path = execute_command("/bin/echo $PATH").split(",")
 	#add_item_to_chat(str(path))
 
+var command_history = ['What? you think should have command history?"']
+var history_position = 0
+
 #func _gui_input(event):
-#func _unhandled_key_input(event):
+
+func _on_input_gui_input(event):
+	if event is InputEventKey:
+		if event.pressed and event.scancode == KEY_UP:
+			$input.text = String(command_history[0])
+
 #	print(str(event))
 #	print("Oh yeah looking")
 #	if event.is_action_pressed("open_chat"):
@@ -30,19 +38,30 @@ func _ready():
 
 func _on_input_text_entered(text):
 	if text != "":
-		prints(text)
-		var out = execute_command(text)
-		add_item_to_chat(str(out))
+		#prints(text)
+		var terminal_result = execute_command(text)
+		if typeof(terminal_result) == TYPE_ARRAY:
+			for result in terminal_result:
+				add_item_to_chat(result)
+
 	$input.clear()
 	$input.release_focus()
 
-func execute_command(command):
-	var inputs = command.split(" ")
-	inputs.insert(0, "-c")
+func execute_command(command = ""):
+	if not command:
+		print("Invalid command entered!")
+		return false
+	else:
+		command_history.append(command)
+	var flags = command.split(" ")
+	command = flags[0]
+	flags.remove(0)
+	#inputs.insert(0, "-c")
 	var output = []
-	var pid = OS.execute("/bin/bash", inputs, true, output)
+	var pid = OS.execute(command, flags, true, output)
+	#var pid = OS.execute("/bin/bash", inputs, true, output)
 	#var pid = OS.execute('ls', ['-l', '/tmp'], true, output)
-	prints(output)
+	#prints(output)
 	return output
 
 #func find_command_in_path(command_name):
@@ -92,3 +111,4 @@ func _on_input_focus_exited():
 
 func _on_terminal_mouse_exited():
 	pass # Replace with function body.
+

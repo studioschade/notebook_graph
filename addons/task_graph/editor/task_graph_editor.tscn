@@ -1,0 +1,238 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/big_ui_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/tools/graph_panels/terminal_theme.tres" type="Theme" id=2]
+[ext_resource path="res://addons/task_graph/editor/graph_edit.gd" type="Script" id=3]
+
+[node name="TaskGraph" type="VBoxContainer" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Header" type="HBoxContainer" parent="." index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1920.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Custom Constants" ]
+
+[node name="FileMenuButton" type="MenuButton" parent="Header" index="0"]
+self_modulate = Color( 0.52549, 1, 0.168627, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 36.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 1 )
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 0
+shortcut = null
+group = null
+text = "File"
+flat = true
+align = 1
+items = [ "New", null, 0, false, false, -1, 0, null, "", false, "Save", null, 0, false, false, -1, 0, null, "", false, "Load", null, 0, false, false, -1, 0, null, "", false ]
+_sections_unfolded = [ "custom_colors", "custom_fonts", "custom_fonts/font" ]
+
+[node name="EditMenuButton" type="MenuButton" parent="Header" index="1"]
+self_modulate = Color( 0.52549, 1, 0.168627, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 40.0
+margin_right = 79.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 1 )
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 0
+shortcut = null
+group = null
+text = "Edit"
+flat = true
+align = 1
+items = [  ]
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="GraphEdit" type="GraphEdit" parent="." index="1"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1.0
+margin_top = 27.0
+margin_right = 1921.0
+margin_bottom = 1077.0
+rect_min_size = Vector2( 0, 300 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+right_disconnects = false
+scroll_offset = Vector2( -960, -540 )
+snap_distance = 20
+use_snap = true
+zoom = 1.0
+script = ExtResource( 3 )
+_sections_unfolded = [ "Theme", "custom_constants", "theme" ]
+
+[node name="RightClickMenu" type="PopupMenu" parent="GraphEdit" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 290.0
+margin_top = 107.0
+margin_right = 398.0
+margin_bottom = 249.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+items = [ "New Task", null, 0, false, false, -1, 0, null, "", false, "New Input", null, 0, false, false, -1, 0, null, "", false, "New Output", null, 0, false, false, -1, 0, null, "", false, "New Notebook", null, 0, false, false, -1, 0, null, "", false, "New Table", null, 0, false, false, -1, 0, null, "", false, "New Terminal", null, 0, false, false, -1, 0, null, "", false ]
+hide_on_state_item_selection = false
+submenu_popup_delay = 0.3
+
+[node name="ErrorDialog" type="AcceptDialog" parent="GraphEdit" index="1"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 83.0
+margin_bottom = 58.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+window_title = "Alert!"
+resizable = false
+dialog_hide_on_ok = true
+
+[node name="SaveDialog" type="FileDialog" parent="GraphEdit" index="2"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 275.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 200, 70 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+window_title = "Save a File"
+resizable = false
+dialog_hide_on_ok = false
+mode_overrides_title = true
+mode = 4
+access = 0
+filters = PoolStringArray( "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data" )
+show_hidden_files = false
+current_dir = "res://"
+current_file = ""
+current_path = "res://"
+
+[node name="LoadDialog" type="FileDialog" parent="GraphEdit" index="3"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 275.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 200, 70 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+window_title = "Open a File"
+resizable = false
+dialog_hide_on_ok = false
+mode_overrides_title = true
+mode = 0
+access = 0
+filters = PoolStringArray( "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data" )
+show_hidden_files = false
+current_dir = "res://"
+current_file = ""
+current_path = "res://"
+
+[node name="FileDialog" type="FileDialog" parent="GraphEdit" index="4"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 275.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 200, 70 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+window_title = "Open a File"
+resizable = false
+dialog_hide_on_ok = false
+mode_overrides_title = true
+mode = 0
+access = 0
+filters = PoolStringArray(  )
+show_hidden_files = false
+current_dir = "res://"
+current_file = ""
+current_path = "res://"
+

@@ -4,11 +4,40 @@ var notebook_scene = "res://scenes/tools/graph_panels/notebook_graphnode.tscn"
 var terminal_scene = "res://scenes/tools/graph_panels/terminal_graphnode.tscn"
 var table_scene = "res://scenes/tools/graph_panels/table_graphnode.tscn"
 
-var RootNode
 var SomeGraphEdit
 var SomePopupMenu
 var SomePopupMenuVisible = false
 var RMBPressed = false
+
+func _ready():
+	SomeGraphEdit.set_theme(load("res://scenes/tools/graph_panels/terminal_theme.tres"))
+	SomeGraphEdit.set_scroll_ofs(Vector2(-400, -230))
+	connect("node_selected", self, "node_selected")
+	connect("popup_request", self, "menu_requested")
+	connect("connection_request", self, "connect_requested")
+	connect("disconnection_request", self, "disconnect_requested")
+	connect("connection_to_empty", self, "connect_empty_requested")
+
+func connection_request(from, from_slot, to, to_slot):
+	#SomeGraphEdit.connect_node(from, from_port, to, to_port)
+	prints("Connection:", from, from_slot, to, to_slot)
+	if to != from:
+		SomeGraphEdit.connect_node(from,from_slot, to, to_slot )
+		prints(from, to)
+		SomeGraphEdit.get_node(from).output_node = to
+		SomeGraphEdit.get_node(to).input_node = from
+		get_node(from).transmit_output()
+
+func node_disconnect_request(from, from_slot, to, to_slot):
+	pass # Replace with function body.
+
+func node_selected(node):
+	set_selected(node)
+
+func _input(event):
+	if(Input.is_action_pressed("ui_right_click")):
+		SomePopupMenu.rect_position = get_viewport().get_mouse_position()
+		SomePopupMenu.popup();
 
 func load_scene(scene_filepath, custom_name = false, parent_nodepath = self.get_path()):
 	if not scene_filepath:
@@ -26,20 +55,16 @@ func _menu_item_pressed(ID):
 	if(SomePopupMenu.get_item_text(ID) == "Quit"):
 		get_tree().quit()
 	if(SomePopupMenu.get_item_text(ID) == "Add Notebook"):
-		#var graphnode = generate_graphnode()
 		var graphnode = load_scene(notebook_scene,"notebook_graphnode_", SomeGraphEdit.get_path())
 	if(SomePopupMenu.get_item_text(ID) == "Add Table"):
-		#var graphnode = generate_graphnode()
 		var graphnode = load_scene(table_scene,"table_graphnode_", SomeGraphEdit.get_path())
 	if(SomePopupMenu.get_item_text(ID) == "Add Terminal"):
-		#var graphnode = generate_graphnode()
 		var graphnode = load_scene(terminal_scene,"terminal_graphnode_", SomeGraphEdit.get_path())
 
-func _node_connection_request(from, from_port, to, to_port):
-	SomeGraphEdit.connect_node(from, from_port, to, to_port)
 
 func _init():
 	SomeGraphEdit = GraphEdit.new()
+	#SomeGraphEdit = get_node("SomeGraphEdit")
 	SomeGraphEdit.set_name("SomeGraphEdit")
 	SomeGraphEdit.set_anchor(MARGIN_RIGHT, SomeGraphEdit.ANCHOR_END, false)
 	SomeGraphEdit.set_anchor(MARGIN_BOTTOM, SomeGraphEdit.ANCHOR_END, false)
@@ -49,36 +74,24 @@ func _init():
 	SomeGraphEdit.margin_left = 20
 	SomeGraphEdit.margin_right = -20
 	SomeGraphEdit.margin_bottom = -20
+	SomeGraphEdit.connect("connection_request", self, "connection_request")
 
-	SomeGraphEdit.connect("raise_request", self, "_node_connection_request")
-	SomeGraphEdit.connect("resize_request", self, "_node_connection_request")
+	SomePopupMenu = generate_popup()
+	SomeGraphEdit.add_child(SomePopupMenu)
 
+
+func generate_popup():
 	SomePopupMenu = PopupMenu.new()
 	SomePopupMenu.set_name("SomePopupMenu")
-	SomePopupMenu.add_item("New")
-	SomePopupMenu.add_item("Load")
-	SomePopupMenu.add_item("Save")
 	SomePopupMenu.add_separator()
 	SomePopupMenu.add_item("Add Notebook")
 	SomePopupMenu.add_item("Add Terminal")
 	SomePopupMenu.add_item("Add Table")
 	SomePopupMenu.add_separator()
-	SomePopupMenu.add_item("Simulate")
 	SomePopupMenu.add_separator()
 	SomePopupMenu.add_item("Quit")
 	SomePopupMenu.connect("id_pressed", self, "_menu_item_pressed")
-	SomeGraphEdit.add_child(SomePopupMenu)
-
-func _ready():
-	RootNode = get_node("/root/workspace/dynamic_plane")
-	RootNode.add_child(SomeGraphEdit)
-	SomeGraphEdit.set_theme(load("res://scenes/tools/graph_panels/terminal_theme.tres"))
-	SomeGraphEdit.set_scroll_ofs(Vector2(-400, -230))
-
-func _input(event):
-	if(Input.is_action_pressed("ui_right_click")):
-		SomePopupMenu.rect_position = get_viewport().get_mouse_position()
-		SomePopupMenu.popup();
+	return SomePopupMenu
 
 
 func generate_graphnode():

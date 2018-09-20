@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/primitives/debug_gui.gd" type="Script" id=1]
 [ext_resource path="res://scenes/tools/GraphTheme.tres" type="Theme" id=2]
@@ -76,6 +76,13 @@ use_mipmaps = false
 use_filter = true
 font_data = ExtResource( 7 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="Curve2D" id=4]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array(  )
+}
 
 [node name="window" type="VBoxContainer"]
 anchor_left = 0.0
@@ -281,6 +288,11 @@ columns = 2
 select_mode = 2
 script = ExtResource( 8 )
 _sections_unfolded = [ "Anchor", "Custom Colors", "Custom Constants", "Custom Fonts", "Custom Icons", "Custom Styles", "Focus", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "custom_colors", "custom_fonts/font", "custom_styles", "custom_styles/bg" ]
+
+[node name="Path2D" type="Path2D" parent="." index="2"]
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+position = Vector2( 2, 0 )
+curve = SubResource( 4 )
 
 [connection signal="gui_input" from="title" to="title" method="_on_drag_bar_gui_input"]
 [connection signal="tween_completed" from="title/tween" to="title" method="_on_tween_completed"]
