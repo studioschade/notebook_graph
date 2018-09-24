@@ -1,0 +1,34 @@
+# IPython log file
+
+
+get_ipython().system('history')
+
+get_ipython().system('ls')
+
+get_ipython().system('pwd')
+
+get_ipython().system('cd ./ipython')
+
+get_ipython().system('ls')
+
+get_ipython().system('pwd')
+
+get_ipython().system('%magic')
+
+get_ipython().system('%%magic')
+
+get_ipython().system('%magics')
+
+get_ipython().system('ls')
+
+get_ipython().system('cat sesson_log')
+
+get_ipython().system('pwd')
+
+get_ipython().system('history')
+
+get_ipython().run_line_magic('ls', '')
+
+get_ipython().system('ls')
+
+get_ipython().system('cat sesson_log')

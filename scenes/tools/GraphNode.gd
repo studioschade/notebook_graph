@@ -1,5 +1,6 @@
 extends GraphNode
 """
+Author:Allen Schade
 This is the generic graph_node object that all other graph_nodes build with.
 Graph-nodes must all support the following methods
 Input:
@@ -7,35 +8,46 @@ Input:
 	* Send between 0 and 2 outputs to another node
 	* Generate or process data from 1 attached script.
 """
-#All connections are two way and this node is responsible for type-checking
-# and bounding of variables.
+enum {TERMINAL}
+
+onready var task_graph = get_parent()
+
+var task_node = null
+var task_type = TERMINAL
+var task_in_progress = false
 
 var input = null
-var input_type = null
 var input_node = null
+onready var input_readout = get_node("panel/vbox/io/input/readout")
+onready var output_readout = get_node("panel/vbox/io/output/readout")
 
 var output = null
-var output_type = null
-var output_node = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	output = name
+	if task_node:
+		prints("A", name, "was created")
+	else:
+		prints("A graph node with no type was created!!!")
 
 func set_input(value):
-	prints(typeof(value))
-	$basic_panel/io_panel/input_panel/value.text = String(value)
+	input=value
+	prints(name, "got a new input of type:", typeof(input))
+	input_readout.set_text(String(input))
+	input_readout.hint_tooltip = String(input)
 
-func set_output(value=null):
+func set_output(value):
 	output = value
-	$basic_panel/io_panel/output_panel/value.text = String(value)
-	transmit_output(output)
+	output_readout.set_text(String(output))
+	transmit_output()
 
-func transmit_output(destination_node = output_node):
-	if not output_node:
+func transmit_output():
+	var output_nodes = task_graph.get_output_nodes(self)
+	if not output_nodes:
+		prints(name,"has no output nodes to transmit to!")
 		return
-	if get_node("../" + output_node) and output:
-		get_node("../" + output_node).set_input(output)
+	for output_node in output_nodes:
+		output_node.set_input(output)
 
 func _on_GraphNode_resize_request(new_minsize):
 	rect_min_size = new_minsize
@@ -48,7 +60,6 @@ func _on_GraphNode_close_request():
 	queue_free()
 
 func _on_GraphNode_raise_request():
-	print("clicked")
 	raise()
 
 func _on_value_text_entered(new_text):
@@ -56,4 +67,11 @@ func _on_value_text_entered(new_text):
 	transmit_output()
 
 func _on_execute_pressed():
-	pass # Replace with function body.
+	if task_node:
+		if task_node.has_method('execute'):
+			prints("Trying to execute the ", task_node.name)
+			output = task_node.execute()
+			if output:
+				transmit_output()
+	else:
+		prints(self.name, "tried to execute its task, but it has no associated task node!!!")

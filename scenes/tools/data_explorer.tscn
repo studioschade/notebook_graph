@@ -1,14 +1,13 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/tools/graph_panels/terminal_theme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/primitives/debug_gui.gd" type="Script" id=2]
-[ext_resource path="res://scenes/tools/GraphTheme.tres" type="Theme" id=3]
-[ext_resource path="res://scenes/tools/graph_panels/icons/cross.png" type="Texture" id=4]
-[ext_resource path="res://scenes/tools/graph_panels/icons/downRight.png" type="Texture" id=5]
-[ext_resource path="res://scenes/shadys_elements/box.png" type="Texture" id=6]
-[ext_resource path="res://scenes/tools/tree_view.tscn" type="PackedScene" id=7]
-[ext_resource path="res://fonts/NotoSansUI_Bold.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://scenes/tools/data_explorer.gd" type="Script" id=9]
+[ext_resource path="res://scenes/tools/graph_panels/icons/cross.png" type="Texture" id=3]
+[ext_resource path="res://scenes/tools/graph_panels/icons/downRight.png" type="Texture" id=4]
+[ext_resource path="res://scenes/shadys_elements/box.png" type="Texture" id=5]
+[ext_resource path="res://scenes/tools/tree_view.tscn" type="PackedScene" id=6]
+[ext_resource path="res://fonts/NotoSansUI_Bold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://scenes/tools/data_explorer.gd" type="Script" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -75,7 +74,7 @@ outline_size = 0
 outline_color = Color( 0.226332, 0.835938, 0.0783691, 1 )
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 8 )
+font_data = ExtResource( 7 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [node name="window" type="VBoxContainer"]
@@ -98,13 +97,13 @@ theme = ExtResource( 1 )
 alignment = 0
 _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags", "Theme", "Visibility", "custom_constants", "custom_icons" ]
 
-[node name="title" type="PanelContainer" parent="." index="0"]
+[node name="title" type="PanelContainer" parent="."]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 134.0
-margin_bottom = 26.0
+margin_bottom = 22.0
 grow_horizontal = 2
 rect_min_size = Vector2( 100, 16 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -118,7 +117,7 @@ script = ExtResource( 2 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "Theme", "Visibility", "custom_fonts", "custom_styles", "custom_styles/panel" ]
 fade_time = 0.25
 
-[node name="tween" type="Tween" parent="title" index="0"]
+[node name="tween" type="Tween" parent="title"]
 repeat = false
 playback_process_mode = 1
 playback_speed = 1.0
@@ -126,7 +125,7 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="title" index="1"]
+[node name="HBoxContainer" type="HBoxContainer" parent="title"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -134,7 +133,7 @@ anchor_bottom = 0.0
 margin_left = 1.0
 margin_top = 1.0
 margin_right = 133.0
-margin_bottom = 25.0
+margin_bottom = 21.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -142,8 +141,9 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
+_sections_unfolded = [ "Theme" ]
 
-[node name="close_button" type="TextureRect" parent="title/HBoxContainer" index="0"]
+[node name="close_button" type="TextureRect" parent="title/HBoxContainer"]
 self_modulate = Color( 0.235294, 1, 0.0235294, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -157,34 +157,32 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource( 3 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 stretch_mode = 3
-_sections_unfolded = [ "Margin", "Rect", "Size Flags", "Visibility" ]
+_sections_unfolded = [ "Margin", "Rect", "Size Flags", "Theme", "Visibility" ]
 
-[node name="text" type="Label" parent="title/HBoxContainer" index="1"]
+[node name="text" type="Label" parent="title/HBoxContainer"]
 modulate = Color( 0.854902, 1, 0.156863, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 24.0
-margin_right = 108.0
-margin_bottom = 24.0
+margin_right = 96.0
+margin_bottom = 13.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-theme = ExtResource( 3 )
 text = "Base Window "
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Grow Direction", "Rect", "Size Flags" ]
+_sections_unfolded = [ "Grow Direction", "Rect", "Size Flags", "Theme" ]
 
-[node name="resize_button" type="TextureRect" parent="title/HBoxContainer" index="2"]
+[node name="resize_button" type="TextureRect" parent="title/HBoxContainer"]
 visible = false
 self_modulate = Color( 0.235294, 1, 0.0235294, 1 )
 anchor_left = 0.0
@@ -200,12 +198,11 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource( 3 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 stretch_mode = 3
-_sections_unfolded = [ "Margin", "Rect", "Size Flags", "Visibility" ]
+_sections_unfolded = [ "Margin", "Rect", "Size Flags", "Theme", "Visibility" ]
 
-[node name="button_overlay" type="NinePatchRect" parent="title" index="2"]
+[node name="button_overlay" type="NinePatchRect" parent="title"]
 visible = false
 modulate = Color( 0.635294, 1, 0.545098, 1 )
 show_behind_parent = true
@@ -223,22 +220,22 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 _sections_unfolded = [ "Axis Stretch", "Mouse", "Patch Margin", "Rect", "Visibility" ]
 
-[node name="frame" type="PanelContainer" parent="." index="1"]
+[node name="frame" type="PanelContainer" parent="."]
 light_mask = 0
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 24.0
+margin_top = 26.0
 margin_right = 134.0
-margin_bottom = 84.0
+margin_bottom = 86.0
 rect_min_size = Vector2( 0, 60 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -249,7 +246,7 @@ size_flags_vertical = 3
 custom_styles/panel = SubResource( 2 )
 _sections_unfolded = [ "Animation", "Axis Stretch", "Offset", "Patch Margin", "Rect", "Region", "Theme", "Transform", "Visibility", "custom_styles", "custom_styles/panel", "theme" ]
 
-[node name="views" type="TabContainer" parent="frame" index="0"]
+[node name="views" type="TabContainer" parent="frame"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -268,9 +265,9 @@ custom_styles/panel = SubResource( 2 )
 tab_align = 1
 tabs_visible = false
 drag_to_rearrange_enabled = false
-_sections_unfolded = [ "custom_styles" ]
+_sections_unfolded = [ "Theme", "custom_styles" ]
 
-[node name="tree" parent="frame/views" index="0" instance=ExtResource( 7 )]
+[node name="tree" parent="frame/views" instance=ExtResource( 6 )]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.0
@@ -280,18 +277,17 @@ margin_bottom = -1.0
 custom_fonts/font = SubResource( 3 )
 columns = 2
 select_mode = 2
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Anchor", "Custom Colors", "Custom Constants", "Custom Fonts", "Custom Icons", "Custom Styles", "Focus", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "custom_colors", "custom_fonts/font", "custom_styles", "custom_styles/bg" ]
 
-[node name="title2" type="PanelContainer" parent="." index="2"]
-editor/display_folded = true
+[node name="title2" type="PanelContainer" parent="."]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 82.0
+margin_top = 90.0
 margin_right = 134.0
-margin_bottom = 108.0
+margin_bottom = 112.0
 grow_horizontal = 2
 rect_min_size = Vector2( 100, 16 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -305,7 +301,7 @@ script = ExtResource( 2 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "Theme", "Visibility", "custom_fonts", "custom_styles", "custom_styles/panel" ]
 fade_time = 0.25
 
-[node name="tween" type="Tween" parent="title2" index="0"]
+[node name="tween" type="Tween" parent="title2"]
 repeat = false
 playback_process_mode = 1
 playback_speed = 1.0
@@ -313,7 +309,7 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="title2" index="1"]
+[node name="HBoxContainer" type="HBoxContainer" parent="title2"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -321,7 +317,7 @@ anchor_bottom = 0.0
 margin_left = 1.0
 margin_top = 1.0
 margin_right = 133.0
-margin_bottom = 25.0
+margin_bottom = 21.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -329,8 +325,9 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
+_sections_unfolded = [ "Theme" ]
 
-[node name="close_button" type="TextureRect" parent="title2/HBoxContainer" index="0"]
+[node name="close_button" type="TextureRect" parent="title2/HBoxContainer"]
 self_modulate = Color( 0.235294, 1, 0.0235294, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -344,34 +341,32 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource( 3 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 stretch_mode = 3
-_sections_unfolded = [ "Margin", "Rect", "Size Flags", "Visibility" ]
+_sections_unfolded = [ "Margin", "Rect", "Size Flags", "Theme", "Visibility" ]
 
-[node name="text" type="Label" parent="title2/HBoxContainer" index="1"]
+[node name="text" type="Label" parent="title2/HBoxContainer"]
 modulate = Color( 0.854902, 1, 0.156863, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 24.0
-margin_right = 108.0
-margin_bottom = 24.0
+margin_right = 96.0
+margin_bottom = 13.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-theme = ExtResource( 3 )
 text = "Base Window "
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Grow Direction", "Rect", "Size Flags" ]
+_sections_unfolded = [ "Grow Direction", "Rect", "Size Flags", "Theme" ]
 
-[node name="resize_button" type="TextureRect" parent="title2/HBoxContainer" index="2"]
+[node name="resize_button" type="TextureRect" parent="title2/HBoxContainer"]
 visible = false
 self_modulate = Color( 0.235294, 1, 0.0235294, 1 )
 anchor_left = 0.0
@@ -387,12 +382,11 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource( 3 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 stretch_mode = 3
-_sections_unfolded = [ "Margin", "Rect", "Size Flags", "Visibility" ]
+_sections_unfolded = [ "Margin", "Rect", "Size Flags", "Theme", "Visibility" ]
 
-[node name="button_overlay" type="NinePatchRect" parent="title2" index="2"]
+[node name="button_overlay" type="NinePatchRect" parent="title2"]
 visible = false
 modulate = Color( 0.635294, 1, 0.545098, 1 )
 show_behind_parent = true
@@ -410,7 +404,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10

@@ -339,7 +339,7 @@ slot/0/right_color = Color( 0, 0.694118, 0.305882, 1 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "0", "1", "Material", "Mouse", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_icons", "custom_styles", "custom_styles/defaultframe", "custom_styles/frame" ]
 
-[node name="panel" type="PanelContainer" parent="." index="0"]
+[node name="panel" type="PanelContainer" parent="."]
 self_modulate = Color( 0.156863, 0.180392, 0.156863, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -348,7 +348,7 @@ anchor_bottom = 0.0
 margin_left = 16.0
 margin_top = 24.0
 margin_right = 531.0
-margin_bottom = 388.0
+margin_bottom = 380.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -361,7 +361,7 @@ size_flags_vertical = 3
 theme = ExtResource( 2 )
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles", "custom_styles/panel", "theme" ]
 
-[node name="vbox" type="VBoxContainer" parent="panel" index="0"]
+[node name="vbox" type="VBoxContainer" parent="panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -369,7 +369,7 @@ anchor_bottom = 0.0
 margin_left = 1.0
 margin_top = 1.0
 margin_right = 514.0
-margin_bottom = 363.0
+margin_bottom = 355.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -379,7 +379,7 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Hint", "Mouse", "Rect", "Size Flags", "Theme" ]
 
-[node name="Panel" type="Panel" parent="panel/vbox" index="0"]
+[node name="Panel" type="Panel" parent="panel/vbox"]
 editor/display_folded = true
 visible = false
 anchor_left = 0.0
@@ -399,7 +399,7 @@ custom_styles/panelf = SubResource( 1 )
 custom_styles/panel = SubResource( 2 )
 _sections_unfolded = [ "Mouse", "Rect", "custom_styles", "custom_styles/panel", "custom_styles/panelf" ]
 
-[node name="Button" type="Button" parent="panel/vbox/Panel" index="0"]
+[node name="Button" type="Button" parent="panel/vbox/Panel"]
 modulate = Color( 0.14902, 1, 0, 1 )
 anchor_left = 1.0
 anchor_top = 0.0
@@ -423,7 +423,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Size Flags", "Visibility", "custom_styles", "custom_styles/normal" ]
 
-[node name="Label" type="Label" parent="panel/vbox/Panel" index="1"]
+[node name="Label" type="Label" parent="panel/vbox/Panel"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -446,13 +446,13 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
 
-[node name="io" type="HBoxContainer" parent="panel/vbox" index="1"]
+[node name="io" type="HBoxContainer" parent="panel/vbox"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 513.0
-margin_bottom = 43.0
+margin_bottom = 39.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -461,13 +461,13 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
 
-[node name="input" type="VBoxContainer" parent="panel/vbox/io" index="0"]
+[node name="input" type="VBoxContainer" parent="panel/vbox/io"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 168.0
-margin_bottom = 43.0
+margin_bottom = 39.0
 rect_min_size = Vector2( 55, 27 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -478,7 +478,7 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Anchor", "Rect", "Size Flags", "custom_constants", "custom_styles", "custom_styles/panel", "texture" ]
 
-[node name="Self" type="MenuButton" parent="panel/vbox/io/input" index="0"]
+[node name="Self" type="MenuButton" parent="panel/vbox/io/input"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -506,14 +506,14 @@ align = 1
 items = [ "File", null, 0, false, false, 0, 0, null, "", false, "Nodepath", null, 0, false, false, -1, 0, null, "", false, "Input Port", null, 0, false, false, -1, 0, null, "", false, "Item 3", null, 0, false, false, -1, 0, null, "", false, "RPC Call", null, 0, false, false, -1, 0, null, "", false ]
 _sections_unfolded = [ "Rect", "Size Flags", "custom_colors", "custom_fonts", "custom_styles", "custom_styles/normal", "custom_styles/pressed" ]
 
-[node name="value" type="LineEdit" parent="panel/vbox/io/input" index="1"]
+[node name="value" type="LineEdit" parent="panel/vbox/io/input"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 24.0
 margin_right = 168.0
-margin_bottom = 43.0
+margin_bottom = 39.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -527,20 +527,21 @@ align = 1
 secret_character = "*"
 focus_mode = 2
 context_menu_enabled = true
+clear_button_enabled = false
 placeholder_alpha = 0.6
 caret_blink = true
 caret_blink_speed = 0.65
 caret_position = 0
 _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags", "custom_fonts", "custom_styles", "custom_styles/normal" ]
 
-[node name="self_panel2" type="VBoxContainer" parent="panel/vbox/io" index="1"]
+[node name="self_panel2" type="VBoxContainer" parent="panel/vbox/io"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 172.0
 margin_right = 340.0
-margin_bottom = 43.0
+margin_bottom = 39.0
 rect_min_size = Vector2( 55, 27 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -551,7 +552,7 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Anchor", "Rect", "Size Flags", "custom_constants", "custom_styles", "custom_styles/panel", "texture" ]
 
-[node name="Self" type="MenuButton" parent="panel/vbox/io/self_panel2" index="0"]
+[node name="Self" type="MenuButton" parent="panel/vbox/io/self_panel2"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -579,14 +580,14 @@ align = 1
 items = [ "File", null, 0, false, false, 0, 0, null, "", false, "Nodepath", null, 0, false, false, -1, 0, null, "", false, "Input Port", null, 0, false, false, -1, 0, null, "", false, "Item 3", null, 0, false, false, -1, 0, null, "", false, "RPC Call", null, 0, false, false, -1, 0, null, "", false ]
 _sections_unfolded = [ "Rect", "Size Flags", "custom_colors", "custom_fonts", "custom_styles", "custom_styles/normal", "custom_styles/pressed" ]
 
-[node name="value" type="LineEdit" parent="panel/vbox/io/self_panel2" index="1"]
+[node name="value" type="LineEdit" parent="panel/vbox/io/self_panel2"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 24.0
 margin_right = 168.0
-margin_bottom = 43.0
+margin_bottom = 39.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -600,20 +601,21 @@ align = 1
 secret_character = "*"
 focus_mode = 2
 context_menu_enabled = true
+clear_button_enabled = false
 placeholder_alpha = 0.6
 caret_blink = true
 caret_blink_speed = 0.65
 caret_position = 0
 _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags", "custom_fonts", "custom_styles", "custom_styles/normal" ]
 
-[node name="output_panel" type="VBoxContainer" parent="panel/vbox/io" index="2"]
+[node name="output_panel" type="VBoxContainer" parent="panel/vbox/io"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 344.0
 margin_right = 513.0
-margin_bottom = 43.0
+margin_bottom = 39.0
 rect_min_size = Vector2( 55, 27 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -624,7 +626,7 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Anchor", "Rect", "Size Flags", "custom_styles", "custom_styles/panel" ]
 
-[node name="Output" type="MenuButton" parent="panel/vbox/io/output_panel" index="0"]
+[node name="Output" type="MenuButton" parent="panel/vbox/io/output_panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -651,14 +653,14 @@ align = 1
 items = [ "Constant", null, 0, false, false, 0, 0, null, "", false, "Terminal", null, 0, false, false, -1, 0, null, "", false, "Table", null, 0, false, false, -1, 0, null, "", false ]
 _sections_unfolded = [ "Rect", "Size Flags", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles", "custom_styles/normal" ]
 
-[node name="value" type="LineEdit" parent="panel/vbox/io/output_panel" index="1"]
+[node name="value" type="LineEdit" parent="panel/vbox/io/output_panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 24.0
 margin_right = 169.0
-margin_bottom = 43.0
+margin_bottom = 39.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -672,20 +674,21 @@ align = 1
 secret_character = "*"
 focus_mode = 2
 context_menu_enabled = true
+clear_button_enabled = false
 placeholder_alpha = 0.6
 caret_blink = true
 caret_blink_speed = 0.65
 caret_position = 0
 _sections_unfolded = [ "Anchor", "Grow Direction", "Rect", "Size Flags", "custom_fonts", "custom_styles", "custom_styles/normal" ]
 
-[node name="menu" type="HBoxContainer" parent="panel/vbox" index="2"]
+[node name="menu" type="HBoxContainer" parent="panel/vbox"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 47.0
+margin_top = 43.0
 margin_right = 513.0
-margin_bottom = 75.0
+margin_bottom = 71.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -694,12 +697,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 alignment = 0
 
-[node name="file" type="MenuButton" parent="panel/vbox/menu" index="0"]
+[node name="file" type="MenuButton" parent="panel/vbox/menu"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 44.0
+margin_right = 46.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 0, 28 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -722,13 +725,13 @@ align = 1
 items = [ "Load Notebook", null, 1, true, true, 0, 0, null, "", false, "Save Notebook As", null, 0, false, false, 1, 0, null, "", false ]
 _sections_unfolded = [ "Hint", "Rect", "Size Flags", "Visibility", "custom_colors", "custom_fonts", "custom_styles", "custom_styles/normal" ]
 
-[node name="VSeparator3" type="VSeparator" parent="panel/vbox/menu" index="1"]
+[node name="VSeparator3" type="VSeparator" parent="panel/vbox/menu"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 48.0
-margin_right = 52.0
+margin_left = 50.0
+margin_right = 54.0
 margin_bottom = 28.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -738,14 +741,14 @@ size_flags_horizontal = 1
 size_flags_vertical = 3
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="add" type="Button" parent="panel/vbox/menu" index="2"]
+[node name="add" type="Button" parent="panel/vbox/menu"]
 self_modulate = Color( 0.619608, 1, 0.552941, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 56.0
-margin_right = 117.0
+margin_left = 58.0
+margin_right = 110.0
 margin_bottom = 26.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -764,14 +767,14 @@ flat = true
 align = 1
 _sections_unfolded = [ "Rect", "Size Flags", "Visibility", "custom_fonts", "icon" ]
 
-[node name="delete" type="Button" parent="panel/vbox/menu" index="3"]
+[node name="delete" type="Button" parent="panel/vbox/menu"]
 modulate = Color( 1, 0.541176, 0.541176, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 121.0
-margin_right = 194.0
+margin_left = 114.0
+margin_right = 184.0
 margin_bottom = 26.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -790,13 +793,13 @@ flat = true
 align = 1
 _sections_unfolded = [ "Grow Direction", "Size Flags", "Visibility", "icon" ]
 
-[node name="VSeparator" type="VSeparator" parent="panel/vbox/menu" index="4"]
+[node name="VSeparator" type="VSeparator" parent="panel/vbox/menu"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 198.0
-margin_right = 202.0
+margin_left = 188.0
+margin_right = 192.0
 margin_bottom = 28.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -806,13 +809,13 @@ size_flags_horizontal = 1
 size_flags_vertical = 3
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="execute" type="Button" parent="panel/vbox/menu" index="5"]
+[node name="execute" type="Button" parent="panel/vbox/menu"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 206.0
-margin_right = 264.0
+margin_left = 196.0
+margin_right = 248.0
 margin_bottom = 26.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -831,13 +834,13 @@ flat = true
 align = 1
 _sections_unfolded = [ "Grow Direction", "Size Flags", "Visibility", "icon" ]
 
-[node name="clear" type="Button" parent="panel/vbox/menu" index="6"]
+[node name="clear" type="Button" parent="panel/vbox/menu"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 268.0
-margin_right = 333.0
+margin_left = 252.0
+margin_right = 316.0
 margin_bottom = 26.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -856,13 +859,13 @@ flat = true
 align = 1
 _sections_unfolded = [ "Grow Direction", "Size Flags", "Visibility", "icon" ]
 
-[node name="VSeparator2" type="VSeparator" parent="panel/vbox/menu" index="7"]
+[node name="VSeparator2" type="VSeparator" parent="panel/vbox/menu"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 337.0
-margin_right = 341.0
+margin_left = 320.0
+margin_right = 324.0
 margin_bottom = 28.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -872,15 +875,15 @@ size_flags_horizontal = 1
 size_flags_vertical = 3
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="current_cell" type="Label" parent="panel/vbox/menu" index="8"]
+[node name="current_cell" type="Label" parent="panel/vbox/menu"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 345.0
-margin_top = 5.0
-margin_right = 408.0
-margin_bottom = 22.0
+margin_left = 328.0
+margin_top = 7.0
+margin_right = 391.0
+margin_bottom = 20.0
 rect_min_size = Vector2( 63, 0 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -894,15 +897,15 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect" ]
 
-[node name="current_cell_type" type="Label" parent="panel/vbox/menu" index="9"]
+[node name="current_cell_type" type="Label" parent="panel/vbox/menu"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 412.0
-margin_top = 5.0
-margin_right = 512.0
-margin_bottom = 22.0
+margin_left = 395.0
+margin_top = 7.0
+margin_right = 495.0
+margin_bottom = 20.0
 rect_min_size = Vector2( 100, 0 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -916,7 +919,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect" ]
 
-[node name="type" type="MenuButton" parent="panel/vbox/menu" index="10"]
+[node name="type" type="MenuButton" parent="panel/vbox/menu"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -944,15 +947,15 @@ align = 1
 items = [ "Code", null, 0, false, false, 0, 0, null, "", false, "Markdown", null, 0, false, false, 1, 0, null, "", false, "Raw", null, 0, false, true, 2, 0, null, "", false ]
 _sections_unfolded = [ "Hint", "Size Flags", "Visibility", "custom_colors", "custom_fonts", "custom_styles", "group" ]
 
-[node name="notebook" type="TabContainer" parent="panel/vbox" index="3"]
+[node name="notebook" type="TabContainer" parent="panel/vbox"]
 editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 79.0
+margin_top = 75.0
 margin_right = 513.0
-margin_bottom = 362.0
+margin_bottom = 354.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 100, 5 )
@@ -975,7 +978,7 @@ script = ExtResource( 9 )
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "Visibility", "custom_colors", "custom_constants", "custom_styles", "custom_styles/tab_bg", "script" ]
 default_notebook = null
 
-[node name="Notebook" type="ScrollContainer" parent="panel/vbox/notebook" index="0"]
+[node name="Notebook" type="ScrollContainer" parent="panel/vbox/notebook"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -998,13 +1001,13 @@ scroll_vertical = 0
 scroll_deadzone = 0
 _sections_unfolded = [ "Mouse", "Rect", "Scroll" ]
 
-[node name="vbox" type="VBoxContainer" parent="panel/vbox/notebook/Notebook" index="0"]
+[node name="vbox" type="VBoxContainer" parent="panel/vbox/notebook/Notebook"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 511.0
-margin_bottom = 281.0
+margin_bottom = 277.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 1
@@ -1015,14 +1018,14 @@ size_flags_vertical = 3
 alignment = 0
 _sections_unfolded = [ "Focus", "Mouse", "Size Flags" ]
 
-[node name="cells" type="VBoxContainer" parent="panel/vbox/notebook/Notebook/vbox" index="0"]
+[node name="cells" type="VBoxContainer" parent="panel/vbox/notebook/Notebook/vbox"]
 self_modulate = Color( 0, 0, 0, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 511.0
-margin_bottom = 281.0
+margin_bottom = 277.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -1032,14 +1035,14 @@ size_flags_vertical = 3
 alignment = 1
 _sections_unfolded = [ "Mouse", "Rect", "Size Flags", "Visibility" ]
 
-[node name="HSeparator" type="HSeparator" parent="panel/vbox/notebook/Notebook/vbox/cells" index="0"]
+[node name="HSeparator" type="HSeparator" parent="panel/vbox/notebook/Notebook/vbox/cells"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 138.0
+margin_top = 136.0
 margin_right = 511.0
-margin_bottom = 142.0
+margin_bottom = 140.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -1049,7 +1052,7 @@ size_flags_vertical = 1
 custom_styles/separator = SubResource( 10 )
 _sections_unfolded = [ "custom_styles", "custom_styles/separator" ]
 
-[node name="Files" type="ScrollContainer" parent="panel/vbox/notebook" index="1"]
+[node name="Files" type="ScrollContainer" parent="panel/vbox/notebook"]
 editor/display_folded = true
 visible = false
 anchor_left = 0.0
@@ -1074,13 +1077,13 @@ scroll_vertical = 0
 scroll_deadzone = 0
 _sections_unfolded = [ "Rect", "Scroll", "Theme", "custom_styles" ]
 
-[node name="vbox" type="VBoxContainer" parent="panel/vbox/notebook/Files" index="0"]
+[node name="vbox" type="VBoxContainer" parent="panel/vbox/notebook/Files"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 511.0
-margin_bottom = 281.0
+margin_bottom = 277.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -1090,7 +1093,7 @@ size_flags_vertical = 3
 alignment = 0
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="menu" type="HBoxContainer" parent="panel/vbox/notebook/Files/vbox" index="0"]
+[node name="menu" type="HBoxContainer" parent="panel/vbox/notebook/Files/vbox"]
 editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1107,7 +1110,7 @@ size_flags_vertical = 0
 alignment = 1
 _sections_unfolded = [ "Grow Direction", "Size Flags" ]
 
-[node name="type" type="MenuButton" parent="panel/vbox/notebook/Files/vbox/menu" index="0"]
+[node name="type" type="MenuButton" parent="panel/vbox/notebook/Files/vbox/menu"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1134,7 +1137,7 @@ align = 1
 items = [ "Code", null, 0, false, false, 0, 0, null, "", false, "Markdown", null, 0, false, false, 1, 0, null, "", false, "Raw", null, 0, false, true, 2, 0, null, "", false ]
 _sections_unfolded = [ "Hint", "Size Flags", "Visibility", "custom_colors", "custom_fonts", "custom_styles", "group" ]
 
-[node name="add" type="Button" parent="panel/vbox/notebook/Files/vbox/menu" index="1"]
+[node name="add" type="Button" parent="panel/vbox/notebook/Files/vbox/menu"]
 self_modulate = Color( 0.619608, 1, 0.552941, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1160,7 +1163,7 @@ flat = true
 align = 1
 _sections_unfolded = [ "Rect", "Size Flags", "Visibility", "icon" ]
 
-[node name="delete" type="Button" parent="panel/vbox/notebook/Files/vbox/menu" index="2"]
+[node name="delete" type="Button" parent="panel/vbox/notebook/Files/vbox/menu"]
 modulate = Color( 1, 0.541176, 0.541176, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1186,7 +1189,7 @@ flat = true
 align = 1
 _sections_unfolded = [ "Grow Direction", "Size Flags", "Visibility", "icon" ]
 
-[node name="VSeparator" type="VSeparator" parent="panel/vbox/notebook/Files/vbox/menu" index="3"]
+[node name="VSeparator" type="VSeparator" parent="panel/vbox/notebook/Files/vbox/menu"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1202,7 +1205,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 3
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="execute" type="Button" parent="panel/vbox/notebook/Files/vbox/menu" index="4"]
+[node name="execute" type="Button" parent="panel/vbox/notebook/Files/vbox/menu"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1227,7 +1230,7 @@ flat = true
 align = 1
 _sections_unfolded = [ "Grow Direction", "Size Flags", "Visibility", "icon" ]
 
-[node name="clear" type="Button" parent="panel/vbox/notebook/Files/vbox/menu" index="5"]
+[node name="clear" type="Button" parent="panel/vbox/notebook/Files/vbox/menu"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1252,7 +1255,7 @@ flat = true
 align = 1
 _sections_unfolded = [ "Grow Direction", "Size Flags", "Visibility", "icon" ]
 
-[node name="VSeparator2" type="VSeparator" parent="panel/vbox/notebook/Files/vbox/menu" index="6"]
+[node name="VSeparator2" type="VSeparator" parent="panel/vbox/notebook/Files/vbox/menu"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1268,7 +1271,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 3
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="cells" type="VBoxContainer" parent="panel/vbox/notebook/Files/vbox" index="1"]
+[node name="cells" type="VBoxContainer" parent="panel/vbox/notebook/Files/vbox"]
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1286,7 +1289,7 @@ size_flags_vertical = 3
 alignment = 1
 _sections_unfolded = [ "Mouse", "Rect", "Size Flags", "Visibility" ]
 
-[node name="HSeparator" type="HSeparator" parent="panel/vbox/notebook/Files/vbox/cells" index="0"]
+[node name="HSeparator" type="HSeparator" parent="panel/vbox/notebook/Files/vbox/cells"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1303,7 +1306,7 @@ size_flags_vertical = 1
 custom_styles/separator = SubResource( 10 )
 _sections_unfolded = [ "custom_styles", "custom_styles/separator" ]
 
-[node name="file" type="MenuButton" parent="panel/vbox/notebook/Files/vbox" index="2"]
+[node name="file" type="MenuButton" parent="panel/vbox/notebook/Files/vbox"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1332,7 +1335,7 @@ align = 1
 items = [ "Load Notebook", null, 1, true, true, 0, 0, null, "", false, "Save Notebook As", null, 0, false, false, 1, 0, null, "", false ]
 _sections_unfolded = [ "Hint", "Rect", "Size Flags", "Visibility", "custom_colors", "custom_fonts", "custom_styles", "custom_styles/normal" ]
 
-[node name="Graph" type="VBoxContainer" parent="panel/vbox/notebook" index="2"]
+[node name="Graph" type="VBoxContainer" parent="panel/vbox/notebook"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1351,7 +1354,7 @@ size_flags_vertical = 0
 alignment = 0
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "custom_constants", "custom_icons", "custom_styles" ]
 
-[node name="Infopanel" type="MarginContainer" parent="panel/vbox/notebook/Graph" index="0"]
+[node name="Infopanel" type="MarginContainer" parent="panel/vbox/notebook/Graph"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1368,7 +1371,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "Theme", "custom_styles", "custom_styles/panel" ]
 
-[node name="description" type="LineEdit" parent="panel/vbox/notebook/Graph/Infopanel" index="0"]
+[node name="description" type="LineEdit" parent="panel/vbox/notebook/Graph/Infopanel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1388,13 +1391,14 @@ align = 1
 secret_character = "*"
 focus_mode = 2
 context_menu_enabled = true
+clear_button_enabled = false
 placeholder_alpha = 0.6
 caret_blink = true
 caret_blink_speed = 0.65
 caret_position = 0
 _sections_unfolded = [ "Rect", "Size Flags", "Visibility", "custom_colors", "custom_styles", "custom_styles/normal" ]
 
-[node name="Settings" type="MarginContainer" parent="panel/vbox/notebook" index="3"]
+[node name="Settings" type="MarginContainer" parent="panel/vbox/notebook"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1413,13 +1417,13 @@ size_flags_vertical = 3
 script = ExtResource( 10 )
 _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags", "Visibility", "custom_constants", "custom_styles", "custom_styles/panel", "script" ]
 
-[node name="cell" type="VBoxContainer" parent="panel/vbox/notebook/Settings" index="0"]
+[node name="cell" type="VBoxContainer" parent="panel/vbox/notebook/Settings"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 511.0
-margin_bottom = 281.0
+margin_bottom = 277.0
 rect_min_size = Vector2( 426, 200 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -1430,7 +1434,7 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Rect" ]
 
-[node name="MarginContainer" type="VBoxContainer" parent="panel/vbox/notebook/Settings/cell" index="0"]
+[node name="MarginContainer" type="VBoxContainer" parent="panel/vbox/notebook/Settings/cell"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1445,7 +1449,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
 
-[node name="Label" type="Label" parent="panel/vbox/notebook/Settings/cell/MarginContainer" index="0"]
+[node name="Label" type="Label" parent="panel/vbox/notebook/Settings/cell/MarginContainer"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1464,7 +1468,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags" ]
 
-[node name="menu2" type="HBoxContainer" parent="panel/vbox/notebook/Settings/cell/MarginContainer" index="1"]
+[node name="menu2" type="HBoxContainer" parent="panel/vbox/notebook/Settings/cell/MarginContainer"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1482,7 +1486,7 @@ size_flags_vertical = 0
 alignment = 0
 _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags" ]
 
-[node name="select" type="Button" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu2" index="0"]
+[node name="select" type="Button" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu2"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1505,7 +1509,7 @@ icon = ExtResource( 4 )
 flat = false
 align = 1
 
-[node name="add" type="Button" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu2" index="1"]
+[node name="add" type="Button" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu2"]
 self_modulate = Color( 0.619608, 1, 0.552941, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1531,7 +1535,7 @@ flat = true
 align = 1
 _sections_unfolded = [ "Rect", "Size Flags", "Visibility", "icon" ]
 
-[node name="delete" type="Button" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu2" index="2"]
+[node name="delete" type="Button" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu2"]
 modulate = Color( 1, 0.541176, 0.541176, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1558,7 +1562,7 @@ flat = true
 align = 1
 _sections_unfolded = [ "Grow Direction", "Size Flags", "Visibility", "icon" ]
 
-[node name="clear" type="Button" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu2" index="3"]
+[node name="clear" type="Button" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu2"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1584,7 +1588,7 @@ flat = true
 align = 1
 _sections_unfolded = [ "Grow Direction", "Size Flags", "Visibility", "icon" ]
 
-[node name="notebook_path" type="HBoxContainer" parent="panel/vbox/notebook/Settings/cell/MarginContainer" index="2"]
+[node name="notebook_path" type="HBoxContainer" parent="panel/vbox/notebook/Settings/cell/MarginContainer"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1601,7 +1605,7 @@ size_flags_vertical = 0
 alignment = 1
 _sections_unfolded = [ "Grow Direction", "Size Flags" ]
 
-[node name="path" type="LineEdit" parent="panel/vbox/notebook/Settings/cell/MarginContainer/notebook_path" index="0"]
+[node name="path" type="LineEdit" parent="panel/vbox/notebook/Settings/cell/MarginContainer/notebook_path"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1621,13 +1625,14 @@ secret_character = "*"
 expand_to_text_length = true
 focus_mode = 2
 context_menu_enabled = true
+clear_button_enabled = false
 placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
 _sections_unfolded = [ "Size Flags", "custom_styles" ]
 
-[node name="menu3" type="HBoxContainer" parent="panel/vbox/notebook/Settings/cell/MarginContainer" index="3"]
+[node name="menu3" type="HBoxContainer" parent="panel/vbox/notebook/Settings/cell/MarginContainer"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1645,7 +1650,7 @@ size_flags_vertical = 0
 alignment = 1
 _sections_unfolded = [ "Grow Direction", "Size Flags" ]
 
-[node name="select" type="Button" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu3" index="0"]
+[node name="select" type="Button" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu3"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1669,7 +1674,7 @@ icon = ExtResource( 4 )
 flat = false
 align = 1
 
-[node name="VSeparator3" type="VSeparator" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu3" index="1"]
+[node name="VSeparator3" type="VSeparator" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu3"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1685,7 +1690,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 3
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="add" type="Button" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu3" index="2"]
+[node name="add" type="Button" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu3"]
 self_modulate = Color( 0.619608, 1, 0.552941, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1711,7 +1716,7 @@ flat = true
 align = 1
 _sections_unfolded = [ "Rect", "Size Flags", "Visibility", "icon" ]
 
-[node name="Label" type="Label" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu3" index="3"]
+[node name="Label" type="Label" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu3"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1733,7 +1738,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="delete" type="Button" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu3" index="4"]
+[node name="delete" type="Button" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu3"]
 modulate = Color( 1, 0.541176, 0.541176, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1760,7 +1765,7 @@ flat = true
 align = 1
 _sections_unfolded = [ "Grow Direction", "Size Flags", "Visibility", "icon" ]
 
-[node name="clear" type="Button" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu3" index="5"]
+[node name="clear" type="Button" parent="panel/vbox/notebook/Settings/cell/MarginContainer/menu3"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1786,7 +1791,7 @@ flat = true
 align = 1
 _sections_unfolded = [ "Grow Direction", "Size Flags", "Visibility", "icon" ]
 
-[node name="jupyter_path" type="HBoxContainer" parent="panel/vbox/notebook/Settings/cell/MarginContainer" index="4"]
+[node name="jupyter_path" type="HBoxContainer" parent="panel/vbox/notebook/Settings/cell/MarginContainer"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1803,7 +1808,7 @@ size_flags_vertical = 0
 alignment = 1
 _sections_unfolded = [ "Grow Direction", "Size Flags" ]
 
-[node name="path" type="LineEdit" parent="panel/vbox/notebook/Settings/cell/MarginContainer/jupyter_path" index="0"]
+[node name="path" type="LineEdit" parent="panel/vbox/notebook/Settings/cell/MarginContainer/jupyter_path"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1822,13 +1827,14 @@ editable = false
 secret_character = "*"
 focus_mode = 2
 context_menu_enabled = true
+clear_button_enabled = false
 placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
 _sections_unfolded = [ "Size Flags", "custom_styles" ]
 
-[node name="tree" parent="panel/vbox/notebook/Settings/cell" index="1" instance=ExtResource( 11 )]
+[node name="tree" parent="panel/vbox/notebook/Settings/cell" instance=ExtResource( 11 )]
 margin_left = 0.0
 margin_top = 71.0
 margin_right = 511.0
@@ -1838,7 +1844,7 @@ hide_root = false
 drop_mode_flags = 3
 _sections_unfolded = [ "Anchor", "Custom Colors", "Custom Constants", "Custom Fonts", "Custom Icons", "Custom Styles", "Focus", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "custom_colors", "custom_styles", "custom_styles/bg", "custom_styles/bg_focus" ]
 
-[node name="output" type="RichTextLabel" parent="panel/vbox/notebook/Settings/cell/tree" index="6"]
+[node name="output" type="RichTextLabel" parent="panel/vbox/notebook/Settings/cell/tree"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1866,13 +1872,13 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags", "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles", "custom_styles/focus" ]
 
-[node name="web_api" type="MarginContainer" parent="panel/vbox/notebook/Settings" index="1"]
+[node name="web_api" type="MarginContainer" parent="panel/vbox/notebook/Settings"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 511.0
-margin_bottom = 281.0
+margin_bottom = 277.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0

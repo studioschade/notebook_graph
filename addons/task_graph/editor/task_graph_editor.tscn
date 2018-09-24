@@ -1,23 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://fonts/big_ui_font.tres" type="DynamicFont" id=1]
-[ext_resource path="res://scenes/tools/graph_panels/terminal_theme.tres" type="Theme" id=2]
-[ext_resource path="res://addons/task_graph/editor/graph_edit.gd" type="Script" id=3]
+[ext_resource path="res://addons/task_graph/editor/task_graph_editor.gd" type="Script" id=1]
+[ext_resource path="res://fonts/big_ui_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scenes/tools/graph_panels/terminal_theme.tres" type="Theme" id=3]
+[ext_resource path="res://addons/task_graph/editor/graph_edit.gd" type="Script" id=4]
 
-[node name="TaskGraph" type="VBoxContainer" index="0"]
+[node name="TaskGraph" type="VBoxContainer"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 1
+mouse_filter = 2
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
+size_flags_horizontal = 11
+size_flags_vertical = 11
 alignment = 0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Mouse", "Size Flags" ]
 
-[node name="Header" type="HBoxContainer" parent="." index="0"]
+[node name="Header" type="HBoxContainer" parent="."]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -31,9 +34,9 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
-_sections_unfolded = [ "Custom Constants" ]
+_sections_unfolded = [ "Custom Constants", "Mouse" ]
 
-[node name="FileMenuButton" type="MenuButton" parent="Header" index="0"]
+[node name="FileMenuButton" type="MenuButton" parent="Header"]
 self_modulate = Color( 0.52549, 1, 0.168627, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -47,7 +50,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 toggle_mode = false
 action_mode = 0
 enabled_focus_mode = 0
@@ -56,10 +59,11 @@ group = null
 text = "File"
 flat = true
 align = 1
-items = [ "New", null, 0, false, false, -1, 0, null, "", false, "Save", null, 0, false, false, -1, 0, null, "", false, "Load", null, 0, false, false, -1, 0, null, "", false ]
-_sections_unfolded = [ "custom_colors", "custom_fonts", "custom_fonts/font" ]
+items = [ "New", null, 0, false, false, -1, 0, null, "", false, "Save", null, 0, false, false, 1, 0, null, "", false, "Load", null, 0, false, true, -1, 0, null, "", false ]
+_sections_unfolded = [ "Theme", "Visibility", "custom_colors", "custom_fonts", "custom_fonts/font", "custom_styles" ]
 
-[node name="EditMenuButton" type="MenuButton" parent="Header" index="1"]
+[node name="EditMenuButton" type="MenuButton" parent="Header"]
+visible = false
 self_modulate = Color( 0.52549, 1, 0.168627, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -74,7 +78,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 toggle_mode = false
 action_mode = 0
 enabled_focus_mode = 0
@@ -86,33 +90,83 @@ align = 1
 items = [  ]
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="GraphEdit" type="GraphEdit" parent="." index="1"]
+[node name="create_task" type="Button" parent="Header"]
+self_modulate = Color( 0.282353, 1, 0.294118, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1.0
-margin_top = 27.0
-margin_right = 1921.0
-margin_bottom = 1077.0
-rect_min_size = Vector2( 0, 300 )
+margin_left = 40.0
+margin_right = 202.0
+margin_bottom = 26.0
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
+rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 3
-theme = ExtResource( 2 )
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 2 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "New TaskGraph Node"
+flat = true
+align = 0
+_sections_unfolded = [ "Visibility", "custom_fonts" ]
+
+[node name="Label" type="Label" parent="Header"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 206.0
+margin_top = 3.0
+margin_right = 1920.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.580392, 0.721569, 0, 1 )
+text = "TaskGraphs are currently simple ipython shells. ipython3 must be in your path. "
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors", "custom_fonts" ]
+
+[node name="GraphEdit" type="GraphEdit" parent="."]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 30.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 0, 300 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 1
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 11
+size_flags_vertical = 11
+theme = ExtResource( 3 )
 right_disconnects = false
 scroll_offset = Vector2( -960, -540 )
 snap_distance = 20
 use_snap = true
 zoom = 1.0
-script = ExtResource( 3 )
-_sections_unfolded = [ "Theme", "custom_constants", "theme" ]
+script = ExtResource( 4 )
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "custom_colors", "custom_constants", "custom_icons", "custom_styles", "theme" ]
 
-[node name="RightClickMenu" type="PopupMenu" parent="GraphEdit" index="0"]
+[node name="RightClickMenu" type="PopupMenu" parent="GraphEdit"]
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -129,11 +183,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 popup_exclusive = false
-items = [ "New Task", null, 0, false, false, -1, 0, null, "", false, "New Input", null, 0, false, false, -1, 0, null, "", false, "New Output", null, 0, false, false, -1, 0, null, "", false, "New Notebook", null, 0, false, false, -1, 0, null, "", false, "New Table", null, 0, false, false, -1, 0, null, "", false, "New Terminal", null, 0, false, false, -1, 0, null, "", false ]
+items = [ "New Task", null, 0, false, true, -1, 0, null, "", false, "New Input", null, 0, false, true, -1, 0, null, "", false, "New Output", null, 0, false, true, -1, 0, null, "", false, "New Notebook", null, 0, false, true, -1, 0, null, "", false, "New Table", null, 0, false, true, -1, 0, null, "", false, "New Terminal", null, 0, false, false, -1, 0, null, "", false ]
 hide_on_state_item_selection = false
 submenu_popup_delay = 0.3
 
-[node name="ErrorDialog" type="AcceptDialog" parent="GraphEdit" index="1"]
+[node name="ErrorDialog" type="AcceptDialog" parent="GraphEdit"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -152,7 +206,7 @@ window_title = "Alert!"
 resizable = false
 dialog_hide_on_ok = true
 
-[node name="SaveDialog" type="FileDialog" parent="GraphEdit" index="2"]
+[node name="SaveDialog" type="FileDialog" parent="GraphEdit"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -180,7 +234,7 @@ current_dir = "res://"
 current_file = ""
 current_path = "res://"
 
-[node name="LoadDialog" type="FileDialog" parent="GraphEdit" index="3"]
+[node name="LoadDialog" type="FileDialog" parent="GraphEdit"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -208,7 +262,7 @@ current_dir = "res://"
 current_file = ""
 current_path = "res://"
 
-[node name="FileDialog" type="FileDialog" parent="GraphEdit" index="4"]
+[node name="FileDialog" type="FileDialog" parent="GraphEdit"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -236,3 +290,6 @@ current_dir = "res://"
 current_file = ""
 current_path = "res://"
 
+[connection signal="button_up" from="Header/create_task" to="." method="_on_create_task_button_up"]
+[connection signal="mouse_entered" from="GraphEdit" to="GraphEdit" method="_on_GraphEdit_mouse_entered"]
+[connection signal="mouse_exited" from="GraphEdit" to="GraphEdit" method="_on_GraphEdit_mouse_exited"]

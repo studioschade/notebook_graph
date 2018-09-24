@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/tools/graph_panels/terminal_theme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/tools/graph_panels/popup_drag_resize.gd" type="Script" id=2]
 [ext_resource path="res://scenes/tools/graph_panels/notebook_panel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://fonts/NotoSansUI_Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=5]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=10]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -33,11 +35,318 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Content Margin" ]
 
-[sub_resource type="ButtonGroup" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.00392157, 0.0313726, 0, 0.478431 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0862745, 0.698039, 0, 1 )
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Content Margin", "Corner Radius", "Expand Margin", "Shadow" ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 12
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 4 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="StyleBoxFlat" id=3]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0.133333, 0, 0.8 )
+draw_center = true
+border_width_left = 1
+border_width_top = 8
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0156863, 0.211765, 0, 1 )
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Corner Radius", "Expand Margin" ]
+
+[sub_resource type="StyleBoxFlat" id=4]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0.054902, 0, 0.752941 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.00784314, 0.698039, 0, 0.952941 )
+border_blend = false
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Corner Radius", "Expand Margin" ]
+
+[sub_resource type="StyleBoxFlat" id=5]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.00392157, 0.0313726, 0, 0.788235 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0666667, 0.560784, 0, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Expand Margin", "Shadow" ]
+
+[sub_resource type="StyleBoxFlat" id=6]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.0196078, 0.113725, 0, 0.615686 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.2, 0.74902, 0, 1 )
+border_blend = true
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Expand Margin" ]
+
+[sub_resource type="StyleBoxFlat" id=9]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0.0392157, 0, 0.839216 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.00392157, 0.462745, 0, 0.952941 )
+border_blend = false
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Content Margin", "Corner Radius" ]
+
+[sub_resource type="StyleBoxFlat" id=7]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.101961, 0, 0, 0.254902 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.105882, 0.435294, 0, 1 )
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Corner Radius", "Expand Margin" ]
+
+[sub_resource type="DynamicFont" id=8]
+
+size = 12
+outline_size = 0
+outline_color = Color( 0.00604248, 0.515625, 0.491738, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings", "font_data" ]
+
+[sub_resource type="Theme" id=11]
+
+resource_local_to_scene = true
+default_font = SubResource( 8 )
+Button/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+Button/colors/font_color_disabled = Color( 0.898039, 0.898039, 0.898039, 0.313726 )
+Button/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+GraphEdit/colors/activity = Color( 0, 0.6, 0.0941176, 1 )
+GraphEdit/colors/grid_major = Color( 0.00392157, 0.352941, 0, 0.270588 )
+GraphEdit/colors/grid_minor = Color( 0.0235294, 0.580392, 0.321569, 0.0509804 )
+GraphEdit/constants/bezier_len_neg = 160
+GraphEdit/constants/bezier_len_pos = 80
+GraphEdit/icons/minus = null
+GraphEdit/icons/more = null
+GraphEdit/icons/reset = null
+GraphEdit/icons/snap = null
+GraphEdit/styles/bg = SubResource( 1 )
+GraphNode/colors/title_color = Color( 0, 0.360784, 0.054902, 1 )
+GraphNode/constants/close_offset = 0
+GraphNode/constants/port_offset = 3
+GraphNode/constants/separation = 1
+GraphNode/constants/title_offset = 0
+GraphNode/fonts/title_font = SubResource( 2 )
+GraphNode/icons/close = null
+GraphNode/icons/port = null
+GraphNode/icons/resizer = null
+GraphNode/styles/breakpoint = null
+GraphNode/styles/comment = null
+GraphNode/styles/commentfocus = null
+GraphNode/styles/defaultfocus = SubResource( 3 )
+GraphNode/styles/defaultframe = SubResource( 3 )
+GraphNode/styles/frame = SubResource( 3 )
+GraphNode/styles/position = null
+GraphNode/styles/selectedframe = SubResource( 3 )
+LineEdit/colors/cursor_color = Color( 0.941176, 0.941176, 0.941176, 1 )
+LineEdit/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/selection_color = Color( 0.764706, 0.764706, 0.764706, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = null
+LineEdit/icons/ = null
+LineEdit/styles/focus = SubResource( 4 )
+LineEdit/styles/normal = SubResource( 4 )
+LineEdit/styles/read_only = null
+Panel/styles/panel = SubResource( 5 )
+Panel/styles/panelf = null
+Panel/styles/panelnc = null
+PanelContainer/styles/panel = SubResource( 6 )
+RichTextLabel/colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+RichTextLabel/colors/font_color_selected = Color( 0.490196, 0.490196, 0.490196, 1 )
+RichTextLabel/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+RichTextLabel/colors/selection_color = Color( 0.1, 0.1, 1, 0.8 )
+RichTextLabel/constants/line_separation = 1
+RichTextLabel/constants/shadow_as_outline = 0
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/constants/table_hseparation = 3
+RichTextLabel/constants/table_vseparation = 3
+RichTextLabel/fonts/bold_font = null
+RichTextLabel/fonts/bold_italics_font = null
+RichTextLabel/fonts/italics_font = null
+RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/normal_font = null
+RichTextLabel/styles/focus = SubResource( 9 )
+RichTextLabel/styles/normal = SubResource( 9 )
+WindowDialog/colors/title_color = Color( 0, 0.866667, 0.156863, 1 )
+WindowDialog/constants/close_h_ofs = 18
+WindowDialog/constants/close_v_ofs = 18
+WindowDialog/constants/scaleborder_size = 4
+WindowDialog/constants/title_height = 20
+WindowDialog/fonts/title_font = null
+WindowDialog/icons/close = null
+WindowDialog/icons/close_highlight = null
+WindowDialog/styles/panel = SubResource( 7 )
+_sections_unfolded = [ "Button", "Button/colors", "GraphEdit", "GraphEdit/colors", "GraphEdit/styles", "GraphEdit/styles/bg", "GraphNode", "GraphNode/styles/defaultfocus", "GraphNode/styles/defaultframe", "GraphNode/styles/frame", "GraphNode/styles/selectedframe", "LineEdit", "LineEdit/styles", "LineEdit/styles/focus", "LineEdit/styles/normal", "Panel", "Panel/styles", "Panel/styles/panel", "PanelContainer", "PanelContainer/styles", "PanelContainer/styles/panel", "Resource", "RichTextLabel", "RichTextLabel/styles", "RichTextLabel/styles/focus", "WindowDialog/styles/panel", "colors", "constants", "default_font", "fonts", "icons", "styles" ]
+
+[sub_resource type="ButtonGroup" id=12]
 
 resource_local_to_scene = true
 
-[node name="WindowDialog" type="WindowDialog" index="0"]
+[node name="WindowDialog" type="WindowDialog"]
 self_modulate = Color( 0.823529, 0.823529, 0.823529, 0.505882 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -55,7 +364,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 1 )
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 10 )
 custom_colors/title_color = Color( 0, 0, 0, 1 )
 popup_exclusive = true
 window_title = "GraphBook Node"
@@ -63,7 +372,7 @@ resizable = true
 script = ExtResource( 2 )
 _sections_unfolded = [ "Focus", "Hint", "Mouse", "Popup", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_fonts/title_font", "custom_icons", "custom_styles", "custom_styles/panel" ]
 
-[node name="notebook_panel" parent="." index="1" instance=ExtResource( 3 )]
+[node name="notebook_panel" parent="." instance=ExtResource( 3 )]
 self_modulate = Color( 1, 1, 1, 1 )
 margin_left = 0.0
 margin_top = 0.0
@@ -71,45 +380,138 @@ margin_right = 504.0
 margin_bottom = 317.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource( 11 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles", "custom_styles/panel", "theme" ]
 
 [node name="vbox" parent="notebook_panel" index="0"]
-margin_bottom = 316.0
+margin_right = 503.0
+margin_bottom = 366.0
 
-[node name="Panel" parent="notebook_panel/vbox" index="0"]
-visible = false
+[node name="Graph" parent="notebook_panel/vbox" index="0"]
+margin_right = 502.0
 
-[node name="menu" parent="notebook_panel/vbox" index="1"]
-margin_top = 0.0
-margin_bottom = 28.0
+[node name="io" parent="notebook_panel/vbox/Graph" index="0"]
+margin_right = 502.0
+
+[node name="Self" parent="notebook_panel/vbox/Graph/io/self_panel" index="0"]
+items = [ "File", null, 0, false, false, 0, 0, null, "", false, "Nodepath", null, 0, false, false, -1, 0, null, "", false, "Input Port", null, 0, false, false, -1, 0, null, "", false, "Item 3", null, 0, false, false, -1, 0, null, "", false, "RPC Call", null, 0, false, false, -1, 0, null, "", false ]
+
+[node name="value" parent="notebook_panel/vbox/Graph/io/self_panel" index="1"]
+margin_bottom = 39.0
+clear_button_enabled = false
+
+[node name="Self" parent="notebook_panel/vbox/Graph/io/self_panel2" index="0"]
+items = [ "File", null, 0, false, false, 0, 0, null, "", false, "Nodepath", null, 0, false, false, -1, 0, null, "", false, "Input Port", null, 0, false, false, -1, 0, null, "", false, "Item 3", null, 0, false, false, -1, 0, null, "", false, "RPC Call", null, 0, false, false, -1, 0, null, "", false ]
+
+[node name="value" parent="notebook_panel/vbox/Graph/io/self_panel2" index="1"]
+clear_button_enabled = false
+
+[node name="description" parent="notebook_panel/vbox/Graph/io/self_panel2" index="2"]
+clear_button_enabled = false
+
+[node name="Infopanel" parent="notebook_panel/vbox/Graph/io" index="2"]
+margin_right = 398.0
+
+[node name="TextureRect" parent="notebook_panel/vbox/Graph/io/Infopanel" index="0"]
+margin_left = 122.0
+margin_right = 172.0
+
+[node name="output_panel" parent="notebook_panel/vbox/Graph/io" index="3"]
+margin_left = 402.0
+margin_right = 502.0
+margin_bottom = 39.0
+
+[node name="Output" parent="notebook_panel/vbox/Graph/io/output_panel" index="0"]
+items = [ "Constant", null, 0, false, false, 0, 0, null, "", false, "Terminal", null, 0, false, false, -1, 0, null, "", false, "Table", null, 0, false, false, -1, 0, null, "", false ]
+
+[node name="value" parent="notebook_panel/vbox/Graph/io/output_panel" index="1"]
+margin_bottom = 39.0
+clear_button_enabled = false
+
+[node name="menu" parent="notebook_panel/vbox" index="2"]
+margin_right = 502.0
+
+[node name="file" parent="notebook_panel/vbox/menu" index="0"]
+margin_right = 46.0
+items = [ "Load Notebook", null, 1, true, true, 0, 0, null, "", false, "Save Notebook As", null, 0, false, false, 1, 0, null, "", false ]
+
+[node name="VSeparator3" parent="notebook_panel/vbox/menu" index="1"]
+margin_left = 50.0
+margin_right = 54.0
+
+[node name="add" parent="notebook_panel/vbox/menu" index="2"]
+margin_left = 58.0
+margin_right = 110.0
+
+[node name="delete" parent="notebook_panel/vbox/menu" index="3"]
+margin_left = 114.0
+margin_right = 184.0
+
+[node name="VSeparator" parent="notebook_panel/vbox/menu" index="4"]
+margin_left = 188.0
+margin_right = 192.0
+
+[node name="execute" parent="notebook_panel/vbox/menu" index="5"]
+margin_left = 196.0
+margin_right = 248.0
+
+[node name="clear" parent="notebook_panel/vbox/menu" index="6"]
+margin_left = 252.0
+margin_right = 316.0
+
+[node name="VSeparator2" parent="notebook_panel/vbox/menu" index="7"]
+margin_left = 320.0
+margin_right = 324.0
+
+[node name="current_cell" parent="notebook_panel/vbox/menu" index="8"]
+margin_left = 328.0
+margin_top = 7.0
+margin_right = 391.0
+margin_bottom = 20.0
+
+[node name="current_cell_type" parent="notebook_panel/vbox/menu" index="9"]
+margin_left = 395.0
+margin_top = 7.0
+margin_right = 495.0
+margin_bottom = 20.0
 
 [node name="type" parent="notebook_panel/vbox/menu" index="10"]
-group = SubResource( 2 )
+group = SubResource( 12 )
+items = [ "Code", null, 0, false, false, 0, 0, null, "", false, "Markdown", null, 0, false, false, 1, 0, null, "", false, "Raw", null, 0, false, true, 2, 0, null, "", false ]
 
-[node name="notebook" parent="notebook_panel/vbox" index="2"]
-margin_top = 32.0
-margin_bottom = 315.0
+[node name="notebook" parent="notebook_panel/vbox" index="3"]
+margin_right = 502.0
+margin_bottom = 365.0
 
-[node name="Files" parent="notebook_panel/vbox/notebook" index="1"]
-margin_top = 22.0
+[node name="vbox" parent="notebook_panel/vbox/notebook/Notebook" index="0"]
+margin_right = 500.0
+margin_bottom = 277.0
 
-[node name="vbox" parent="notebook_panel/vbox/notebook/Files" index="0"]
-margin_bottom = 260.0
+[node name="cells" parent="notebook_panel/vbox/notebook/Notebook/vbox" index="0"]
+margin_right = 500.0
+margin_bottom = 277.0
 
-[node name="type" parent="notebook_panel/vbox/notebook/Files/vbox/menu" index="0"]
-group = SubResource( 2 )
+[node name="HSeparator" parent="notebook_panel/vbox/notebook/Notebook/vbox/cells" index="0"]
+margin_top = 136.0
+margin_right = 500.0
+margin_bottom = 140.0
 
-[node name="Graph" parent="notebook_panel/vbox/notebook" index="2"]
-margin_top = 22.0
-
-[node name="Settings" parent="notebook_panel/vbox/notebook" index="3"]
+[node name="Settings" parent="notebook_panel/vbox/notebook" index="1"]
 margin_top = 22.0
 
 [node name="cell" parent="notebook_panel/vbox/notebook/Settings" index="0"]
-margin_bottom = 260.0
+margin_right = 500.0
+margin_bottom = 256.0
+
+[node name="path" parent="notebook_panel/vbox/notebook/Settings/cell/MarginContainer/notebook_path" index="0"]
+clear_button_enabled = false
+
+[node name="path" parent="notebook_panel/vbox/notebook/Settings/cell/MarginContainer/jupyter_path" index="0"]
+clear_button_enabled = false
 
 [node name="web_api" parent="notebook_panel/vbox/notebook/Settings" index="1"]
-margin_bottom = 260.0
+margin_right = 500.0
+margin_bottom = 256.0
 
 [connection signal="resized" from="." to="." method="_on_WindowDialog_resized"]
 

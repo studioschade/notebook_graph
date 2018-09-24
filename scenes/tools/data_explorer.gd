@@ -46,6 +46,7 @@ func analyze_properties():
 		#	var subchild1 = self.create_item(root)
 		#	subchild1.set_text(0, str(value))
 
+#RECONNECT THIS SIGNAL
 func _on_tree_visibility_changed():
 	if visible:
 		set_process(true)

@@ -1,80 +1,141 @@
 extends Control
 
-const SMALL_CHAT_SIZE = Vector2(480,104)
-const SMALL_CHAT_POSITION = Vector2(-20,132)
-const LARGE_CHAT_SIZE = Vector2(480,237)
-const LARGE_CHAT_POSITION = Vector2(-20,-21)
-const SMALL_LCD_SIZE = Vector2(1262,305)
-const SMALL_LCD_POSITION = Vector2(-31,122)
-const LARGE_LCD_SIZE = Vector2(1262,696)
-const LARGE_LCD_POSITION = Vector2(-31,-35)
+enum {TERMINAL}
+var task_type = TERMINAL
 
-var path
-var is_chatting = false
+enum {SYSCALL,BASH,IPYTHON}
+var user_shell = IPYTHON
+
+# Example:" shell[BASH][FLAGS] =
+var shell= {
+	SYSCALL: {
+		"path": null,
+		"flags": []},
+	BASH: {
+		"path":"/bin/bash",
+		"flags": ["-c"]},
+	IPYTHON: {
+		"path": "ipython3",
+		#"path": "/home/shady/anaconda3/bin/ipython3",
+		"flags": [
+			"--no-confirm-exit",
+			#"--automagic",
+			"--no-pdb",
+			"--no-pprint",
+			"--simple-prompt",
+			"--no-color-info",
+			"--quiet",
+			"--no-term-title",
+			"--profile-dir=./.ipython",
+			"--TerminalInteractiveShell.display_page=True"]}
+	}
+
+
+var title = "Command Terminal"
+var last_input = ''
+var last_output = ''
+
+var command_output = []
+var pid
+#This variable is set with the last input from a taskgraph node
+var input setget set_input, get_input
+var output setget set_output, get_output
+
+func get_input():
+	return input
+
+func set_input(new_input):
+	input = new_input
+	if input != "":
+		var terminal_result = execute_task(input)
+		last_input = input
+		if typeof(terminal_result) == TYPE_ARRAY:
+			prints("result was an array", terminal_result)
+			for result in terminal_result:
+				prints(name,' ', result)
+				#add_item_to_chat(result)
+			set_output(terminal_result)
+		elif typeof(terminal_result) == TYPE_STRING:
+			set_output(terminal_result)
+		else:
+			prints("Got a weird output",terminal_result)
+
+
+func set_output(new_value):
+	output = new_value
+	if get_parent().has_method('set_output'):
+		get_parent().set_output(output)
+	else:
+		print("OOPS! Parent node has no set_output method!!!")
+	prints("output type is" , typeof(new_value))
+	add_item_to_terminal("$ " + input)
+	add_item_to_terminal(output)
+
+func get_output():
+	return output
 
 func _ready():
 	set_process_input(false)
-	set_process_unhandled_key_input(true)
+	#set_process_unhandled_key_input(true)
+	if "task_node" in get_parent():
+		get_parent().task_node = self
+	else:
+		prints("Uh oh",name, " isn't supposed to manage tasks!!!")
 
-	#path = execute_command("/bin/echo $PATH").split(",")
-	#add_item_to_chat(str(path))
-
-var command_history = ['What? you think should have command history?"']
-var history_position = 0
-
-#func _gui_input(event):
-
-func _on_input_gui_input(event):
-	if event is InputEventKey:
-		if event.pressed and event.scancode == KEY_UP:
-			$input.text = String(command_history[0])
-
-#	print(str(event))
-#	print("Oh yeah looking")
-#	if event.is_action_pressed("open_chat"):
-#		if is_chatting == false:
-#			$input.grab_focus()
-#			print("grabbed focus")
-
-func _on_input_text_entered(text):
-	if text != "":
-		#prints(text)
-		var terminal_result = execute_command(text)
-		if typeof(terminal_result) == TYPE_ARRAY:
-			for result in terminal_result:
-				add_item_to_chat(result)
-
-	$input.clear()
-	$input.release_focus()
-
-func execute_command(command = ""):
-	if not command:
+func execute_task(user_input):
+	if not user_input:
 		print("Invalid command entered!")
 		return false
+	var user_flags = user_input.split(" ")
+	#var user_command = '-c ' + user_input
+	var user_command = '-c !' + user_input
+	user_flags.remove(0)
+	#print("user command", user_command)
+	var shell_path = shell[user_shell]["path"]
+	var shell_flags = []
+	if not shell[user_shell]["flags"].empty():
+		shell_flags = shell[user_shell]["flags"]
+	return run_command(user_command, user_flags, shell_path, shell_flags)
+
+func run_command(user_command, user_flags=[""], shell_path = null, shell_flags = []):
+	#pid = OS.execute('ls', ['-l', '/tmp'], true, output)
+	if not shell[user_shell]["path"]: #Run as system call (NO ERROR CHECKING, RISKY)
+		pid = OS.execute(user_command, user_flags, true, command_output)
 	else:
-		command_history.append(command)
-	var flags = command.split(" ")
-	command = flags[0]
-	flags.remove(0)
-	#inputs.insert(0, "-c")
-	var output = []
-	var pid = OS.execute(command, flags, true, output)
-	#var pid = OS.execute("/bin/bash", inputs, true, output)
-	#var pid = OS.execute('ls', ['-l', '/tmp'], true, output)
-	#prints(output)
-	return output
+		var full_options = shell_flags + Array(user_flags)
+		full_options.push_back(user_command)
+		pid = OS.execute(shell_path, full_options, true, command_output)
+		prints("full options", full_options)
+	return command_output[0]
+
+
+##### UX Stuff ######
+
+func add_item_to_terminal(console_text):
+	var pre = "[color=lime]"
+	var post = "[/color]"
+	prints(console_text)
+	$vbox/margin/output.set_bbcode($vbox/margin/output.get_bbcode() + pre + String(console_text) + post + "\n")
+	#$vbox/margin/output.set_text($vbox/margin/output.get_text() + pre + String(console_text) + post + "\n")
+
+func _on_input_text_entered(text):
+	if text:
+		set_input(text)
+	$vbox/input.clear()
+
+func _on_input_focus_entered():
+	set_process_input(true)
+	set_process_unhandled_key_input(false)
+
+func _on_input_focus_exited():
+	set_process_input(false)
+	set_process_unhandled_key_input(true)
 
 #func find_command_in_path(command_name):
 #	for command in path:
 #		var binary = File.new()
 #	if binary.file_exists.open("/bin/ls"):
 #			file_exists
-
-func add_item_to_chat(console_text):
-	var pre = "[color=lime]"
-	var post = "[/color]"
-	$output.set_bbcode($output.get_bbcode() + pre + console_text + post + "\n")
-
 
 #func command_exists(path, file_name):
 #	var dir = Directory.new()
@@ -84,31 +145,25 @@ func add_item_to_chat(console_text):
 #	else:
 #		print("An invalid directory is in the path.")
 
-func _on_input_focus_entered():
-	# The text window grows and the scrolls bar goes away when we are typing text
-	is_chatting=true
-	#print("focus entered")
-	#$output.set_size(LARGE_CHAT_SIZE)
-	#$output.set_position(LARGE_CHAT_POSITION)
-	#$output_frame.set_size(LARGE_LCD_SIZE)
-	#$output_frame.set_position(LARGE_LCD_POSITION)
-	#$output.set_scroll_active(true)
-#	set_process_input(true)
-#	set_process_unhandled_key_input(false)
-
-func _on_input_focus_exited():
-	# After we enter text the text window shrinks and the scrolls bar goes away
-	#print("focus exited")
-	#$output_frame.set_size(SMALL_LCD_SIZE)
-	#$output_frame.set_position(SMALL_LCD_POSITION)
-	#$output.set_size(SMALL_CHAT_SIZE)
-	#$output.set_position(SMALL_CHAT_POSITION)
-	#output.set_scroll_active(false)
-	#set_process_input(false)
-#	set_process_unhandled_key_input(true)
-	is_chatting = false
+func _on_input_gui_input(event):
+	if event is InputEventKey:
+		if event.scancode == KEY_UP:
+			$vbox/input.text = last_input
+			$vbox/input.grab_focus()
 
 
-func _on_terminal_mouse_exited():
+func _gui_input(event):
+	#prints(event)
+	if event.is_action_released("mouse_zoom_in"):
+		#print("zoom graphnode")
+		accept_event()
+	elif event.is_action_released("mouse_zoom_out"):
+		#print("zoom graphnode")
+		accept_event()
+	accept_event()
+
+func _on_graphnode_mouse_entered():
 	pass # Replace with function body.
 
+func _on_graphnode_mouse_exited():
+	pass # Replace with function body.

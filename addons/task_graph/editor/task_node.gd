@@ -1,4 +1,4 @@
-extends GraphNode
+ extends GraphNode
 
 const TaskGraphData = preload("res://addons/task_graph/task_graph_data.gd")
 const GraphNodeRow = preload("res://addons/task_graph/editor/graph_node_row.tscn")
@@ -20,21 +20,22 @@ func select_task_class(class_file):
 	if task_class == check: return
 	# TODO Add option to disable these checks in File menu or File Dialog
 	# TODO These checks won't work in other languages like C#
+
 	if check == null:
 		error("Error loading!")
 		return
 	if not check is Script:
 		error("This is not a script!")
 		return
-	if not has_function(check, "_run"):
-		error("This class doesn't have a '_run' method!\nRead the doc for more info...")
-		return
-	if not has_function(check, "_inputs", true):
-		error("This class doesn't have an '_inputs' method!\nRead the doc for more info...")
-		return
-	if not has_function(check, "_outputs", true):
-		error("This class doesn't have an '_outputs' method!\nRead the doc for more info...")
-		return
+	#if not has_function(check, "_run"):
+	#	error("This class doesn't have a '_run' method!\nRead the doc for more info...")
+	#	return
+	#if not has_function(check, "_inputs", true):
+	#	error("This class doesn't have an '_inputs' method!\nRead the doc for more info...")
+	#	return
+	#if not has_function(check, "_outputs", true):
+	#	error("This class doesn't have an '_outputs' method!\nRead the doc for more info...")
+#		return
 	task_class = check
 	update_node()
 

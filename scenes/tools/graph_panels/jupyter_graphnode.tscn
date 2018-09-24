@@ -3,8 +3,8 @@
 [ext_resource path="res://scenes/tools/graph_panels/terminal_theme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/tools/GraphNode.gd" type="Script" id=2]
 [ext_resource path="res://scenes/tools/graph_panels/bash_panel.gd" type="Script" id=3]
-[ext_resource path="res://scenes/tools/graph_panels/table.tscn" type="PackedScene" id=4]
-
+[ext_resource path="res://scenes/tools/graph_panels/text_editor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/tools/graph_panels/table.tscn" type="PackedScene" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -178,35 +178,6 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
 
-[sub_resource type="StyleBoxFlat" id=7]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0.054902, 1, 0, 1 )
-draw_center = true
-border_width_left = 0
-border_width_top = 1
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.0980392, 0.796078, 0, 1 )
-border_blend = false
-corner_radius_top_left = 0
-corner_radius_top_right = 0
-corner_radius_bottom_right = 0
-corner_radius_bottom_left = 0
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-_sections_unfolded = [ "Border", "Border Width" ]
-
 [sub_resource type="Theme" id=8]
 
 
@@ -243,15 +214,15 @@ slot/0/right_color = Color( 1, 0.411765, 0.411765, 1 )
 script = ExtResource( 2 )
 _sections_unfolded = [ "0", "1", "Anchor", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_icons", "custom_styles", "slot" ]
 
-[node name="panel" type="VBoxContainer" parent="." index="0"]
+[node name="panel" type="VBoxContainer" parent="."]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 1.0
-margin_top = 1.0
+margin_top = 8.0
 margin_right = 359.0
-margin_bottom = 141.0
+margin_bottom = 136.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -263,7 +234,7 @@ size_flags_vertical = 3
 alignment = 0
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags" ]
 
-[node name="Infopanel" type="Panel" parent="panel" index="0"]
+[node name="Infopanel" type="Panel" parent="panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -279,7 +250,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "Theme", "custom_styles", "custom_styles/panel" ]
 
-[node name="description" type="LineEdit" parent="panel/Infopanel" index="0"]
+[node name="description" type="LineEdit" parent="panel/Infopanel"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -301,20 +272,21 @@ align = 1
 secret_character = "*"
 focus_mode = 2
 context_menu_enabled = true
+clear_button_enabled = false
 placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
 _sections_unfolded = [ "Rect", "Size Flags", "Visibility", "custom_colors", "custom_styles", "custom_styles/normal" ]
 
-[node name="io_panel" type="HBoxContainer" parent="panel" index="1"]
+[node name="io_panel" type="HBoxContainer" parent="panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 29.0
 margin_right = 358.0
-margin_bottom = 72.0
+margin_bottom = 68.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -324,13 +296,13 @@ size_flags_vertical = 0
 alignment = 1
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "custom_constants", "custom_icons", "custom_styles" ]
 
-[node name="input_panel" type="VBoxContainer" parent="panel/io_panel" index="0"]
+[node name="input_panel" type="VBoxContainer" parent="panel/io_panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 116.0
-margin_bottom = 43.0
+margin_bottom = 39.0
 rect_min_size = Vector2( 55, 27 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -341,7 +313,7 @@ size_flags_vertical = 3
 alignment = 1
 _sections_unfolded = [ "Anchor", "Rect", "Size Flags", "custom_constants", "custom_styles", "custom_styles/panel", "texture" ]
 
-[node name="Input" type="MenuButton" parent="panel/io_panel/input_panel" index="0"]
+[node name="Input" type="MenuButton" parent="panel/io_panel/input_panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -369,14 +341,14 @@ align = 1
 items = [ "File", null, 0, false, false, 0, 0, null, "", false, "Nodepath", null, 0, false, false, -1, 0, null, "", false, "Input Port", null, 0, false, false, -1, 0, null, "", false, "HTTP Request", null, 0, false, false, -1, 0, null, "", false, "RPC Call", null, 0, false, false, -1, 0, null, "", false ]
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "custom_colors", "custom_fonts", "custom_styles", "custom_styles/normal", "custom_styles/pressed" ]
 
-[node name="value" type="LineEdit" parent="panel/io_panel/input_panel" index="1"]
+[node name="value" type="LineEdit" parent="panel/io_panel/input_panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 24.0
 margin_right = 116.0
-margin_bottom = 43.0
+margin_bottom = 39.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -390,20 +362,21 @@ align = 1
 secret_character = "*"
 focus_mode = 2
 context_menu_enabled = true
+clear_button_enabled = false
 placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
 _sections_unfolded = [ "Grow Direction", "Rect", "custom_styles/normal" ]
 
-[node name="self_panel" type="VBoxContainer" parent="panel/io_panel" index="1"]
+[node name="self_panel" type="VBoxContainer" parent="panel/io_panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 120.0
 margin_right = 236.0
-margin_bottom = 43.0
+margin_bottom = 39.0
 rect_min_size = Vector2( 55, 27 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -414,7 +387,7 @@ size_flags_vertical = 3
 alignment = 0
 _sections_unfolded = [ "Anchor", "Rect", "Size Flags", "custom_constants", "custom_styles", "custom_styles/panel", "texture" ]
 
-[node name="Self" type="MenuButton" parent="panel/io_panel/self_panel" index="0"]
+[node name="Self" type="MenuButton" parent="panel/io_panel/self_panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -442,14 +415,14 @@ align = 1
 items = [ "File", null, 0, false, false, 0, 0, null, "", false, "Nodepath", null, 0, false, false, -1, 0, null, "", false, "Input Port", null, 0, false, false, -1, 0, null, "", false, "Item 3", null, 0, false, false, -1, 0, null, "", false, "RPC Call", null, 0, false, false, -1, 0, null, "", false ]
 _sections_unfolded = [ "Rect", "Size Flags", "custom_colors", "custom_fonts", "custom_styles", "custom_styles/normal", "custom_styles/pressed" ]
 
-[node name="value" type="LineEdit" parent="panel/io_panel/self_panel" index="1"]
+[node name="value" type="LineEdit" parent="panel/io_panel/self_panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 24.0
 margin_right = 116.0
-margin_bottom = 43.0
+margin_bottom = 39.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -463,20 +436,21 @@ align = 1
 secret_character = "*"
 focus_mode = 2
 context_menu_enabled = true
+clear_button_enabled = false
 placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
 _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags", "custom_fonts", "custom_styles", "custom_styles/normal" ]
 
-[node name="output_panel" type="VBoxContainer" parent="panel/io_panel" index="2"]
+[node name="output_panel" type="VBoxContainer" parent="panel/io_panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 240.0
 margin_right = 358.0
-margin_bottom = 43.0
+margin_bottom = 39.0
 rect_min_size = Vector2( 55, 27 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -487,7 +461,7 @@ size_flags_vertical = 3
 alignment = 0
 _sections_unfolded = [ "Anchor", "Rect", "Size Flags", "custom_styles", "custom_styles/panel" ]
 
-[node name="Output" type="MenuButton" parent="panel/io_panel/output_panel" index="0"]
+[node name="Output" type="MenuButton" parent="panel/io_panel/output_panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -514,14 +488,14 @@ align = 1
 items = [ "Constant", null, 0, false, false, 0, 0, null, "", false, "Terminal", null, 0, false, false, -1, 0, null, "", false, "Table", null, 0, false, false, -1, 0, null, "", false ]
 _sections_unfolded = [ "Rect", "Size Flags", "custom_colors", "custom_fonts", "custom_styles", "custom_styles/normal" ]
 
-[node name="value" type="LineEdit" parent="panel/io_panel/output_panel" index="1"]
+[node name="value" type="LineEdit" parent="panel/io_panel/output_panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 24.0
 margin_right = 118.0
-margin_bottom = 43.0
+margin_bottom = 39.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -535,20 +509,21 @@ align = 1
 secret_character = "*"
 focus_mode = 2
 context_menu_enabled = true
+clear_button_enabled = false
 placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
 _sections_unfolded = [ "Anchor", "Grow Direction", "Rect", "Size Flags", "custom_fonts", "custom_styles", "custom_styles/normal" ]
 
-[node name="MarginContainer" type="MarginContainer" parent="panel" index="2"]
+[node name="MarginContainer" type="MarginContainer" parent="panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 76.0
+margin_top = 72.0
 margin_right = 358.0
-margin_bottom = 140.0
+margin_bottom = 128.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -559,14 +534,14 @@ custom_constants/margin_right = 0
 custom_constants/margin_top = 2
 _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags", "custom_constants" ]
 
-[node name="TabContainer" type="TabContainer" parent="panel/MarginContainer" index="0"]
+[node name="TabContainer" type="TabContainer" parent="panel/MarginContainer"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 2.0
 margin_right = 358.0
-margin_bottom = 64.0
+margin_bottom = 56.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 100, 5 )
@@ -584,13 +559,13 @@ tabs_visible = true
 drag_to_rearrange_enabled = false
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "custom_colors", "custom_constants", "custom_styles", "custom_styles/tab_fg" ]
 
-[node name="Terminal" type="VBoxContainer" parent="panel/MarginContainer/TabContainer" index="0"]
+[node name="Terminal" type="VBoxContainer" parent="panel/MarginContainer/TabContainer"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 35.0
+margin_top = 31.0
 margin_right = -4.0
 margin_bottom = -4.0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -603,7 +578,7 @@ alignment = 0
 script = ExtResource( 3 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "Visibility", "custom_constants", "custom_styles", "custom_styles/panel" ]
 
-[node name="output" type="RichTextLabel" parent="panel/MarginContainer/TabContainer/Terminal" index="0"]
+[node name="output" type="RichTextLabel" parent="panel/MarginContainer/TabContainer/Terminal"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -628,14 +603,14 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags" ]
 
-[node name="command_text" type="LineEdit" parent="panel/MarginContainer/TabContainer/Terminal" index="1"]
+[node name="command_text" type="LineEdit" parent="panel/MarginContainer/TabContainer/Terminal"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 4.0
 margin_right = 350.0
-margin_bottom = 23.0
+margin_bottom = 19.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -648,20 +623,21 @@ text = "ls"
 secret_character = "*"
 focus_mode = 2
 context_menu_enabled = true
+clear_button_enabled = false
 placeholder_alpha = 0.6
 caret_blink = true
 caret_blink_speed = 0.65
 caret_position = 0
 _sections_unfolded = [ "Caret", "Grow Direction", "Rect", "Size Flags", "custom_constants", "custom_fonts", "custom_styles", "custom_styles/normal" ]
 
-[node name="Script" type="MarginContainer" parent="panel/MarginContainer/TabContainer" index="1"]
+[node name="Script" type="MarginContainer" parent="panel/MarginContainer/TabContainer"]
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 31.0
 margin_right = -4.0
 margin_bottom = -4.0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -676,49 +652,14 @@ custom_constants/margin_left = 0
 custom_constants/margin_bottom = 0
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "custom_constants" ]
 
-[node name="TextEdit" type="TextEdit" parent="panel/MarginContainer/TabContainer/Script" index="0"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 400.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 400, 250 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_styles/normal = SubResource( 7 )
-custom_colors/font_color = Color( 0.0784314, 1, 0, 1 )
-custom_colors/background_color = Color( 0, 0, 0, 1 )
-text = "hey boss"
-readonly = false
-highlight_current_line = true
-syntax_highlighting = true
-show_line_numbers = true
-breakpoint_gutter = false
-highlight_all_occurrences = false
-override_selected_font_color = false
-context_menu_enabled = true
-smooth_scrolling = false
-v_scroll_speed = 80.0
-hiding_enabled = 0
-wrap_enabled = false
-caret_block_mode = false
-caret_blink = false
-caret_blink_speed = 0.65
-caret_moving_by_right_click = false
-_sections_unfolded = [ "Anchor", "Caret", "Focus", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "custom_colors", "custom_fonts", "custom_icons", "custom_styles", "custom_styles/normal" ]
+[node name="TextEdit" parent="panel/MarginContainer/TabContainer/Script" instance=ExtResource( 4 )]
 
-[node name="Table" parent="panel/MarginContainer/TabContainer" index="2" instance=ExtResource( 4 )]
+[node name="Table" parent="panel/MarginContainer/TabContainer" instance=ExtResource( 5 )]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 31.0
 margin_right = -4.0
 margin_bottom = -4.0
 theme = SubResource( 8 )

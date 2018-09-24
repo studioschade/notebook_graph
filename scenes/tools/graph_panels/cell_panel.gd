@@ -15,6 +15,8 @@ var focused_cell = 0
 onready var current_cell_type_label = get_node("../menu/current_cell_type")
 onready var current_cell_label = get_node("../menu/current_cell")
 
+
+
 func _ready():
 	delete_cells()
 	#get_parent().get_parent().get_parent().popup()

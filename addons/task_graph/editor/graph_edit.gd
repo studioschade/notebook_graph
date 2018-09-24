@@ -5,7 +5,9 @@ const TaskNode = preload("res://addons/task_graph/editor/task_node.tscn")
 const InputNode = preload("res://addons/task_graph/editor/input_node.tscn")
 const OutputNode = preload("res://addons/task_graph/editor/output_node.tscn")
 const NotebookNode = preload("res://scenes/tools/graph_panels/notebook_graphnode.tscn")
-const TerminalNode = preload("res://scenes/tools/graph_panels/terminal_graphnode.tscn")
+#const TerminalNode = preload("res://scenes/tools/graph_panels/terminal_graphnode.tscn")
+const TerminalNode = preload("res://scenes/tools/graph_panels/tasknode/terminal.tscn")
+
 const TableNode = preload("res://scenes/tools/graph_panels/table_graphnode.tscn")
 
 var resource
@@ -16,7 +18,8 @@ var from
 var from_slot
 
 func _ready():
-	set_name("G")
+	set_process_unhandled_input(false)
+	set_name("GraphEdit")
 	set_anchor(MARGIN_RIGHT, ANCHOR_END, false)
 	set_anchor(MARGIN_BOTTOM, ANCHOR_END, false)
 	set_h_size_flags(3)
@@ -30,7 +33,7 @@ func _ready():
 	#add_valid_left_disconnect_type(0)
 	add_valid_right_disconnect_type(0)
 	connect("node_selected", self, "selected")
-	connect("popup_request", self, "menu_requested")
+	#connect("popup_request", self, "menu_requested")
 	connect("connection_request", self, "connect_requested")
 	connect("disconnection_request", self, "disconnect_requested")
 	connect("connection_to_empty", self, "connect_empty_requested")
@@ -46,8 +49,14 @@ func _ready():
 	get_node("../Header/FileMenuButton").get_popup().connect("index_pressed", self, "file_option_selected")
 	get_node("../Header/EditMenuButton").get_popup().connect("index_pressed", self, "edit_option_selected")
 
-
-
+func _gui_input(event):
+	#prints(event)
+	if event.is_action_released("mouse_zoom_in"):
+		accept_event()
+	elif event.is_action_released("mouse_zoom_out"):
+		accept_event()
+	#else:
+	#	set_mouse_filter(Control.MOUSE_FILTER_STOP)
 
 
 
@@ -66,8 +75,19 @@ func highlight_dependencies(node):
 		dependency.overlay = GraphNode.OVERLAY_POSITION
 		highlight_dependencies(dependency)
 
+func get_output_nodes(node):
+	var output_nodes = []
+	var all_connections = get_connection_list()
+	for connection in all_connections:
+		if connection["from"] == node.name:
+			var temp_node = get_node(connection["to"])
+			temp_node.overlay = GraphNode.OVERLAY_POSITION
+			output_nodes.append(temp_node)
+	prints(node.name, "has the following output nodes:", output_nodes)
+	return output_nodes
+
 func menu_requested(cursor):
-	place = get_local_mouse_position()
+	place = get_local_mouse_position() + Vector2(0,200)
 	from = null
 	from_slot = null
 	$RightClickMenu.popup(Rect2(cursor, Vector2(1, 1)))
@@ -127,6 +147,7 @@ func connect_requested(from, from_slot, to, to_slot):
 			disconnect_node(connection["from"], connection["from_port"], connection["to"], connection["to_port"])
 			break
 	connect_node(from, from_slot, to, to_slot)
+	#prints(get_connection_list())
 	selected()
 
 func disconnect_requested(from, from_slot, to, to_slot):
@@ -246,3 +267,9 @@ func file_selected(file):
 func error(msg):
 	$ErrorDialog.dialog_text = msg
 	$ErrorDialog.popup_centered()
+
+func _on_GraphEdit_mouse_entered():
+	set_mouse_filter(Control.MOUSE_FILTER_IGNORE)
+
+func _on_GraphEdit_mouse_exited():
+	set_mouse_filter(Control.MOUSE_FILTER_IGNORE)
