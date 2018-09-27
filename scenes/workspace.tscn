@@ -32,8 +32,10 @@ margin_right = 1913.0
 margin_bottom = 1068.0
 
 [node name="TaskGraph" parent="." instance=ExtResource( 2 )]
-margin_right = 1932.0
-margin_bottom = 1077.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 1934.0
+margin_bottom = 1079.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 _sections_unfolded = [ "Mouse", "Size Flags", "Theme" ]

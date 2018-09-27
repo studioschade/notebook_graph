@@ -34,7 +34,7 @@ func set_input(value):
 	input=value
 	prints(name, "got a new input of type:", typeof(input))
 	input_readout.set_text(String(input))
-	input_readout.hint_tooltip = String(input)
+	#input_readout.hint_tooltip = String(input)
 
 func set_output(value):
 	output = value
@@ -42,7 +42,9 @@ func set_output(value):
 	transmit_output()
 
 func transmit_output():
-	var output_nodes = task_graph.get_output_nodes(self)
+	var output_nodes
+	if task_graph.has_method('get_output_nodes'):
+		output_nodes = task_graph.get_output_nodes(self)
 	if not output_nodes:
 		prints(name,"has no output nodes to transmit to!")
 		return
@@ -70,8 +72,6 @@ func _on_execute_pressed():
 	if task_node:
 		if task_node.has_method('execute'):
 			prints("Trying to execute the ", task_node.name)
-			output = task_node.execute()
-			if output:
-				transmit_output()
+			set_output(task_node.execute())
 	else:
 		prints(self.name, "tried to execute its task, but it has no associated task node!!!")

@@ -2,3 +2,13 @@
 *.import
 
 session_log~
+
+pythonscript/windows-64-cpython/
+
+pythonscript/osx-64-cpython/
+
+pythonscript/windows-32-cpython/
+
+scenes/tools/__pycache__/
+
+*.pyc

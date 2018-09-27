@@ -1,0 +1,14 @@
+[gd_resource type="GDNativeLibrary" format=2]
+
+[resource]
+
+config_file = Object(ConfigFile,"script":null)
+
+load_once = true
+symbol_prefix = "godot_"
+reloadable = true
+entry/Windows.64 = "res://pythonscript/windows-64-cpython/pythonscript.dll"
+entry/X11.64 = ""
+dependency/Windows.64 = [  ]
+dependency/X11.64 = [ "res://pythonscript/x11-64-cpython/libpythonscript.so" ]
+

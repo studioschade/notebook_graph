@@ -12,6 +12,6 @@ func menu_requested(cursor):
 func _on_create_task_button_up():
 	taskgraph.menu_requested(rect_position)
 
-func _unhandled_key_input(event):
-	prints("Unhandled event detected!, event")
-	get_tree().set_input_as_handled()
+#func _unhandled_key_input(event):
+#	prints("Unhandled event detected!, event")
+#	get_tree().set_input_as_handled()
