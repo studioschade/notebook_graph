@@ -17,7 +17,6 @@ _global_script_class_icons={
 
 config/name="TaskGraph - A tool by Al Shady"
 run/main_scene="res://scenes/workspace.tscn"
-run/low_processor_mode=true
 config/icon="res://icon.png"
 
 [debug]
@@ -36,6 +35,10 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PoolStringArray( "task_graph" )
+
+[gdnative]
+
+singletons=[ "res://pythonscript.gdnlib" ]
 
 [input]
 
@@ -73,6 +76,7 @@ ui_left={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
  ]
 }
 ui_right={
@@ -128,6 +132,15 @@ mouse_zoom_out={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+pan_left={
+"deadzone": 0.5,
+"events": [  ]
+}
+
+[node]
+
+name_num_separator=2
+name_casing=2
 
 [rendering]
 

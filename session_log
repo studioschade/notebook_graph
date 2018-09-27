@@ -32,3 +32,27 @@ get_ipython().run_line_magic('ls', '')
 get_ipython().system('ls')
 
 get_ipython().system('cat sesson_log')
+
+get_ipython().system('ls')
+
+get_ipython().system('cd fpp')
+
+get_ipython().system('%cd addons')
+
+get_ipython().system('pwd')
+
+get_ipython().system('print(hi)')
+
+get_ipython().system("print('heyo')")
+
+get_ipython().system('pwd')
+
+get_ipython().system('ls')
+
+get_ipython().system('ps aux')
+
+get_ipython().system('ps aux | grep root')
+
+get_ipython().system('ps aux | grep root')
+
+get_ipython().system('ls')

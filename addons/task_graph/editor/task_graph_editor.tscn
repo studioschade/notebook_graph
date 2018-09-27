@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://addons/task_graph/editor/task_graph_editor.gd" type="Script" id=1]
 [ext_resource path="res://fonts/big_ui_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/tools/graph_panels/terminal_theme.tres" type="Theme" id=3]
 [ext_resource path="res://addons/task_graph/editor/graph_edit.gd" type="Script" id=4]
+[ext_resource path="res://scenes/tools/rigid_camera.gd" type="Script" id=5]
+[ext_resource path="res://addons/task_graph/editor/Camera2D.gd" type="Script" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 57.6728
 
 [node name="TaskGraph" type="VBoxContainer"]
 anchor_left = 0.0
@@ -21,6 +28,7 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Mouse", "Size Flags" ]
 
 [node name="Header" type="HBoxContainer" parent="."]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -141,6 +149,7 @@ max_lines_visible = -1
 _sections_unfolded = [ "Rect", "Size Flags", "custom_colors", "custom_fonts" ]
 
 [node name="GraphEdit" type="GraphEdit" parent="."]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -183,7 +192,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 popup_exclusive = false
-items = [ "New Task", null, 0, false, true, -1, 0, null, "", false, "New Input", null, 0, false, true, -1, 0, null, "", false, "New Output", null, 0, false, true, -1, 0, null, "", false, "New Notebook", null, 0, false, true, -1, 0, null, "", false, "New Table", null, 0, false, true, -1, 0, null, "", false, "New Terminal", null, 0, false, false, -1, 0, null, "", false ]
+items = [ "New Task", null, 0, false, true, -1, 0, null, "", false, "New Input", null, 0, false, true, -1, 0, null, "", false, "New Output", null, 0, false, true, -1, 0, null, "", false, "New Notebook", null, 0, false, false, -1, 0, null, "", false, "New Table", null, 0, false, true, -1, 0, null, "", false, "New Terminal", null, 0, false, false, -1, 0, null, "", false ]
 hide_on_state_item_selection = false
 submenu_popup_delay = 0.3
 
@@ -289,6 +298,46 @@ show_hidden_files = false
 current_dir = "res://"
 current_file = ""
 current_path = "res://"
+
+[node name="camera" type="KinematicBody2D" parent="."]
+position = Vector2( 963.36, 540.754 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+motion/sync_to_physics = true
+script = ExtResource( 5 )
+_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear", "Pickable", "collision", "motion" ]
+
+[node name="Camera2D" type="Camera2D" parent="camera"]
+position = Vector2( 0.179749, 2.91113 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+script = ExtResource( 6 )
+_sections_unfolded = [ "Drag Margin", "Limit", "Offset", "Smoothing" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera"]
+shape = SubResource( 1 )
 
 [connection signal="button_up" from="Header/create_task" to="." method="_on_create_task_button_up"]
 [connection signal="mouse_entered" from="GraphEdit" to="GraphEdit" method="_on_GraphEdit_mouse_entered"]

@@ -3,8 +3,11 @@ extends Control
 enum {TERMINAL}
 var task_type = TERMINAL
 
-enum {SYSCALL,BASH,IPYTHON}
-var user_shell = IPYTHON
+
+
+
+enum {SYSCALL,BASH,IPYTHON,JUPYTER}
+export var user_shell = JUPYTER
 
 # Example:" shell[BASH][FLAGS] =
 var shell= {
@@ -24,11 +27,14 @@ var shell= {
 			"--no-pprint",
 			"--simple-prompt",
 			"--no-color-info",
-			"--quiet",
+			#"--quiet",
 			"--no-term-title",
-			"--profile-dir=./.ipython",
-			"--TerminalInteractiveShell.display_page=True"]}
-	}
+			#"--profile-dir=./.ipython",
+			"--TerminalInteractiveShell.display_page=True"]},
+	JUPYTER: {
+		"path": null,
+		"flags": []}
+		}
 
 
 var title = "Command Terminal"
@@ -41,10 +47,21 @@ var pid
 var input setget set_input, get_input
 var output setget set_output, get_output
 
+func _ready():
+	set_process_input(false)
+	#set_process_unhandled_key_input(true)
+	if "task_node" in get_parent():
+		get_parent().task_node = self
+	else:
+		prints("Uh oh",name, " isn't supposed to manage tasks!!!")
+
 func get_input():
 	return input
 
 func set_input(new_input):
+	if not new_input:
+		print("Got a null value!!")
+		return
 	input = new_input
 	if input != "":
 		var terminal_result = execute_task(input)
@@ -57,9 +74,12 @@ func set_input(new_input):
 			set_output(terminal_result)
 		elif typeof(terminal_result) == TYPE_STRING:
 			set_output(terminal_result)
+		elif typeof(terminal_result) == TYPE_DICTIONARY:
+			prints("result was a dictionary", terminal_result)
+			for entry in terminal_result:
+				set_output(str(entry))
 		else:
 			prints("Got a weird output",terminal_result)
-
 
 func set_output(new_value):
 	output = new_value
@@ -74,28 +94,23 @@ func set_output(new_value):
 func get_output():
 	return output
 
-func _ready():
-	set_process_input(false)
-	#set_process_unhandled_key_input(true)
-	if "task_node" in get_parent():
-		get_parent().task_node = self
-	else:
-		prints("Uh oh",name, " isn't supposed to manage tasks!!!")
-
 func execute_task(user_input):
 	if not user_input:
 		print("Invalid command entered!")
 		return false
 	var user_flags = user_input.split(" ")
-	#var user_command = '-c ' + user_input
-	var user_command = '-c !' + user_input
+	var user_command = '-c ' + user_input
+	#var user_command = '-c !' + user_input
 	user_flags.remove(0)
 	#print("user command", user_command)
 	var shell_path = shell[user_shell]["path"]
 	var shell_flags = []
-	if not shell[user_shell]["flags"].empty():
-		shell_flags = shell[user_shell]["flags"]
-	return run_command(user_command, user_flags, shell_path, shell_flags)
+	#if not shell[user_shell]["flags"].empty():
+	shell_flags = shell[user_shell]["flags"]
+	if user_shell == JUPYTER:
+		return $python.execute_command(user_input)
+	else:
+		return run_command(user_command, user_flags, shell_path, shell_flags)
 
 func run_command(user_command, user_flags=[""], shell_path = null, shell_flags = []):
 	#pid = OS.execute('ls', ['-l', '/tmp'], true, output)
@@ -115,7 +130,7 @@ func add_item_to_terminal(console_text):
 	var pre = "[color=lime]"
 	var post = "[/color]"
 	prints(console_text)
-	$vbox/margin/output.set_bbcode($vbox/margin/output.get_bbcode() + pre + String(console_text) + post + "\n")
+	$vbox/margin/output.set_bbcode($vbox/margin/output.get_bbcode() + pre + console_text + post + "\n")
 	#$vbox/margin/output.set_text($vbox/margin/output.get_text() + pre + String(console_text) + post + "\n")
 
 func _on_input_text_entered(text):
@@ -167,3 +182,15 @@ func _on_graphnode_mouse_entered():
 
 func _on_graphnode_mouse_exited():
 	pass # Replace with function body.
+
+
+func _on_type_item_selected(ID):
+	ID = int(ID)
+	user_shell = ID
+	match(ID):
+		BASH:
+			add_item_to_terminal("Switched to Bash shell by doing system calls. ex: bash -c 'user input'")
+		IPYTHON:
+			add_item_to_terminal("Switched to Ipython shell by doing system calls. ex: ipython -c 'user input'")
+		JUPYTER:
+			add_item_to_terminal("Switched to native Jupyter shell using Godot-Python")

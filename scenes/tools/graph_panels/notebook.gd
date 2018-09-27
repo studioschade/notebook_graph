@@ -18,7 +18,6 @@ func get_notebook():
 		print("response from kernel was not a properly formatted json file!!!")
 		return {}
 
-
 func execute_local_notebook():
 	var jupyter_path = "/home/shady/anaconda3/bin/jupyter-nbconvert"
 	#var notebook_path = "/home/shady/darknebulae_project/shadys_demos/godot_multiplayer_framework/jupyter/igraph.ipynb"

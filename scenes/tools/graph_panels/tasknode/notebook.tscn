@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/tools/graph_panels/cell_panel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/tools/graph_panels/notebook.gd" type="Script" id=2]
@@ -7,22 +7,21 @@
 [ext_resource path="res://scenes/tools/graph_panels/icons/cross.png" type="Texture" id=5]
 [ext_resource path="res://scenes/tools/graph_panels/icons/return.png" type="Texture" id=6]
 [ext_resource path="res://scenes/tools/tree_view.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/tools/tree_generator.gd" type="Script" id=8]
-[ext_resource path="res://scenes/tools/graph_panels/web_api.gd" type="Script" id=9]
+[ext_resource path="res://scenes/tools/graph_panels/web_api.gd" type="Script" id=8]
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=1]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
-bg_color = Color( 0, 0.0352941, 0, 0.870588 )
+bg_color = Color( 0, 0.0235294, 0, 0.870588 )
 draw_center = true
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color( 0.0666667, 0.384314, 0, 1 )
+border_color = Color( 0.0901961, 0.517647, 0, 1 )
 border_blend = true
 corner_radius_top_left = 3
 corner_radius_top_right = 3
@@ -39,7 +38,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=2]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -67,14 +66,14 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
-[sub_resource type="StyleBoxEmpty" id=12]
+[sub_resource type="StyleBoxEmpty" id=3]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[sub_resource type="StyleBoxEmpty" id=13]
+[sub_resource type="StyleBoxEmpty" id=4]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -86,44 +85,41 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 86.0
 margin_right = 512.0
-margin_bottom = 407.0
+margin_bottom = 321.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 100, 5 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
-focus_mode = 1
-mouse_filter = 1
+mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/tab_fg = SubResource( 10 )
-custom_styles/tab_bg = SubResource( 10 )
-custom_styles/panel = SubResource( 10 )
+custom_styles/tab_fg = SubResource( 1 )
+custom_styles/tab_bg = SubResource( 1 )
+custom_styles/panel = SubResource( 1 )
 custom_constants/hseparation = 4
 custom_constants/top_margin = 1
 tab_align = 1
 tabs_visible = false
 drag_to_rearrange_enabled = false
 script = ExtResource( 1 )
-_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "Visibility", "custom_colors", "custom_constants", "custom_styles", "custom_styles/tab_bg", "script" ]
-default_notebook = null
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "script" ]
+default_notebook = "res://notebooks/Capstone - Saddle Up.ipynb"
 
 [node name="Notebook" type="ScrollContainer" parent="."]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.0
-margin_top = 1.0
 margin_right = -1.0
 margin_bottom = -1.0
 rect_min_size = Vector2( 420, 260 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
+focus_mode = 1
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -133,7 +129,7 @@ scroll_horizontal = 0
 scroll_vertical_enabled = true
 scroll_vertical = 0
 scroll_deadzone = 0
-_sections_unfolded = [ "Mouse", "Rect", "Scroll" ]
+_sections_unfolded = [ "Focus", "Mouse", "Rect", "Scroll" ]
 
 [node name="vbox" type="VBoxContainer" parent="Notebook"]
 anchor_left = 0.0
@@ -141,11 +137,11 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 510.0
-margin_bottom = 319.0
+margin_bottom = 320.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 1
-mouse_filter = 1
+mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -159,10 +155,10 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 510.0
-margin_bottom = 319.0
+margin_bottom = 320.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 2
+mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -174,27 +170,25 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 157.0
+margin_top = 158.0
 margin_right = 510.0
-margin_bottom = 161.0
+margin_bottom = 162.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/separator = SubResource( 11 )
-_sections_unfolded = [ "custom_styles", "custom_styles/separator" ]
+custom_styles/separator = SubResource( 2 )
+_sections_unfolded = [ "Focus", "Mouse", "custom_styles", "custom_styles/separator" ]
 
 [node name="Settings" type="MarginContainer" parent="."]
-editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.0
-margin_top = 1.0
 margin_right = -1.0
 margin_bottom = -1.0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -204,7 +198,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 2 )
-_sections_unfolded = [ "Grow Direction", "Rect", "Size Flags", "Visibility", "custom_constants", "custom_styles", "custom_styles/panel", "script" ]
+_sections_unfolded = [ "Focus", "Grow Direction", "Mouse", "Rect", "Size Flags", "Visibility", "custom_constants", "custom_styles", "custom_styles/panel", "script" ]
 
 [node name="cell" type="VBoxContainer" parent="Settings"]
 anchor_left = 0.0
@@ -212,24 +206,25 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 510.0
-margin_bottom = 319.0
+margin_bottom = 320.0
 rect_min_size = Vector2( 426, 200 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 1
+mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Focus", "Mouse", "Rect", "Size Flags", "Theme" ]
 
 [node name="MarginContainer" type="VBoxContainer" parent="Settings/cell"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 510.0
-margin_bottom = 51.0
+margin_bottom = 70.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -244,7 +239,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 510.0
-margin_bottom = 13.0
+margin_bottom = 14.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -258,6 +253,7 @@ max_lines_visible = -1
 _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags" ]
 
 [node name="menu2" type="HBoxContainer" parent="Settings/cell/MarginContainer"]
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -378,13 +374,14 @@ align = 1
 _sections_unfolded = [ "Grow Direction", "Size Flags", "Visibility", "icon" ]
 
 [node name="notebook_path" type="HBoxContainer" parent="Settings/cell/MarginContainer"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 17.0
+margin_top = 18.0
 margin_right = 510.0
-margin_bottom = 32.0
+margin_bottom = 42.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -400,7 +397,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 510.0
-margin_bottom = 15.0
+margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -422,6 +419,7 @@ caret_position = 0
 _sections_unfolded = [ "Size Flags", "custom_styles" ]
 
 [node name="menu3" type="HBoxContainer" parent="Settings/cell/MarginContainer"]
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -581,13 +579,14 @@ align = 1
 _sections_unfolded = [ "Grow Direction", "Size Flags", "Visibility", "icon" ]
 
 [node name="jupyter_path" type="HBoxContainer" parent="Settings/cell/MarginContainer"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 36.0
+margin_top = 46.0
 margin_right = 510.0
-margin_bottom = 51.0
+margin_bottom = 70.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -603,7 +602,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 510.0
-margin_bottom = 15.0
+margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -623,32 +622,16 @@ caret_blink_speed = 0.65
 caret_position = 0
 _sections_unfolded = [ "Size Flags", "custom_styles" ]
 
-[node name="tree" type="Tree" parent="Settings/cell" instance=ExtResource( 7 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 55.0
+[node name="tree" parent="Settings/cell" instance=ExtResource( 7 )]
+margin_left = 0.0
+margin_top = 74.0
 margin_right = 510.0
-margin_bottom = 175.0
+margin_bottom = 194.0
 rect_min_size = Vector2( 426, 120 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_styles/bg_focus = SubResource( 12 )
-custom_styles/bg = SubResource( 13 )
-columns = 1
-allow_reselect = false
-allow_rmb_select = false
-hide_folding = false
+custom_styles/bg_focus = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
 hide_root = false
 drop_mode_flags = 3
-select_mode = 1
-script = ExtResource( 8 )
 _sections_unfolded = [ "Anchor", "Custom Colors", "Custom Constants", "Custom Fonts", "Custom Icons", "Custom Styles", "Focus", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "custom_colors", "custom_styles", "custom_styles/bg", "custom_styles/bg_focus" ]
 
 [node name="output" type="RichTextLabel" parent="Settings/cell/tree"]
@@ -685,19 +668,17 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 510.0
-margin_bottom = 319.0
+margin_bottom = 320.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 9 )
-_sections_unfolded = [ "Anchor", "Margin", "Size Flags" ]
+script = ExtResource( 8 )
+_sections_unfolded = [ "Anchor", "Focus", "Margin", "Mouse", "Size Flags" ]
 
 [connection signal="button_up" from="Settings/cell/MarginContainer/menu2/add" to="." method="_on_add_cell"]
 [connection signal="button_up" from="Settings/cell/MarginContainer/menu2/clear" to="." method="_on_clear_cell"]
 [connection signal="button_up" from="Settings/cell/MarginContainer/menu3/add" to="." method="_on_add_cell"]
 [connection signal="button_up" from="Settings/cell/MarginContainer/menu3/clear" to="." method="_on_clear_cell"]
-[connection signal="item_activated" from="Settings/cell/tree" to="Settings/cell/tree" method="_on_tree_item_activated"]
-[connection signal="visibility_changed" from="Settings/cell/tree" to="Settings/cell/tree" method="_on_tree_visibility_changed"]
