@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://addons/task_graph/editor/task_graph_editor.gd" type="Script" id=1]
 [ext_resource path="res://fonts/big_ui_font.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://addons/task_graph/editor/graph_edit.gd" type="Script" id=4]
 [ext_resource path="res://scenes/tools/rigid_camera.gd" type="Script" id=5]
 [ext_resource path="res://addons/task_graph/editor/Camera2D.gd" type="Script" id=6]
+[ext_resource path="res://scenes/shadys_elements/selector.png" type="Texture" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -154,9 +155,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 30.0
-margin_right = 1920.0
-margin_bottom = 1080.0
+margin_left = 7.0
+margin_top = 13.0
+margin_right = 1927.0
+margin_bottom = 1063.0
 rect_min_size = Vector2( 0, 300 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
@@ -307,7 +309,7 @@ collision_mask = 1
 collision/safe_margin = 0.08
 motion/sync_to_physics = true
 script = ExtResource( 5 )
-_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear", "Pickable", "collision", "motion" ]
+_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear", "Pickable", "Transform", "collision", "motion" ]
 
 [node name="Camera2D" type="Camera2D" parent="camera"]
 position = Vector2( 0.179749, 2.91113 )
@@ -338,6 +340,11 @@ _sections_unfolded = [ "Drag Margin", "Limit", "Offset", "Smoothing" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="camera"]
 shape = SubResource( 1 )
+
+[node name="sprite" type="Sprite" parent="camera"]
+self_modulate = Color( 1, 1, 1, 0.176471 )
+texture = ExtResource( 7 )
+_sections_unfolded = [ "Visibility" ]
 
 [connection signal="button_up" from="Header/create_task" to="." method="_on_create_task_button_up"]
 [connection signal="mouse_entered" from="GraphEdit" to="GraphEdit" method="_on_GraphEdit_mouse_entered"]
