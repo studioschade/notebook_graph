@@ -1,7 +1,410 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://scenes/tools/window_core.tscn" type="PackedScene" id=1]
-[ext_resource path="res://addons/task_graph/editor/task_graph_editor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/task_graph/editor/task_graph_editor.gd" type="Script" id=1]
+[ext_resource path="res://fonts/big_ui_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://fonts/NotoSansUI_Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://addons/task_graph/editor/graph_edit.gd" type="Script" id=5]
+[ext_resource path="res://scenes/tools/graph_panels/visual_pallet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/tools/rigid_camera.gd" type="Script" id=7]
+[ext_resource path="res://addons/task_graph/editor/Camera2D.gd" type="Script" id=8]
+[ext_resource path="res://scenes/shadys_elements/selector.png" type="Texture" id=9]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.00392157, 0.0313726, 0, 0.478431 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0862745, 0.698039, 0, 1 )
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Content Margin", "Corner Radius", "Expand Margin", "Shadow" ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 12
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="StyleBoxFlat" id=3]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0.133333, 0, 0.8 )
+draw_center = true
+border_width_left = 1
+border_width_top = 8
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0156863, 0.211765, 0, 1 )
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Corner Radius", "Expand Margin" ]
+
+[sub_resource type="StyleBoxFlat" id=4]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0, 0, 0.752941 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.00784314, 0.698039, 0, 0.952941 )
+border_blend = false
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Corner Radius", "Expand Margin" ]
+
+[sub_resource type="StyleBoxFlat" id=5]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.00392157, 0.0313726, 0, 0.788235 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0666667, 0.560784, 0, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Expand Margin", "Shadow" ]
+
+[sub_resource type="StyleBoxFlat" id=6]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.0156863, 0.109804, 0, 0.729412 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.2, 0.74902, 0, 1 )
+border_blend = true
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Expand Margin" ]
+
+[sub_resource type="StyleBoxFlat" id=7]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0.0392157, 0, 0.839216 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.00392157, 0.462745, 0, 0.952941 )
+border_blend = false
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Content Margin", "Corner Radius" ]
+
+[sub_resource type="StyleBoxFlat" id=8]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.101961, 0, 0, 0.254902 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.105882, 0.435294, 0, 1 )
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Corner Radius", "Expand Margin" ]
+
+[sub_resource type="DynamicFont" id=9]
+
+size = 12
+outline_size = 0
+outline_color = Color( 0.00604248, 0.515625, 0.491738, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings", "font_data" ]
+
+[sub_resource type="Theme" id=13]
+
+resource_local_to_scene = true
+default_font = SubResource( 9 )
+Button/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+Button/colors/font_color_disabled = Color( 0.898039, 0.898039, 0.898039, 0.313726 )
+Button/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+GraphEdit/colors/activity = Color( 0, 0.6, 0.0941176, 1 )
+GraphEdit/colors/grid_major = Color( 0.00784314, 1, 0, 0.223529 )
+GraphEdit/colors/grid_minor = Color( 0, 0.717647, 0.0941176, 0.0705882 )
+GraphEdit/constants/bezier_len_neg = 160
+GraphEdit/constants/bezier_len_pos = 80
+GraphEdit/icons/minus = null
+GraphEdit/icons/more = null
+GraphEdit/icons/reset = null
+GraphEdit/icons/snap = null
+GraphEdit/styles/bg = SubResource( 1 )
+GraphNode/colors/title_color = Color( 0, 0.360784, 0.054902, 1 )
+GraphNode/constants/close_offset = 0
+GraphNode/constants/port_offset = 3
+GraphNode/constants/separation = 1
+GraphNode/constants/title_offset = 0
+GraphNode/fonts/title_font = SubResource( 2 )
+GraphNode/icons/close = null
+GraphNode/icons/port = null
+GraphNode/icons/resizer = null
+GraphNode/styles/breakpoint = null
+GraphNode/styles/comment = null
+GraphNode/styles/commentfocus = null
+GraphNode/styles/defaultfocus = SubResource( 3 )
+GraphNode/styles/defaultframe = SubResource( 3 )
+GraphNode/styles/frame = SubResource( 3 )
+GraphNode/styles/position = null
+GraphNode/styles/selectedframe = SubResource( 3 )
+LineEdit/colors/cursor_color = Color( 0.941176, 0.941176, 0.941176, 1 )
+LineEdit/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/selection_color = Color( 0.764706, 0.764706, 0.764706, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = null
+LineEdit/icons/ = null
+LineEdit/styles/focus = SubResource( 4 )
+LineEdit/styles/normal = SubResource( 4 )
+LineEdit/styles/read_only = null
+Panel/styles/panel = SubResource( 5 )
+Panel/styles/panelf = null
+Panel/styles/panelnc = null
+PanelContainer/styles/panel = SubResource( 6 )
+RichTextLabel/colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+RichTextLabel/colors/font_color_selected = Color( 0.490196, 0.490196, 0.490196, 1 )
+RichTextLabel/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+RichTextLabel/colors/selection_color = Color( 0.1, 0.1, 1, 0.8 )
+RichTextLabel/constants/line_separation = 1
+RichTextLabel/constants/shadow_as_outline = 0
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/constants/table_hseparation = 3
+RichTextLabel/constants/table_vseparation = 3
+RichTextLabel/fonts/bold_font = null
+RichTextLabel/fonts/bold_italics_font = null
+RichTextLabel/fonts/italics_font = null
+RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/normal_font = null
+RichTextLabel/styles/focus = SubResource( 7 )
+RichTextLabel/styles/normal = SubResource( 7 )
+WindowDialog/colors/title_color = Color( 0, 0.866667, 0.156863, 1 )
+WindowDialog/constants/close_h_ofs = 18
+WindowDialog/constants/close_v_ofs = 18
+WindowDialog/constants/scaleborder_size = 4
+WindowDialog/constants/title_height = 20
+WindowDialog/fonts/title_font = null
+WindowDialog/icons/close = null
+WindowDialog/icons/close_highlight = null
+WindowDialog/styles/panel = SubResource( 8 )
+_sections_unfolded = [ "Button", "Button/colors", "GraphEdit", "GraphEdit/colors", "GraphEdit/constants", "GraphEdit/icons", "GraphEdit/styles", "GraphEdit/styles/bg", "GraphNode/constants", "GraphNode/styles/defaultfocus", "GraphNode/styles/defaultframe", "GraphNode/styles/frame", "GraphNode/styles/selectedframe", "LineEdit/colors", "LineEdit/styles", "LineEdit/styles/focus", "LineEdit/styles/normal", "Panel/styles", "Panel/styles/panel", "PanelContainer/styles", "PanelContainer/styles/panel", "Resource", "RichTextLabel/styles", "RichTextLabel/styles/focus", "WindowDialog/colors", "WindowDialog/constants", "WindowDialog/fonts", "WindowDialog/icons", "WindowDialog/styles/panel", "colors", "constants", "fonts", "icons", "styles" ]
+
+[sub_resource type="Theme" id=12]
+
+resource_local_to_scene = true
+default_font = SubResource( 9 )
+Button/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+Button/colors/font_color_disabled = Color( 0.898039, 0.898039, 0.898039, 0.313726 )
+Button/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+GraphEdit/colors/activity = Color( 0, 0.6, 0.0941176, 1 )
+GraphEdit/colors/grid_major = Color( 0.00784314, 1, 0, 0.223529 )
+GraphEdit/colors/grid_minor = Color( 0, 0.717647, 0.0941176, 0.0705882 )
+GraphEdit/constants/bezier_len_neg = 160
+GraphEdit/constants/bezier_len_pos = 80
+GraphEdit/icons/minus = null
+GraphEdit/icons/more = null
+GraphEdit/icons/reset = null
+GraphEdit/icons/snap = null
+GraphEdit/styles/bg = SubResource( 1 )
+GraphNode/colors/title_color = Color( 0, 0.360784, 0.054902, 1 )
+GraphNode/constants/close_offset = 0
+GraphNode/constants/port_offset = 3
+GraphNode/constants/separation = 1
+GraphNode/constants/title_offset = 0
+GraphNode/fonts/title_font = SubResource( 2 )
+GraphNode/icons/close = null
+GraphNode/icons/port = null
+GraphNode/icons/resizer = null
+GraphNode/styles/breakpoint = null
+GraphNode/styles/comment = null
+GraphNode/styles/commentfocus = null
+GraphNode/styles/defaultfocus = SubResource( 3 )
+GraphNode/styles/defaultframe = SubResource( 3 )
+GraphNode/styles/frame = SubResource( 3 )
+GraphNode/styles/position = null
+GraphNode/styles/selectedframe = SubResource( 3 )
+LineEdit/colors/cursor_color = Color( 0.941176, 0.941176, 0.941176, 1 )
+LineEdit/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/selection_color = Color( 0.764706, 0.764706, 0.764706, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = null
+LineEdit/icons/ = null
+LineEdit/styles/focus = SubResource( 4 )
+LineEdit/styles/normal = SubResource( 4 )
+LineEdit/styles/read_only = null
+Panel/styles/panel = SubResource( 5 )
+Panel/styles/panelf = null
+Panel/styles/panelnc = null
+PanelContainer/styles/panel = SubResource( 6 )
+RichTextLabel/colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+RichTextLabel/colors/font_color_selected = Color( 0.490196, 0.490196, 0.490196, 1 )
+RichTextLabel/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+RichTextLabel/colors/selection_color = Color( 0.1, 0.1, 1, 0.8 )
+RichTextLabel/constants/line_separation = 1
+RichTextLabel/constants/shadow_as_outline = 0
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/constants/table_hseparation = 3
+RichTextLabel/constants/table_vseparation = 3
+RichTextLabel/fonts/bold_font = null
+RichTextLabel/fonts/bold_italics_font = null
+RichTextLabel/fonts/italics_font = null
+RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/normal_font = null
+RichTextLabel/styles/focus = SubResource( 7 )
+RichTextLabel/styles/normal = SubResource( 7 )
+WindowDialog/colors/title_color = Color( 0, 0.866667, 0.156863, 1 )
+WindowDialog/constants/close_h_ofs = 18
+WindowDialog/constants/close_v_ofs = 18
+WindowDialog/constants/scaleborder_size = 4
+WindowDialog/constants/title_height = 20
+WindowDialog/fonts/title_font = null
+WindowDialog/icons/close = null
+WindowDialog/icons/close_highlight = null
+WindowDialog/styles/panel = SubResource( 8 )
+_sections_unfolded = [ "Button/colors", "GraphEdit", "GraphEdit/colors", "GraphEdit/constants", "GraphEdit/icons", "GraphEdit/styles", "GraphEdit/styles/bg", "GraphNode/constants", "GraphNode/styles/defaultfocus", "GraphNode/styles/defaultframe", "GraphNode/styles/frame", "GraphNode/styles/selectedframe", "LineEdit/colors", "LineEdit/styles", "LineEdit/styles/focus", "LineEdit/styles/normal", "Panel/styles", "Panel/styles/panel", "PanelContainer/styles", "PanelContainer/styles/panel", "Resource", "RichTextLabel/styles", "RichTextLabel/styles/focus", "WindowDialog/colors", "WindowDialog/constants", "WindowDialog/fonts", "WindowDialog/icons", "WindowDialog/styles/panel", "colors", "constants", "fonts", "icons", "styles" ]
+
+[sub_resource type="CircleShape2D" id=14]
+
+custom_solver_bias = 0.0
+radius = 57.6728
 
 [node name="workspace" type="Control"]
 anchor_left = 0.0
@@ -25,18 +428,376 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="window" parent="CanvasLayer" instance=ExtResource( 1 )]
-margin_left = 1778.0
-margin_top = 962.0
-margin_right = 1913.0
-margin_bottom = 1068.0
+[node name="rich_text_label" type="RichTextLabel" parent="CanvasLayer"]
+self_modulate = Color( 0.384314, 1, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 342.0
+margin_top = 9.0
+margin_right = 980.0
+margin_bottom = 35.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Use the arrow keys to pan across the workspace. Create nodes from the menu on the workspace"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
 
-[node name="TaskGraph" parent="." instance=ExtResource( 2 )]
-margin_left = 2.0
-margin_top = 2.0
-margin_right = 1934.0
-margin_bottom = 1079.0
+[node name="TaskGraph" type="VBoxContainer" parent="."]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 689.0
+margin_bottom = 487.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-_sections_unfolded = [ "Mouse", "Size Flags", "Theme" ]
+alignment = 0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Mouse", "Rect", "Size Flags", "Theme" ]
 
+[node name="Header" type="HBoxContainer" parent="TaskGraph"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1969.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Custom Constants", "Mouse" ]
+
+[node name="FileMenuButton" type="MenuButton" parent="TaskGraph/Header"]
+self_modulate = Color( 0.52549, 1, 0.168627, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 36.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 2 )
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 0
+shortcut = null
+group = null
+text = "File"
+flat = true
+align = 1
+items = [ "New", null, 0, false, false, -1, 0, null, "", false, "Save", null, 0, false, false, 1, 0, null, "", false, "Load", null, 0, false, true, -1, 0, null, "", false ]
+_sections_unfolded = [ "Theme", "Visibility", "custom_colors", "custom_fonts", "custom_fonts/font", "custom_styles" ]
+
+[node name="EditMenuButton" type="MenuButton" parent="TaskGraph/Header"]
+visible = false
+self_modulate = Color( 0.52549, 1, 0.168627, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 40.0
+margin_right = 79.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 2 )
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 0
+shortcut = null
+group = null
+text = "Edit"
+flat = true
+align = 1
+items = [  ]
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="create_task" type="Button" parent="TaskGraph/Header"]
+visible = false
+self_modulate = Color( 0.282353, 1, 0.294118, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 40.0
+margin_right = 202.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 2 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "New TaskGraph Node"
+flat = true
+align = 0
+_sections_unfolded = [ "Visibility", "custom_fonts" ]
+
+[node name="Label" type="Label" parent="TaskGraph/Header"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 40.0
+margin_top = 3.0
+margin_right = 1969.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.580392, 0.721569, 0, 1 )
+text = "TaskGraphs are currently simple ipython shells. ipython3 must be in your path. "
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors", "custom_fonts" ]
+
+[node name="GraphEdit" type="GraphEdit" parent="TaskGraph" groups=[
+"Graphedit",
+]]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 30.0
+margin_right = 1969.0
+margin_bottom = 1207.0
+rect_min_size = Vector2( 0, 300 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 1
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 11
+size_flags_vertical = 11
+theme = SubResource( 13 )
+right_disconnects = false
+scroll_offset = Vector2( -980, -978 )
+snap_distance = 20
+use_snap = true
+zoom = 1.0
+script = ExtResource( 5 )
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "custom_colors", "custom_constants", "custom_styles", "theme" ]
+
+[node name="RightClickMenu" type="PopupMenu" parent="TaskGraph/GraphEdit"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 290.0
+margin_top = 107.0
+margin_right = 398.0
+margin_bottom = 249.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+items = [ "New Task", null, 0, false, true, -1, 0, null, "", false, "New Input", null, 0, false, true, -1, 0, null, "", false, "New Output", null, 0, false, true, -1, 0, null, "", false, "New Notebook", null, 0, false, false, -1, 0, null, "", false, "New Table", null, 0, false, true, -1, 0, null, "", false, "New Terminal", null, 0, false, false, -1, 0, null, "", false ]
+hide_on_state_item_selection = false
+submenu_popup_delay = 0.3
+
+[node name="ErrorDialog" type="AcceptDialog" parent="TaskGraph/GraphEdit"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 83.0
+margin_bottom = 58.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+window_title = "Alert!"
+resizable = false
+dialog_hide_on_ok = true
+
+[node name="SaveDialog" type="FileDialog" parent="TaskGraph/GraphEdit"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 275.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 200, 70 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+window_title = "Save a File"
+resizable = false
+dialog_hide_on_ok = false
+mode_overrides_title = true
+mode = 4
+access = 0
+filters = PoolStringArray( "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data" )
+show_hidden_files = false
+current_dir = "res://"
+current_file = ""
+current_path = "res://"
+
+[node name="LoadDialog" type="FileDialog" parent="TaskGraph/GraphEdit"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 275.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 200, 70 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+window_title = "Open a File"
+resizable = false
+dialog_hide_on_ok = false
+mode_overrides_title = true
+mode = 0
+access = 0
+filters = PoolStringArray( "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data", "*.tres ; Task Graph Data" )
+show_hidden_files = false
+current_dir = "res://"
+current_file = ""
+current_path = "res://"
+
+[node name="FileDialog" type="FileDialog" parent="TaskGraph/GraphEdit"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 275.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 200, 70 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+window_title = "Open a File"
+resizable = false
+dialog_hide_on_ok = false
+mode_overrides_title = true
+mode = 0
+access = 0
+filters = PoolStringArray(  )
+show_hidden_files = false
+current_dir = "res://"
+current_file = ""
+current_path = "res://"
+
+[node name="pallet_2" parent="TaskGraph/GraphEdit" instance=ExtResource( 6 )]
+margin_left = 19.0
+margin_top = 55.0
+margin_right = 92.0
+margin_bottom = 429.0
+theme = SubResource( 12 )
+
+[node name="camera" type="KinematicBody2D" parent="TaskGraph"]
+position = Vector2( 641.264, 356.699 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+motion/sync_to_physics = true
+script = ExtResource( 7 )
+_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear", "Pickable", "Transform", "collision", "motion" ]
+
+[node name="Camera2D" type="Camera2D" parent="TaskGraph/camera"]
+position = Vector2( 0.179749, 2.91113 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.26
+drag_margin_top = 0.26
+drag_margin_right = 0.25
+drag_margin_bottom = 0.25
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+script = ExtResource( 8 )
+_sections_unfolded = [ "Drag Margin", "Limit", "Offset", "Smoothing" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TaskGraph/camera"]
+shape = SubResource( 14 )
+
+[node name="sprite" type="Sprite" parent="TaskGraph/camera"]
+self_modulate = Color( 1, 1, 1, 0.192157 )
+texture = ExtResource( 9 )
+_sections_unfolded = [ "Visibility" ]
+
+[connection signal="button_up" from="TaskGraph/Header/create_task" to="TaskGraph" method="_on_create_task_button_up"]
+[connection signal="mouse_entered" from="TaskGraph/GraphEdit" to="TaskGraph/GraphEdit" method="_on_GraphEdit_mouse_entered"]
+[connection signal="mouse_exited" from="TaskGraph/GraphEdit" to="TaskGraph/GraphEdit" method="_on_GraphEdit_mouse_exited"]

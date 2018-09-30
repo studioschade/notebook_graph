@@ -77,14 +77,14 @@ alignment = 0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Focus", "Mouse", "Visibility" ]
 
-[node name="source" type="TextEdit" parent="." index="0"]
+[node name="source" type="TextEdit" parent="."]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 404.0
-margin_bottom = 138.0
-rect_min_size = Vector2( 0, 138 )
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -95,32 +95,32 @@ size_flags_vertical = 3
 custom_styles/normal = SubResource( 1 )
 text = "blank_cell()	"
 readonly = false
-highlight_current_line = false
+highlight_current_line = true
 syntax_highlighting = true
-show_line_numbers = false
+show_line_numbers = true
 breakpoint_gutter = false
 highlight_all_occurrences = false
-override_selected_font_color = false
-context_menu_enabled = false
-smooth_scrolling = false
+override_selected_font_color = true
+context_menu_enabled = true
+smooth_scrolling = true
 v_scroll_speed = 80.0
 hiding_enabled = 0
 wrap_enabled = true
 caret_block_mode = false
-caret_blink = false
+caret_blink = true
 caret_blink_speed = 0.65
 caret_moving_by_right_click = true
-_sections_unfolded = [ "Caret", "Focus", "Mouse", "Rect", "Size Flags", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles", "custom_styles/focus", "custom_styles/normal" ]
+_sections_unfolded = [ "Caret", "Mouse", "Rect", "custom_constants", "custom_styles/focus", "custom_styles/normal" ]
 
-[node name="outputs" type="RichTextLabel" parent="." index="1"]
+[node name="outputs" type="RichTextLabel" parent="."]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 142.0
+margin_top = 204.0
 margin_right = 404.0
-margin_bottom = 280.0
-rect_min_size = Vector2( 0, 138 )
+margin_bottom = 342.0
+rect_min_size = Vector2( 0, 100 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 focus_mode = 2
@@ -140,7 +140,7 @@ scroll_active = false
 scroll_following = false
 selection_enabled = true
 override_selected_font_color = false
-_sections_unfolded = [ "BBCode", "Focus", "Grow Direction", "Mouse", "Size Flags", "Theme", "Visibility", "custom_constants", "custom_styles" ]
+_sections_unfolded = [ "BBCode", "Focus", "Grow Direction", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_styles" ]
 
 [connection signal="focus_entered" from="source" to="." method="_on_source_focus_entered"]
 [connection signal="text_changed" from="source" to="." method="_on_source_text_changed"]

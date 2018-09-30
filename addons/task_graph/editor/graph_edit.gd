@@ -134,8 +134,8 @@ func new_node_requested(node_type):
 			return
 		_:
 			return
-
-	node.offset = place + scroll_offset
+	node.offset = get_global_mouse_position()
+	#node.offset = place + scroll_offset
 	add_child(node)
 
 	if from and node_type == 2:

@@ -28,9 +28,9 @@ gdscript/warnings/return_value_discarded=false
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
-window/stretch/aspect="expand"
+window/size/width=1280
+window/size/height=720
+window/stretch/aspect="keep_height"
 
 [editor_plugins]
 

@@ -267,7 +267,6 @@ alignment = 0
 _sections_unfolded = [ "Hint", "Mouse", "Rect", "Size Flags", "Theme" ]
 
 [node name="Panel" type="Panel" parent="panel/vbox"]
-editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -503,11 +502,11 @@ action_mode = 0
 enabled_focus_mode = 2
 shortcut = null
 group = SubResource( 7 )
-text = "Syscall"
+text = "Ipython"
 flat = true
 align = 0
-items = [ "Syscall", null, true, 0, null, "Bash", null, false, 1, null, "Ipython", null, false, 2, null, "Jupyter", null, false, 3, null ]
-selected = 0
+items = [ "Syscall", null, true, 0, null, "Bash", null, true, 1, null, "Ipython", null, false, 2, null, "Jupyter", null, false, 3, null ]
+selected = 2
 _sections_unfolded = [ "Hint", "Size Flags", "Visibility", "custom_colors", "custom_fonts", "custom_styles", "group" ]
 
 [node name="clear" type="Button" parent="panel/vbox/io/menu"]
@@ -660,6 +659,7 @@ margin_bottom = 376.0
 focus_mode = 2
 size_flags_vertical = 11
 _sections_unfolded = [ "Anchor", "Focus", "Mouse", "Rect", "Size Flags", "Theme", "custom_constants", "theme" ]
+user_shell = 2
 
 [connection signal="close_request" from="." to="." method="_on_GraphNode_close_request"]
 [connection signal="mouse_entered" from="." to="task" method="_on_graphnode_mouse_entered"]

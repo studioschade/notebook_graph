@@ -1,0 +1,588 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://scenes/tools/graph_panels/terminal_theme.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/primitives/debug_gui.gd" type="Script" id=2]
+[ext_resource path="res://scenes/tools/graph_panels/icons/cross.png" type="Texture" id=3]
+[ext_resource path="res://fonts/big_ui_font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://scenes/tools/graph_panels/icons/downRight.png" type="Texture" id=5]
+[ext_resource path="res://scenes/shadys_elements/box.png" type="Texture" id=6]
+[ext_resource path="res://scenes/shadys_elements/terminal.png" type="Texture" id=7]
+[ext_resource path="res://scenes/tools/graph_panels/pallet_button.gd" type="Script" id=8]
+[ext_resource path="res://scenes/shadys_elements/lock.png" type="Texture" id=9]
+[ext_resource path="res://scenes/shadys_elements/path438.png" type="Texture" id=10]
+[ext_resource path="res://scenes/shadys_elements/table.png" type="Texture" id=11]
+[ext_resource path="res://scenes/shadys_elements/disk_drive.png" type="Texture" id=12]
+[ext_resource path="res://scenes/shadys_elements/connector.png" type="Texture" id=13]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0.25098, 0.0196078, 0.333333 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.00392157, 0.494118, 0, 1 )
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
+
+[sub_resource type="StyleBoxFlat" id=2]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0.25098, 0.0196078, 0.219608 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.00392157, 0.494118, 0, 1 )
+border_blend = true
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
+
+[node name="pallet" type="VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 13.0
+margin_top = 46.0
+margin_right = 83.0
+margin_bottom = 396.0
+grow_horizontal = 2
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+alignment = 0
+_sections_unfolded = [ "Grow Direction", "Rect", "Theme", "custom_constants", "custom_icons" ]
+
+[node name="title" type="PanelContainer" parent="."]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 70.0
+margin_bottom = 22.0
+grow_horizontal = 2
+rect_min_size = Vector2( 50, 16 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "Theme", "Visibility", "custom_fonts", "custom_styles", "custom_styles/panel" ]
+fade_time = 0.25
+
+[node name="tween" type="Tween" parent="title"]
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="title"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 69.0
+margin_bottom = 21.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Rect", "Theme" ]
+
+[node name="close_button" type="TextureRect" parent="title/HBoxContainer"]
+visible = false
+self_modulate = Color( 0.235294, 1, 0.0235294, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 20.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 3 )
+stretch_mode = 3
+_sections_unfolded = [ "Margin", "Rect", "Size Flags", "Theme", "Visibility" ]
+
+[node name="text" type="Label" parent="title/HBoxContainer"]
+modulate = Color( 0.854902, 1, 0.156863, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 39.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 4 )
+text = "Pallet"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Theme", "custom_fonts", "custom_styles" ]
+
+[node name="resize_button" type="TextureRect" parent="title/HBoxContainer"]
+visible = false
+self_modulate = Color( 0.235294, 1, 0.0235294, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 43.0
+margin_right = 63.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 5 )
+stretch_mode = 3
+_sections_unfolded = [ "Margin", "Rect", "Size Flags", "Theme", "Visibility" ]
+
+[node name="button_overlay" type="NinePatchRect" parent="title"]
+visible = false
+modulate = Color( 0.635294, 1, 0.545098, 1 )
+show_behind_parent = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 67.0
+margin_bottom = 21.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 6 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+_sections_unfolded = [ "Axis Stretch", "Mouse", "Patch Margin", "Rect", "Theme", "Visibility" ]
+
+[node name="frame" type="PanelContainer" parent="."]
+light_mask = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 26.0
+margin_right = 70.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 0, 60 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 2 )
+_sections_unfolded = [ "Animation", "Axis Stretch", "Offset", "Patch Margin", "Rect", "Region", "Theme", "Transform", "Visibility", "custom_styles", "custom_styles/panel", "theme" ]
+
+[node name="views" type="TabContainer" parent="frame"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 69.0
+margin_bottom = 323.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/panel = SubResource( 2 )
+tab_align = 1
+tabs_visible = false
+drag_to_rearrange_enabled = false
+_sections_unfolded = [ "Rect", "Theme", "custom_styles" ]
+
+[node name="margin_container" type="Control" parent="frame/views"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = -1.0
+margin_bottom = -1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="terminal" type="TextureRect" parent="frame/views/margin_container"]
+self_modulate = Color( 0.00784314, 1, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 4.0
+margin_top = 5.0
+margin_right = 61.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 7 )
+expand = true
+script = ExtResource( 8 )
+_sections_unfolded = [ "Focus", "Grow Direction", "Margin", "Mouse", "Pause", "Rect", "Script", "Size Flags", "Visibility", "texture" ]
+node_type = 5
+
+[node name="lock" type="TextureRect" parent="frame/views/margin_container/terminal"]
+visible = false
+self_modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 14.0
+margin_top = -5.0
+margin_right = 40.0
+margin_bottom = 33.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Focus", "Mouse", "Pause", "Rect", "Script", "Size Flags", "Visibility", "texture" ]
+
+[node name="label_2" type="Label" parent="frame/views/margin_container/terminal"]
+self_modulate = Color( 0.105882, 1, 0.0313726, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 6.0
+margin_top = 37.0
+margin_right = 54.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+text = "Terminal"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Focus", "Mouse", "Rect", "Visibility", "custom_constants" ]
+
+[node name="notebook" type="TextureRect" parent="frame/views/margin_container"]
+self_modulate = Color( 0.054902, 1, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 14.0
+margin_top = 58.0
+margin_right = -12.0
+margin_bottom = -222.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 1
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 8 )
+_sections_unfolded = [ "Focus", "Grow Direction", "Mouse", "Pause", "Rect", "Script", "Size Flags", "Visibility" ]
+node_type = 3
+
+[node name="lock" type="TextureRect" parent="frame/views/margin_container/notebook"]
+visible = false
+self_modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 11.0
+margin_top = 7.0
+margin_right = 37.0
+margin_bottom = 45.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Focus", "Mouse", "Pause", "Rect", "Script", "Size Flags", "Visibility", "texture" ]
+
+[node name="label" type="Label" parent="frame/views/margin_container/notebook"]
+self_modulate = Color( 0.105882, 1, 0.0313726, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -3.0
+margin_top = 44.0
+margin_right = 45.0
+margin_bottom = 57.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+text = "Notebook"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Focus", "Mouse", "Rect", "Visibility", "custom_constants" ]
+
+[node name="table" type="TextureRect" parent="frame/views/margin_container"]
+self_modulate = Color( 0.00784314, 1, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 122.0
+margin_right = 59.0
+margin_bottom = 169.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 0
+script = ExtResource( 8 )
+_sections_unfolded = [ "Focus", "Grow Direction", "Margin", "Mouse", "Pause", "Rect", "Script", "Size Flags", "Visibility", "texture" ]
+node_type = 4
+
+[node name="lock" type="TextureRect" parent="frame/views/margin_container/table"]
+self_modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 12.0
+margin_top = 3.0
+margin_right = 38.0
+margin_bottom = 41.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Focus", "Mouse", "Pause", "Rect", "Script", "Size Flags", "Visibility", "texture" ]
+
+[node name="label_2" type="Label" parent="frame/views/margin_container/table"]
+self_modulate = Color( 0.105882, 1, 0.0313726, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 2.0
+margin_top = 46.0
+margin_right = 50.0
+margin_bottom = 59.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+text = "Table"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Focus", "Mouse", "Rect", "Visibility", "custom_constants" ]
+
+[node name="input" type="TextureRect" parent="frame/views/margin_container"]
+self_modulate = Color( 0.00784314, 1, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 17.0
+margin_top = 189.0
+margin_right = 54.0
+margin_bottom = 238.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 0
+script = ExtResource( 8 )
+_sections_unfolded = [ "Focus", "Grow Direction", "Margin", "Mouse", "Pause", "Rect", "Script", "Size Flags", "Visibility", "texture" ]
+node_type = 0
+
+[node name="lock" type="TextureRect" parent="frame/views/margin_container/input"]
+self_modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 6.0
+margin_top = 7.0
+margin_right = 32.0
+margin_bottom = 45.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Focus", "Pause", "Rect", "Script", "Size Flags", "Visibility", "texture" ]
+
+[node name="label_2" type="Label" parent="frame/views/margin_container/input"]
+self_modulate = Color( 0.105882, 1, 0.0313726, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -3.0
+margin_top = 49.0
+margin_right = 45.0
+margin_bottom = 62.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+text = "File"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Focus", "Mouse", "Rect", "Visibility", "custom_constants" ]
+
+[node name="header_icon" type="TextureRect" parent="frame/views/margin_container"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 26.0
+margin_top = 71.0
+margin_right = 52.0
+margin_bottom = 93.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 5
+_sections_unfolded = [ "Focus", "Grow Direction", "Margin", "Mouse", "Pause", "Rect", "Script", "Size Flags", "Visibility", "texture" ]
+
+[connection signal="gui_input" from="title" to="title" method="_on_drag_bar_gui_input"]
+[connection signal="tween_completed" from="title/tween" to="title" method="_on_tween_completed"]
+[connection signal="gui_input" from="title/HBoxContainer/close_button" to="title" method="_on_close_button_gui_input"]
+[connection signal="gui_input" from="title/HBoxContainer/resize_button" to="title" method="_on_resize_button_gui_input"]
+[connection signal="gui_input" from="frame/views/margin_container/terminal" to="frame/views/margin_container/terminal" method="_on_terminal_gui_input"]
+[connection signal="mouse_entered" from="frame/views/margin_container/terminal" to="frame/views/margin_container/terminal" method="_on_terminal_mouse_entered"]
+[connection signal="mouse_exited" from="frame/views/margin_container/terminal" to="frame/views/margin_container/terminal" method="_on_terminal_mouse_exited"]
+[connection signal="gui_input" from="frame/views/margin_container/notebook" to="frame/views/margin_container/notebook" method="_on_terminal_gui_input"]
+[connection signal="mouse_entered" from="frame/views/margin_container/notebook" to="frame/views/margin_container/notebook" method="_on_terminal_mouse_entered"]
+[connection signal="mouse_exited" from="frame/views/margin_container/notebook" to="frame/views/margin_container/notebook" method="_on_terminal_mouse_exited"]
+[connection signal="gui_input" from="frame/views/margin_container/table" to="frame/views/margin_container/table" method="_on_terminal_gui_input"]
+[connection signal="mouse_entered" from="frame/views/margin_container/table" to="frame/views/margin_container/table" method="_on_terminal_mouse_entered"]
+[connection signal="mouse_exited" from="frame/views/margin_container/table" to="frame/views/margin_container/table" method="_on_terminal_mouse_exited"]
+[connection signal="gui_input" from="frame/views/margin_container/input" to="frame/views/margin_container/input" method="_on_terminal_gui_input"]
+[connection signal="mouse_entered" from="frame/views/margin_container/input" to="frame/views/margin_container/input" method="_on_terminal_mouse_entered"]
+[connection signal="mouse_exited" from="frame/views/margin_container/input" to="frame/views/margin_container/input" method="_on_terminal_mouse_exited"]

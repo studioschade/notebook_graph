@@ -1,14 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://addons/task_graph/editor/task_graph_editor.gd" type="Script" id=1]
 [ext_resource path="res://fonts/big_ui_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/tools/graph_panels/terminal_theme.tres" type="Theme" id=3]
 [ext_resource path="res://addons/task_graph/editor/graph_edit.gd" type="Script" id=4]
-[ext_resource path="res://scenes/tools/rigid_camera.gd" type="Script" id=5]
-[ext_resource path="res://addons/task_graph/editor/Camera2D.gd" type="Script" id=6]
-[ext_resource path="res://scenes/shadys_elements/selector.png" type="Texture" id=7]
+[ext_resource path="res://scenes/tools/graph_panels/tasknode/terminal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/tools/rigid_camera.gd" type="Script" id=6]
+[ext_resource path="res://addons/task_graph/editor/Camera2D.gd" type="Script" id=7]
+[ext_resource path="res://scenes/shadys_elements/selector.png" type="Texture" id=8]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=14]
 
 custom_solver_bias = 0.0
 radius = 57.6728
@@ -155,13 +156,12 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 7.0
-margin_top = 13.0
-margin_right = 1927.0
-margin_bottom = 1063.0
+margin_top = 30.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 rect_min_size = Vector2( 0, 300 )
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
+rect_clip_content = false
 focus_mode = 1
 mouse_filter = 1
 mouse_default_cursor_shape = 0
@@ -169,12 +169,12 @@ size_flags_horizontal = 11
 size_flags_vertical = 11
 theme = ExtResource( 3 )
 right_disconnects = false
-scroll_offset = Vector2( -960, -540 )
+scroll_offset = Vector2( -980, -978 )
 snap_distance = 20
 use_snap = true
 zoom = 1.0
 script = ExtResource( 4 )
-_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "custom_colors", "custom_constants", "custom_icons", "custom_styles", "theme" ]
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "custom_colors", "custom_constants", "custom_styles", "theme" ]
 
 [node name="RightClickMenu" type="PopupMenu" parent="GraphEdit"]
 visible = false
@@ -301,14 +301,22 @@ current_dir = "res://"
 current_file = ""
 current_path = "res://"
 
+[node name="graphnode" parent="GraphEdit" instance=ExtResource( 5 )]
+margin_left = 980.0
+margin_top = 978.0
+margin_right = 1512.0
+margin_bottom = 1356.0
+mouse_filter = 1
+
 [node name="camera" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 963.36, 540.754 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 motion/sync_to_physics = true
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear", "Pickable", "Transform", "collision", "motion" ]
 
 [node name="Camera2D" type="Camera2D" parent="camera"]
@@ -328,22 +336,22 @@ smoothing_enabled = true
 smoothing_speed = 5.0
 offset_v = 0.0
 offset_h = 0.0
-drag_margin_left = 0.0
-drag_margin_top = 0.0
-drag_margin_right = 0.0
-drag_margin_bottom = 0.0
+drag_margin_left = 0.4
+drag_margin_top = 0.41
+drag_margin_right = 0.36
+drag_margin_bottom = 0.39
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = ExtResource( 6 )
-_sections_unfolded = [ "Drag Margin", "Limit", "Offset", "Smoothing" ]
+script = ExtResource( 7 )
+_sections_unfolded = [ "Limit", "Offset", "Smoothing" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="camera"]
-shape = SubResource( 1 )
+shape = SubResource( 14 )
 
 [node name="sprite" type="Sprite" parent="camera"]
-self_modulate = Color( 1, 1, 1, 0.176471 )
-texture = ExtResource( 7 )
+self_modulate = Color( 1, 1, 1, 0.0823529 )
+texture = ExtResource( 8 )
 _sections_unfolded = [ "Visibility" ]
 
 [connection signal="button_up" from="Header/create_task" to="." method="_on_create_task_button_up"]

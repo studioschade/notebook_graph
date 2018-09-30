@@ -105,7 +105,7 @@ tab_align = 1
 tabs_visible = false
 drag_to_rearrange_enabled = false
 script = ExtResource( 1 )
-_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "script" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Mouse", "Rect", "script" ]
 default_notebook = "res://notebooks/Capstone - Saddle Up.ipynb"
 
 [node name="Notebook" type="ScrollContainer" parent="."]
