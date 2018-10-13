@@ -1,6 +1,7 @@
 # Graph-based Jupyter notebook frontend for Godot Game Engine
 
 ## Computing at Speed of Human:
+![demo](docs/demo.png)
 * Creators need immediate feedback: Modify functionality by manipulating the visualization or live edit the source code to see the results instantly.
 * Solve bigger problems: Abstract and organize arbitrarily large chunks of functionality into graphnode networks.
 * Build your toolbox: Customize a toolbox of nodes to perform domain-specific computation. Create automated workflows, monitoring dashboards, data analysis or... anything really. 
@@ -11,6 +12,8 @@
 * Use a graph structure to design and manage a network of nodes and control flows.
 * Design models of systems and simulate changes. 
 * Construct automated data collection and analysis pipelines that have high levels of flexability and debugability.
+
+![demo](docs/jupyter_notebook.png)
 
 ### Creators Need Immediate Feedback
 * (Life is too short for static UML diagrams). Diagram your architure and hit run. 
@@ -61,4 +64,5 @@ The goal of this Jupyter Frontend is for the workflow system, but other uses mig
 * A Jupyter kernel must separately installed on a linux system (try anaconda to install it). Windows support is possible, do it! 
 * Notebooks can only be processed with jupyter-nbconvert as one-shot on the local system.  Help implementing the full network API is appreciated. 
 
+![demo](docs/ipython_shells.png)
 - =a tool by al shady =-
