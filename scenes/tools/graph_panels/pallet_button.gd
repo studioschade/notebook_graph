@@ -6,7 +6,6 @@ extends TextureRect
 enum {SYSCALL,BASH,IPYTHON,JUPYTER}
 export(int, "Task", "Input", "Output", "Notebook", "Table", "Terminal", "Task Graph", "Constant") var node_type = "Notebook"
 
-
 enum Type{
 	TASK_NODE
 	INPUT_NODE
@@ -46,5 +45,8 @@ func _on_terminal_gui_input(event):
 			if event.pressed:
 				self.set_self_modulate(Color("ff6c00"))
 			else:
-				get_tree().get_nodes_in_group("Graphedit")[0].new_node_requested(node_type)
+				if get_tree().get_nodes_in_group("Graphedit"):
+					get_tree().get_nodes_in_group("Graphedit")[0].new_node_requested(node_type)
+				else:
+					print("Can't get requested node")
 				self.set_self_modulate(Color("00ff04"))

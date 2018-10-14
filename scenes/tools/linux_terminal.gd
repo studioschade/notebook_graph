@@ -3,53 +3,55 @@ extends Control
 enum {TERMINAL}
 var task_type = TERMINAL
 
+##"r'(\x9B|\x1B\[)[0-?]*[ -/]*[@-~]'"
 
 
-
-enum {SYSCALL,BASH,IPYTHON,JUPYTER}
-export var user_shell = JUPYTER
+enum {SH,BASH,IPYTHON,JUPYTER}
+export var user_shell = IPYTHON
 
 # Example:" shell[BASH][FLAGS] =
 var shell= {
-	SYSCALL: {
+	SH: {
 		"path": null,
 		"flags": []},
 	BASH: {
 		"path":"/bin/bash",
 		"flags": ["-c"]},
 	IPYTHON: {
-		"path": "ipython3",
-		#"path": "/home/shady/anaconda3/bin/ipython3",
+		"path": "/home/shady/.local/bin/ipython3",
+		#"path": "ipython3",
 		"flags": [
 			"--no-confirm-exit",
 			#"--automagic",
-			"--no-pdb",
-			"--no-pprint",
-			"--simple-prompt",
-			"--no-color-info",
+			#"--debug",
+			"--pdb",
+			#"--no-pprint",
+			#"--simple-prompt",
+			#"--no-color-info",
 			#"--quiet",
 			"--no-term-title",
 			#"--profile-dir=./.ipython",
-			"--TerminalInteractiveShell.display_page=True"]},
+			"--profile=taskgraph",
+			#"--TerminalInteractiveShell.display_page=True",
+			"-c"]
+		},
 	JUPYTER: {
 		"path": null,
 		"flags": []}
 		}
 
-
 var title = "Command Terminal"
-var last_input = ''
+var last_command = ''
 var last_output = ''
-
 var command_output = []
 var pid
+
 #This variable is set with the last input from a taskgraph node
 var input setget set_input, get_input
 var output setget set_output, get_output
 
 func _ready():
 	set_process_input(false)
-	#set_process_unhandled_key_input(true)
 	if "task_node" in get_parent():
 		get_parent().task_node = self
 	else:
@@ -58,28 +60,16 @@ func _ready():
 func get_input():
 	return input
 
+func get_output():
+	return output
+
 func set_input(new_input):
 	if not new_input:
 		print("Got a null value!!")
 		return
-	input = new_input
-	if input != "":
-		var terminal_result = execute_task(input)
-		last_input = input
-		if typeof(terminal_result) == TYPE_ARRAY:
-			prints("result was an array", terminal_result)
-			for result in terminal_result:
-				prints(name,' ', result)
-				#add_item_to_chat(result)
-			set_output(terminal_result)
-		elif typeof(terminal_result) == TYPE_STRING:
-			set_output(terminal_result)
-		elif typeof(terminal_result) == TYPE_DICTIONARY:
-			prints("result was a dictionary", terminal_result)
-			for entry in terminal_result:
-				set_output(str(entry))
-		else:
-			prints("Got a weird output",terminal_result)
+	if new_input == "":
+		return
+	input=new_input
 
 func set_output(new_value):
 	output = new_value
@@ -87,32 +77,46 @@ func set_output(new_value):
 		get_parent().set_output(output)
 	else:
 		print("OOPS! Parent node has no set_output method!!!")
-	prints("output type is" , typeof(new_value))
-	add_item_to_terminal("$ " + input)
-	add_item_to_terminal(output)
 
-func get_output():
-	return output
+func run_command(command):
+	var command_result
+	match(user_shell):
+		SH:
+			command_result = run_shell_command(command)
+		IPYTHON:
+			command_result = run_ipython_command(command)
+		JUPYTER:
+			command_result = run_jupyter_cell(command)
+	if command_result:
+		evaluate_command_result(command_result)
 
-func execute_task(user_input):
-	if not user_input:
-		print("Invalid command entered!")
-		return false
-	var user_flags = user_input.split(" ")
-	var user_command = '-c ' + user_input
-	#var user_command = '-c !' + user_input
-	user_flags.remove(0)
-	#print("user command", user_command)
-	var shell_path = shell[user_shell]["path"]
-	var shell_flags = []
-	#if not shell[user_shell]["flags"].empty():
-	shell_flags = shell[user_shell]["flags"]
-	if user_shell == JUPYTER:
-		return $python.execute_command(user_input)
+func run_shell_command(user_input):
+	var command
+	var flags
+	if " " in user_input:
+		flags = user_input.split(" ")
 	else:
-		return run_command(user_command, user_flags, shell_path, shell_flags)
+		flags = PoolStringArray([])
+	if flags.size()<2:
+		pid = OS.execute(user_input, flags , true, command_output)
+	else:
+		command = flags.pop_front()
+		pid = OS.execute(command, flags , true, command_output)
+	return command_output[0]
 
-func run_command(user_command, user_flags=[""], shell_path = null, shell_flags = []):
+# Format the commands what the users shell.
+func run_ipython_command(user_input):
+	var shell_path = shell[user_shell]["path"]
+	var flags = shell[user_shell]["flags"].duplicate()
+	user_input = "\'{input}\'".format({'input': user_input})
+	flags.append(user_input)
+	pid = OS.execute(shell_path, flags , true, command_output)
+	return command_output[0]
+
+func run_jupyter_cell(user_input):
+	return $python.execute_command(user_input)
+
+func run_command_old(user_command, user_flags=[""], shell_path = null, shell_flags = []):
 	#pid = OS.execute('ls', ['-l', '/tmp'], true, output)
 	if not shell[user_shell]["path"]: #Run as system call (NO ERROR CHECKING, RISKY)
 		pid = OS.execute(user_command, user_flags, true, command_output)
@@ -123,20 +127,64 @@ func run_command(user_command, user_flags=[""], shell_path = null, shell_flags =
 		prints("full options", full_options)
 	return command_output[0]
 
+func _gui_input(event):
+	if event.is_action_released("mouse_zoom_in"):
+		accept_event()
+	elif event.is_action_released("mouse_zoom_out"):
+		accept_event()
+	accept_event()
 
-##### UX Stuff ######
+func _on_type_item_selected(ID):
+	ID = int(ID)
+	user_shell = ID
+	match(ID):
+		SH:
+			add_item_to_terminal("Switched to basic POSIX shell. ex: sh -c 'user input'")
+		IPYTHON:
+			add_item_to_terminal("Switched to Ipython shell by doing system calls. ex: ipython -c 'user input'")
+		JUPYTER:
+			add_item_to_terminal("Switched to native Jupyter shell using Godot-Python")
+
+
+func evaluate_command_result(terminal_result):
+	add_item_to_terminal("$ " + last_command + "\n")
+	match typeof(terminal_result):
+		TYPE_ARRAY:
+			prints("result was an array", terminal_result)
+			for result in terminal_result:
+				add_item_to_terminal(result)
+		TYPE_STRING:
+			add_item_to_terminal(terminal_result)
+		TYPE_DICTIONARY:
+			prints("result was a dictionary", terminal_result)
+			for entry in terminal_result:
+				add_item_to_terminal(terminal_result[entry])
+		_:
+			add_item_to_terminal("Got a unknown result type!!!")
+			prints("Got an unknown output", terminal_result)
+			return
+	set_output(terminal_result)
 
 func add_item_to_terminal(console_text):
 	var pre = "[color=lime]"
 	var post = "[/color]"
 	prints(console_text)
-	$vbox/margin/output.set_bbcode($vbox/margin/output.get_bbcode() + pre + console_text + post + "\n")
-	#$vbox/margin/output.set_text($vbox/margin/output.get_text() + pre + String(console_text) + post + "\n")
+	var terminal_string = "{output}".format({'output':String(console_text)})
+	$vbox/margin/output.set_bbcode($vbox/margin/output.get_bbcode() + pre + terminal_string + post + "\n")
+	#$vbox/margin/output.set_text($vbox/margin/output.get_text() + String(console_text))
 
-func _on_input_text_entered(text):
-	if text:
-		set_input(text)
-	$vbox/input.clear()
+### Input Prompt Stuff ###
+func _on_prompt_text_entered(command):
+	if command:
+		run_command(command)
+		$vbox/prompt.clear()
+
+func _on_prompt_gui_input(event):
+	if event is InputEventKey:
+		if event.scancode == KEY_UP:
+			$vbox/prompt.text = last_command
+			$vbox/prompt.grab_focus()
+### Input Prompt Stuff ###
 
 func _on_input_focus_entered():
 	set_process_input(true)
@@ -145,6 +193,12 @@ func _on_input_focus_entered():
 func _on_input_focus_exited():
 	set_process_input(false)
 	set_process_unhandled_key_input(true)
+
+func _on_graphnode_mouse_entered():
+	pass # Replace with function body.
+
+func _on_graphnode_mouse_exited():
+	pass # Replace with function body.
 
 #func find_command_in_path(command_name):
 #	for command in path:
@@ -160,37 +214,3 @@ func _on_input_focus_exited():
 #	else:
 #		print("An invalid directory is in the path.")
 
-func _on_input_gui_input(event):
-	if event is InputEventKey:
-		if event.scancode == KEY_UP:
-			$vbox/input.text = last_input
-			$vbox/input.grab_focus()
-
-
-func _gui_input(event):
-	#prints(event)
-	if event.is_action_released("mouse_zoom_in"):
-		#print("zoom graphnode")
-		accept_event()
-	elif event.is_action_released("mouse_zoom_out"):
-		#print("zoom graphnode")
-		accept_event()
-	accept_event()
-
-func _on_graphnode_mouse_entered():
-	pass # Replace with function body.
-
-func _on_graphnode_mouse_exited():
-	pass # Replace with function body.
-
-
-func _on_type_item_selected(ID):
-	ID = int(ID)
-	user_shell = ID
-	match(ID):
-		BASH:
-			add_item_to_terminal("Switched to Bash shell by doing system calls. ex: bash -c 'user input'")
-		IPYTHON:
-			add_item_to_terminal("Switched to Ipython shell by doing system calls. ex: ipython -c 'user input'")
-		JUPYTER:
-			add_item_to_terminal("Switched to native Jupyter shell using Godot-Python")

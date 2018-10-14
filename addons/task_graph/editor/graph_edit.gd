@@ -4,7 +4,7 @@ const TaskGraphData = preload("res://addons/task_graph/task_graph_data.gd")
 const TaskNode = preload("res://addons/task_graph/editor/task_node.tscn")
 const InputNode = preload("res://addons/task_graph/editor/input_node.tscn")
 const OutputNode = preload("res://addons/task_graph/editor/output_node.tscn")
-const NotebookNode = preload("res://scenes/tools/graph_panels/notebook_graphnode.tscn")
+const NotebookNode = preload("res://scenes/tools/graph_panels/tasknode/simple_notebook.tscn")
 #const TerminalNode = preload("res://scenes/tools/graph_panels/terminal_graphnode.tscn")
 const TerminalNode = preload("res://scenes/tools/graph_panels/tasknode/terminal.tscn")
 

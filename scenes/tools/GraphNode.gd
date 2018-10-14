@@ -18,6 +18,7 @@ var task_in_progress = false
 
 var input = null
 var input_node = null
+
 onready var input_readout = get_node("panel/vbox/io/input/readout")
 onready var output_readout = get_node("panel/vbox/io/output/readout")
 

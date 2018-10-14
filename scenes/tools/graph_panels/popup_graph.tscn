@@ -6,7 +6,7 @@
 [ext_resource path="res://fonts/NotoSansUI_Bold.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=5]
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=1]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -35,7 +35,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Content Margin" ]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=2]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -64,7 +64,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width", "Content Margin", "Corner Radius", "Expand Margin", "Shadow" ]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 
 size = 12
 outline_size = 0
@@ -74,7 +74,7 @@ use_filter = false
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=4]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -103,7 +103,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width", "Corner Radius", "Expand Margin" ]
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=5]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -132,7 +132,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width", "Corner Radius", "Expand Margin" ]
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=6]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -161,7 +161,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width", "Expand Margin", "Shadow" ]
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=7]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -190,7 +190,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width", "Expand Margin" ]
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=8]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -219,7 +219,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width", "Content Margin", "Corner Radius" ]
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=9]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -248,7 +248,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width", "Corner Radius", "Expand Margin" ]
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=10]
 
 size = 12
 outline_size = 0
@@ -261,7 +261,7 @@ _sections_unfolded = [ "Extra Spacing", "Font", "Settings", "font_data" ]
 [sub_resource type="Theme" id=11]
 
 resource_local_to_scene = true
-default_font = SubResource( 8 )
+default_font = SubResource( 10 )
 Button/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 Button/colors/font_color_disabled = Color( 0.898039, 0.898039, 0.898039, 0.313726 )
 Button/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
@@ -282,24 +282,24 @@ GraphEdit/icons/minus = null
 GraphEdit/icons/more = null
 GraphEdit/icons/reset = null
 GraphEdit/icons/snap = null
-GraphEdit/styles/bg = SubResource( 1 )
+GraphEdit/styles/bg = SubResource( 2 )
 GraphNode/colors/title_color = Color( 0, 0.360784, 0.054902, 1 )
 GraphNode/constants/close_offset = 0
 GraphNode/constants/port_offset = 3
 GraphNode/constants/separation = 1
 GraphNode/constants/title_offset = 0
-GraphNode/fonts/title_font = SubResource( 2 )
+GraphNode/fonts/title_font = SubResource( 3 )
 GraphNode/icons/close = null
 GraphNode/icons/port = null
 GraphNode/icons/resizer = null
 GraphNode/styles/breakpoint = null
 GraphNode/styles/comment = null
 GraphNode/styles/commentfocus = null
-GraphNode/styles/defaultfocus = SubResource( 3 )
-GraphNode/styles/defaultframe = SubResource( 3 )
-GraphNode/styles/frame = SubResource( 3 )
+GraphNode/styles/defaultfocus = SubResource( 4 )
+GraphNode/styles/defaultframe = SubResource( 4 )
+GraphNode/styles/frame = SubResource( 4 )
 GraphNode/styles/position = null
-GraphNode/styles/selectedframe = SubResource( 3 )
+GraphNode/styles/selectedframe = SubResource( 4 )
 LineEdit/colors/cursor_color = Color( 0.941176, 0.941176, 0.941176, 1 )
 LineEdit/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
@@ -307,13 +307,13 @@ LineEdit/colors/selection_color = Color( 0.764706, 0.764706, 0.764706, 1 )
 LineEdit/constants/minimum_spaces = 12
 LineEdit/fonts/font = null
 LineEdit/icons/ = null
-LineEdit/styles/focus = SubResource( 4 )
-LineEdit/styles/normal = SubResource( 4 )
+LineEdit/styles/focus = SubResource( 5 )
+LineEdit/styles/normal = SubResource( 5 )
 LineEdit/styles/read_only = null
-Panel/styles/panel = SubResource( 5 )
+Panel/styles/panel = SubResource( 6 )
 Panel/styles/panelf = null
 Panel/styles/panelnc = null
-PanelContainer/styles/panel = SubResource( 6 )
+PanelContainer/styles/panel = SubResource( 7 )
 RichTextLabel/colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 RichTextLabel/colors/font_color_selected = Color( 0.490196, 0.490196, 0.490196, 1 )
 RichTextLabel/colors/font_color_shadow = Color( 0, 0, 0, 0 )
@@ -329,8 +329,8 @@ RichTextLabel/fonts/bold_italics_font = null
 RichTextLabel/fonts/italics_font = null
 RichTextLabel/fonts/mono_font = null
 RichTextLabel/fonts/normal_font = null
-RichTextLabel/styles/focus = SubResource( 9 )
-RichTextLabel/styles/normal = SubResource( 9 )
+RichTextLabel/styles/focus = SubResource( 8 )
+RichTextLabel/styles/normal = SubResource( 8 )
 WindowDialog/colors/title_color = Color( 0, 0.866667, 0.156863, 1 )
 WindowDialog/constants/close_h_ofs = 18
 WindowDialog/constants/close_v_ofs = 18
@@ -339,7 +339,7 @@ WindowDialog/constants/title_height = 20
 WindowDialog/fonts/title_font = null
 WindowDialog/icons/close = null
 WindowDialog/icons/close_highlight = null
-WindowDialog/styles/panel = SubResource( 7 )
+WindowDialog/styles/panel = SubResource( 9 )
 _sections_unfolded = [ "Button", "Button/colors", "GraphEdit", "GraphEdit/colors", "GraphEdit/styles", "GraphEdit/styles/bg", "GraphNode", "GraphNode/styles/defaultfocus", "GraphNode/styles/defaultframe", "GraphNode/styles/frame", "GraphNode/styles/selectedframe", "LineEdit", "LineEdit/styles", "LineEdit/styles/focus", "LineEdit/styles/normal", "Panel", "Panel/styles", "Panel/styles/panel", "PanelContainer", "PanelContainer/styles", "PanelContainer/styles/panel", "Resource", "RichTextLabel", "RichTextLabel/styles", "RichTextLabel/styles/focus", "WindowDialog/styles/panel", "colors", "constants", "default_font", "fonts", "icons", "styles" ]
 
 [sub_resource type="ButtonGroup" id=12]
@@ -364,7 +364,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 1 )
-custom_styles/panel = SubResource( 10 )
+custom_styles/panel = SubResource( 1 )
 custom_colors/title_color = Color( 0, 0, 0, 1 )
 popup_exclusive = true
 window_title = "GraphBook Node"
@@ -381,137 +381,39 @@ margin_bottom = 317.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource( 11 )
-_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles", "custom_styles/panel", "theme" ]
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles", "custom_styles/panel", "theme" ]
 
 [node name="vbox" parent="notebook_panel" index="0"]
 margin_right = 503.0
 margin_bottom = 366.0
 
-[node name="Graph" parent="notebook_panel/vbox" index="0"]
+[node name="io" parent="notebook_panel/vbox" index="0"]
 margin_right = 502.0
 
-[node name="io" parent="notebook_panel/vbox/Graph" index="0"]
+[node name="io" parent="notebook_panel/vbox/io" index="0"]
 margin_right = 502.0
 
-[node name="Self" parent="notebook_panel/vbox/Graph/io/self_panel" index="0"]
-items = [ "File", null, 0, false, false, 0, 0, null, "", false, "Nodepath", null, 0, false, false, -1, 0, null, "", false, "Input Port", null, 0, false, false, -1, 0, null, "", false, "Item 3", null, 0, false, false, -1, 0, null, "", false, "RPC Call", null, 0, false, false, -1, 0, null, "", false ]
-
-[node name="value" parent="notebook_panel/vbox/Graph/io/self_panel" index="1"]
-margin_bottom = 39.0
-clear_button_enabled = false
-
-[node name="Self" parent="notebook_panel/vbox/Graph/io/self_panel2" index="0"]
-items = [ "File", null, 0, false, false, 0, 0, null, "", false, "Nodepath", null, 0, false, false, -1, 0, null, "", false, "Input Port", null, 0, false, false, -1, 0, null, "", false, "Item 3", null, 0, false, false, -1, 0, null, "", false, "RPC Call", null, 0, false, false, -1, 0, null, "", false ]
-
-[node name="value" parent="notebook_panel/vbox/Graph/io/self_panel2" index="1"]
-clear_button_enabled = false
-
-[node name="description" parent="notebook_panel/vbox/Graph/io/self_panel2" index="2"]
-clear_button_enabled = false
-
-[node name="Infopanel" parent="notebook_panel/vbox/Graph/io" index="2"]
+[node name="Infopanel" parent="notebook_panel/vbox/io/io" index="2"]
 margin_right = 398.0
 
-[node name="TextureRect" parent="notebook_panel/vbox/Graph/io/Infopanel" index="0"]
+[node name="TextureRect" parent="notebook_panel/vbox/io/io/Infopanel" index="0"]
 margin_left = 122.0
 margin_right = 172.0
 
-[node name="output_panel" parent="notebook_panel/vbox/Graph/io" index="3"]
+[node name="output_panel" parent="notebook_panel/vbox/io/io" index="3"]
 margin_left = 402.0
 margin_right = 502.0
-margin_bottom = 39.0
-
-[node name="Output" parent="notebook_panel/vbox/Graph/io/output_panel" index="0"]
-items = [ "Constant", null, 0, false, false, 0, 0, null, "", false, "Terminal", null, 0, false, false, -1, 0, null, "", false, "Table", null, 0, false, false, -1, 0, null, "", false ]
-
-[node name="value" parent="notebook_panel/vbox/Graph/io/output_panel" index="1"]
-margin_bottom = 39.0
-clear_button_enabled = false
 
 [node name="menu" parent="notebook_panel/vbox" index="2"]
 margin_right = 502.0
 
-[node name="file" parent="notebook_panel/vbox/menu" index="0"]
-margin_right = 46.0
-items = [ "Load Notebook", null, 1, true, true, 0, 0, null, "", false, "Save Notebook As", null, 0, false, false, 1, 0, null, "", false ]
-
-[node name="VSeparator3" parent="notebook_panel/vbox/menu" index="1"]
-margin_left = 50.0
-margin_right = 54.0
-
-[node name="add" parent="notebook_panel/vbox/menu" index="2"]
-margin_left = 58.0
-margin_right = 110.0
-
-[node name="delete" parent="notebook_panel/vbox/menu" index="3"]
-margin_left = 114.0
-margin_right = 184.0
-
-[node name="VSeparator" parent="notebook_panel/vbox/menu" index="4"]
-margin_left = 188.0
-margin_right = 192.0
-
-[node name="execute" parent="notebook_panel/vbox/menu" index="5"]
-margin_left = 196.0
-margin_right = 248.0
-
-[node name="clear" parent="notebook_panel/vbox/menu" index="6"]
-margin_left = 252.0
-margin_right = 316.0
-
-[node name="VSeparator2" parent="notebook_panel/vbox/menu" index="7"]
-margin_left = 320.0
-margin_right = 324.0
-
-[node name="current_cell" parent="notebook_panel/vbox/menu" index="8"]
-margin_left = 328.0
-margin_top = 7.0
-margin_right = 391.0
-margin_bottom = 20.0
-
-[node name="current_cell_type" parent="notebook_panel/vbox/menu" index="9"]
-margin_left = 395.0
-margin_top = 7.0
-margin_right = 495.0
-margin_bottom = 20.0
-
 [node name="type" parent="notebook_panel/vbox/menu" index="10"]
 group = SubResource( 12 )
-items = [ "Code", null, 0, false, false, 0, 0, null, "", false, "Markdown", null, 0, false, false, 1, 0, null, "", false, "Raw", null, 0, false, true, 2, 0, null, "", false ]
 
 [node name="notebook" parent="notebook_panel/vbox" index="3"]
+visible = true
 margin_right = 502.0
 margin_bottom = 365.0
-
-[node name="vbox" parent="notebook_panel/vbox/notebook/Notebook" index="0"]
-margin_right = 500.0
-margin_bottom = 277.0
-
-[node name="cells" parent="notebook_panel/vbox/notebook/Notebook/vbox" index="0"]
-margin_right = 500.0
-margin_bottom = 277.0
-
-[node name="HSeparator" parent="notebook_panel/vbox/notebook/Notebook/vbox/cells" index="0"]
-margin_top = 136.0
-margin_right = 500.0
-margin_bottom = 140.0
-
-[node name="Settings" parent="notebook_panel/vbox/notebook" index="1"]
-margin_top = 22.0
-
-[node name="cell" parent="notebook_panel/vbox/notebook/Settings" index="0"]
-margin_right = 500.0
-margin_bottom = 256.0
-
-[node name="path" parent="notebook_panel/vbox/notebook/Settings/cell/MarginContainer/notebook_path" index="0"]
-clear_button_enabled = false
-
-[node name="path" parent="notebook_panel/vbox/notebook/Settings/cell/MarginContainer/jupyter_path" index="0"]
-clear_button_enabled = false
-
-[node name="web_api" parent="notebook_panel/vbox/notebook/Settings" index="1"]
-margin_right = 500.0
-margin_bottom = 256.0
 
 [connection signal="resized" from="." to="." method="_on_WindowDialog_resized"]
 

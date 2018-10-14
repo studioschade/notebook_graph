@@ -228,7 +228,6 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "0", "1", "Material", "Mouse", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_icons", "custom_styles", "custom_styles/defaultframe", "custom_styles/frame" ]
 
 [node name="panel" type="PanelContainer" parent="."]
-editor/display_folded = true
 self_modulate = Color( 0.156863, 0.180392, 0.156863, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -251,7 +250,6 @@ theme = ExtResource( 2 )
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles", "custom_styles/panel", "theme" ]
 
 [node name="vbox" type="VBoxContainer" parent="panel"]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

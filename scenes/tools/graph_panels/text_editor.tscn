@@ -1,19 +1,21 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
-[sub_resource type="StyleBoxFlat" id=7]
+[ext_resource path="res://scenes/tools/graph_panels/notebook_cell.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
-bg_color = Color( 0.054902, 1, 0, 1 )
+bg_color = Color( 0, 0, 0, 0.819608 )
 draw_center = true
-border_width_left = 0
-border_width_top = 1
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.0980392, 0.796078, 0, 1 )
-border_blend = false
+border_width_left = 1
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color( 0, 0.403922, 0.00784314, 1 )
+border_blend = true
 corner_radius_top_left = 0
 corner_radius_top_right = 0
 corner_radius_bottom_right = 0
@@ -29,40 +31,120 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width" ]
 
-[node name="TextEdit" type="TextEdit"]
+[sub_resource type="StyleBoxFlat" id=2]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0, 0.14902, 0.0392157, 0.898039 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.239216, 1, 0, 0.854902 )
+border_blend = false
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Corner Radius", "Shadow" ]
+
+[node name="cell" type="VSplitContainer"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 400.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 400, 250 )
+margin_top = 6.0
+margin_right = 404.0
+margin_bottom = 286.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/normal = SubResource( 7 )
-custom_colors/font_color = Color( 0.0784314, 1, 0, 1 )
-custom_colors/background_color = Color( 0, 0, 0, 1 )
-text = "hey boss"
+split_offset = 0
+collapsed = false
+dragger_visibility = 0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Focus", "Mouse", "Visibility" ]
+
+[node name="source" type="TextEdit" parent="."]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 404.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 0, 200 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/normal = SubResource( 1 )
+text = "blank_cell()	"
 readonly = false
 highlight_current_line = true
 syntax_highlighting = true
 show_line_numbers = true
 breakpoint_gutter = false
 highlight_all_occurrences = false
-override_selected_font_color = false
+override_selected_font_color = true
 context_menu_enabled = true
-smooth_scrolling = false
+smooth_scrolling = true
 v_scroll_speed = 80.0
 hiding_enabled = 0
-wrap_enabled = false
+wrap_enabled = true
 caret_block_mode = false
-caret_blink = false
+caret_blink = true
 caret_blink_speed = 0.65
-caret_moving_by_right_click = false
-_sections_unfolded = [ "Anchor", "Caret", "Focus", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "custom_colors", "custom_fonts", "custom_icons", "custom_styles", "custom_styles/normal" ]
+caret_moving_by_right_click = true
+_sections_unfolded = [ "Caret", "Mouse", "Rect", "custom_constants", "custom_styles/focus", "custom_styles/normal" ]
 
+[node name="outputs" type="RichTextLabel" parent="."]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 260.0
+margin_right = 404.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 0, 20 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_styles/focus = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = false
+tab_size = 2
+text = ""
+scroll_active = false
+scroll_following = true
+selection_enabled = true
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "Focus", "Grow Direction", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_styles", "custom_styles/focus" ]
+
+[connection signal="focus_entered" from="source" to="." method="_on_source_focus_entered"]
+[connection signal="text_changed" from="source" to="." method="_on_source_text_changed"]
+[connection signal="focus_entered" from="outputs" to="." method="_on_outputs_focus_entered"]

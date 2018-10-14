@@ -316,7 +316,7 @@ margin_bottom = 390.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 1
-mouse_filter = 1
+mouse_filter = 0
 mouse_default_cursor_shape = 13
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -337,7 +337,7 @@ slot/0/right_enabled = true
 slot/0/right_type = 0
 slot/0/right_color = Color( 0, 0.694118, 0.305882, 1 )
 script = ExtResource( 1 )
-_sections_unfolded = [ "0", "1", "Material", "Mouse", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_icons", "custom_styles", "custom_styles/defaultframe", "custom_styles/frame" ]
+_sections_unfolded = [ "0", "1", "Focus", "Material", "Mouse", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_icons", "custom_styles", "custom_styles/defaultframe", "custom_styles/frame" ]
 
 [node name="panel" type="PanelContainer" parent="."]
 self_modulate = Color( 0.156863, 0.180392, 0.156863, 1 )
@@ -354,7 +354,7 @@ grow_vertical = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 1
-mouse_filter = 1
+mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -372,7 +372,7 @@ margin_right = 514.0
 margin_bottom = 355.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 1
+mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
@@ -380,7 +380,6 @@ alignment = 0
 _sections_unfolded = [ "Hint", "Mouse", "Rect", "Size Flags", "Theme" ]
 
 [node name="Panel" type="Panel" parent="panel/vbox"]
-editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -447,7 +446,6 @@ max_lines_visible = -1
 _sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
 
 [node name="io" type="HBoxContainer" parent="panel/vbox"]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -456,18 +454,19 @@ margin_right = 513.0
 margin_bottom = 39.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 1
+mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
+_sections_unfolded = [ "Mouse" ]
 
 [node name="input" type="VBoxContainer" parent="panel/vbox/io"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 168.0
+margin_right = 254.0
 margin_bottom = 39.0
 rect_min_size = Vector2( 55, 27 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -513,7 +512,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 24.0
-margin_right = 168.0
+margin_right = 254.0
 margin_bottom = 39.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -536,6 +535,7 @@ caret_position = 0
 _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags", "custom_fonts", "custom_styles", "custom_styles/normal" ]
 
 [node name="self" type="VBoxContainer" parent="panel/vbox/io"]
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -614,7 +614,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 344.0
+margin_left = 258.0
 margin_right = 513.0
 margin_bottom = 39.0
 rect_min_size = Vector2( 55, 27 )
@@ -660,7 +660,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 24.0
-margin_right = 169.0
+margin_right = 255.0
 margin_bottom = 39.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -950,7 +950,6 @@ items = [ "Code", null, 0, false, false, 0, 0, null, "", false, "Markdown", null
 _sections_unfolded = [ "Hint", "Size Flags", "Visibility", "custom_colors", "custom_fonts", "custom_styles", "group" ]
 
 [node name="notebook" type="TabContainer" parent="panel/vbox"]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -964,7 +963,7 @@ rect_min_size = Vector2( 100, 5 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 focus_mode = 1
-mouse_filter = 1
+mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3

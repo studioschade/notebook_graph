@@ -267,6 +267,7 @@ alignment = 0
 _sections_unfolded = [ "Hint", "Mouse", "Rect", "Size Flags", "Theme" ]
 
 [node name="Panel" type="Panel" parent="panel/vbox"]
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -349,7 +350,6 @@ alignment = 0
 _sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="input" type="HBoxContainer" parent="panel/vbox/io"]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -577,7 +577,6 @@ size_flags_vertical = 3
 _sections_unfolded = [ "Material", "Size Flags", "Visibility" ]
 
 [node name="output" type="HBoxContainer" parent="panel/vbox/io"]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -659,7 +658,6 @@ margin_bottom = 376.0
 focus_mode = 2
 size_flags_vertical = 11
 _sections_unfolded = [ "Anchor", "Focus", "Mouse", "Rect", "Size Flags", "Theme", "custom_constants", "theme" ]
-user_shell = 2
 
 [connection signal="close_request" from="." to="." method="_on_GraphNode_close_request"]
 [connection signal="mouse_entered" from="." to="task" method="_on_graphnode_mouse_entered"]

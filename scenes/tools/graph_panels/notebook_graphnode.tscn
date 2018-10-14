@@ -353,7 +353,6 @@ margin_left = 16.0
 margin_top = 24.0
 margin_right = 531.0
 margin_bottom = 391.0
-focus_mode = 1
 theme = SubResource( 10 )
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles", "custom_styles/panel", "theme" ]
 

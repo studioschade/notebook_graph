@@ -3,7 +3,7 @@ from godot.bindings import *
 from godot.globals import *
 
 from subprocess import PIPE
-import json
+import json, re
 
 from godot.bindings import Dictionary
 
@@ -53,7 +53,6 @@ class python(Control):
 				from queue import Empty  # Py 3
 		except ImportError:
 				from Queue import Empty  # Py 2
-
 		km = KernelManager(kernel_name='python')
 		km.start_kernel()
 		print("Kernel Running: " + str(km.is_alive()))
@@ -88,5 +87,9 @@ class python(Control):
 			#print('Kernel Running Final : ' +  str(km.is_alive()))
 			#response = json.dumps(data, ensure_ascii=True)
 			#print(type(self.response2))
-			#content_printer.pprint(self.response2)
+			content_printer.pprint(self.response2)
 			return self.response2
+
+	def remove_ansi(self, line):
+		ansi_escape = re.compile(r'(\x9B|\x1B\[)[0-?]*[ -/]*[@-~]')
+		return ansi_escape.sub('', line)

@@ -178,7 +178,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
 
-[sub_resource type="Theme" id=8]
+[sub_resource type="Theme" id=7]
 
 
 [node name="notebook_cell" type="GraphNode"]
@@ -662,7 +662,7 @@ margin_left = 4.0
 margin_top = 31.0
 margin_right = -4.0
 margin_bottom = -4.0
-theme = SubResource( 8 )
+theme = SubResource( 7 )
 
 [connection signal="close_request" from="." to="." method="_on_GraphNode_close_request"]
 [connection signal="raise_request" from="." to="." method="_on_GraphNode_raise_request"]
